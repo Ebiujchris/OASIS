@@ -2251,17 +2251,20 @@ img {
 
   .field-photo-grid {
     margin-top: 25px;
-    grid-auto-rows: minmax(165px, auto);
+    grid-auto-rows: auto;
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 
-  .field-photo-featured {
-    min-height: 270px;
-    grid-row: span 1;
+  .field-photo-card {
+    min-height: unset;
+    aspect-ratio: 16 / 10;
   }
 
-  .field-photo-card {
-    min-height: 165px;
+  .field-photo-featured {
+    min-height: unset;
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .field-photo-card figcaption {
