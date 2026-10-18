@@ -3,7 +3,6 @@ import { ArrowRight, BadgeCheck, PackageSearch } from "lucide-react";
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
 import { SectionHeading } from "@/components/section-heading";
-import { WhatsAppCta } from "@/components/whatsapp-cta";
 import { products } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -25,7 +24,6 @@ export default function ProductsPage() {
               availability, compatibility and pricing for your project.
             </p>
             <div className="page-hero-actions">
-              <WhatsAppCta compact />
               <Link className="subtle-link" href="/contact/">
                 Need help choosing? <ArrowRight size={15} aria-hidden="true" />
               </Link>
@@ -61,10 +59,9 @@ export default function ProductsPage() {
         <div className="page-width catalogue-note-inner">
           <BadgeCheck size={21} aria-hidden="true" />
           <p>
-            No prices or stock claims are listed here. Message Oasis to confirm
-            the right product, price and availability.
+            Product details and availability may vary. Contact Oasis to confirm
+            what is right for your project.
           </p>
-          <WhatsAppCta compact />
         </div>
       </section>
     </>
