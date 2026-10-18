@@ -2251,7 +2251,7 @@ img {
 
   .field-photo-grid {
     margin-top: 25px;
-    grid-auto-rows: 165px;
+    grid-auto-rows: minmax(165px, auto);
     gap: 10px;
   }
 
