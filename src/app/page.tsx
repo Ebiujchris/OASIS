@@ -56,12 +56,6 @@ export default function HomePage() {
               Practical irrigation products and farm support to help you make
               better use of water and care for every crop.
             </p>
-            <div className="hero-actions">
-              <WhatsAppCta />
-              <Link className="button button-outline" href="/products/">
-                Explore products <ArrowRight size={16} aria-hidden="true" />
-              </Link>
-            </div>
             <div className="hero-note">
               <span className="hero-note-icon">
                 <Leaf size={16} aria-hidden="true" />
