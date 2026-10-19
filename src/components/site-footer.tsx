@@ -44,7 +44,7 @@ export function SiteFooter() {
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Oasis Irrigation Solutions</span>
-        <span>Smart irrigation. Better harvests.</span>
+        <span>Smart irrigation. Better harvests. Sustainable future.</span>
       </div>
     </footer>
   );
