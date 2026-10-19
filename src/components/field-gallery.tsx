@@ -9,9 +9,19 @@ type FieldGalleryProps = {
     caption: string;
     type: string;
   }[];
+  videos?: {
+    src: string;
+    alt: string;
+    caption: string;
+    type: string;
+  }[];
 };
 
-export function FieldGallery({ compact = false, photos }: FieldGalleryProps) {
+export function FieldGallery({
+  compact = false,
+  photos,
+  videos = [],
+}: FieldGalleryProps) {
   return (
     <section
       className={`section field-gallery-section${compact ? " field-gallery-compact" : ""}`}
@@ -54,9 +64,29 @@ export function FieldGallery({ compact = false, photos }: FieldGalleryProps) {
               </figcaption>
             </figure>
           ))}
+          {videos.map((video) => (
+            <figure className="field-video-card" key={video.src}>
+              <video
+                aria-label={video.alt}
+                autoPlay
+                controls
+                loop
+                muted
+                playsInline
+                preload="metadata"
+              >
+                <source src={video.src} type="video/mp4" />
+                Your browser does not support the video element.
+              </video>
+              <figcaption>
+                <span>{video.type}</span>
+                <strong>{video.caption}</strong>
+              </figcaption>
+            </figure>
+          ))}
         </div>
         <p className="field-gallery-disclaimer">
-          Photos show irrigation products and water-system field activities.
+          Photos and videos show irrigation products and water-system field activities.
           Ask Oasis about products, availability and project details.
         </p>
       </div>

@@ -14,7 +14,7 @@ import { FieldGallery } from "@/components/field-gallery";
 import { ProductCard } from "@/components/product-card";
 import { SectionHeading } from "@/components/section-heading";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
-import { company, fieldPhotos, products, services } from "@/data/site";
+import { company, fieldPhotos, fieldVideos, products, services } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Irrigation Products & Farm Solutions in Uganda",
@@ -198,7 +198,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <FieldGallery compact photos={fieldPhotos} />
+      <FieldGallery compact photos={fieldPhotos} videos={fieldVideos} />
 
       <section className="section process-section">
         <div className="page-width process-layout">

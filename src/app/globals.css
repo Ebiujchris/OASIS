@@ -884,6 +884,50 @@ img {
   font-size: 18px;
 }
 
+.field-video-card {
+  position: relative;
+  min-height: 394px;
+  overflow: hidden;
+  background: #17251b;
+  border-radius: 4px;
+  grid-row: span 2;
+}
+
+.field-video-card video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.field-video-card figcaption {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  left: 12px;
+  display: flex;
+  padding: 9px 11px;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--white);
+  background: rgba(18, 37, 22, 0.82);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.field-video-card figcaption span {
+  color: #e0e8d8;
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.field-video-card figcaption strong {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
 .field-gallery-disclaimer {
   margin: 15px 0 0;
   color: var(--muted);
@@ -2264,6 +2308,12 @@ img {
   .field-photo-featured {
     min-height: unset;
     grid-column: auto;
+    grid-row: auto;
+  }
+
+  .field-video-card {
+    min-height: unset;
+    aspect-ratio: 3 / 4;
     grid-row: auto;
   }
 

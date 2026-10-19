@@ -21,7 +21,7 @@ The production files are generated in `out/` and can be deployed to a static hos
 ## Update business details
 
 - Edit the WhatsApp number, phone display number, locations, product cards and services in `src/data/site.ts`.
-- Replace or add site photos in `public/images/`, then update the corresponding image path and alt text in `src/data/site.ts`.
+- Replace or add site photos in `public/images/` and field videos in `public/videos/`, then update `fieldPhotos` or `fieldVideos` in `src/data/site.ts`.
 - Confirm the exact location addresses, products, availability and contact details with the business owner before launch.
 
 The contact form prepares a WhatsApp message in the visitor's browser; it does not store or submit form data to a server.

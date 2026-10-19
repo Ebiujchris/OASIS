@@ -139,6 +139,21 @@ export const fieldPhotos = [
   },
 ];
 
+export const fieldVideos = [
+  {
+    src: "/videos/field-activity.mp4",
+    alt: "Drip lines laid out across a prepared field",
+    caption: "Laying out drip lines",
+    type: "Field video",
+  },
+  {
+    src: "/videos/water-system-project.mp4",
+    alt: "A covered growing area with prepared planting beds",
+    caption: "Inside a covered growing area",
+    type: "Field video",
+  },
+];
+
 export const projectPhotos = [
   {
     image: "/images/tank-installation-team.jpg",
