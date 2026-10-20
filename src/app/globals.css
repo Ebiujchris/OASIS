@@ -1184,6 +1184,20 @@ img {
   font-weight: 700;
 }
 
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.footer-social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
 .footer-column {
   display: flex;
   align-items: flex-start;
@@ -1208,7 +1222,8 @@ img {
 }
 
 .footer-column a:hover,
-.footer-whatsapp:hover {
+.footer-whatsapp:hover,
+.footer-social-link:hover {
   color: var(--white);
 }
 
@@ -2099,6 +2114,8 @@ img {
 
   .brand {
     max-width: 194px;
+    min-width: 0;
+    flex-shrink: 1;
     gap: 7px;
   }
 
@@ -2110,6 +2127,11 @@ img {
 
   .brand-name strong {
     font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .brand-name {
+    min-width: 0;
   }
 
   .brand-name span {
@@ -2118,7 +2140,7 @@ img {
   }
 
   .brand-name .brand-motto {
-    max-width: 136px;
+    max-width: 100%;
     margin-top: 4px;
     font-size: 11px;
     line-height: 1.25;
