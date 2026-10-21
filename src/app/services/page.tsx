@@ -7,12 +7,14 @@ import {
   Ruler,
   Sprout,
   Wrench,
+  MessageCircle,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { FieldGallery } from "@/components/field-gallery";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
-import { projectPhotos, services } from "@/data/site";
+import { projectPhotos, services, whatsappLink } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Irrigation Planning, Installation & Farm Support",
@@ -51,24 +53,12 @@ export default function ServicesPage() {
         </div>
       </section>
       <section className="section services-detail-section">
-        <div className="page-width services-detail-layout">
-          <div className="services-photo">
-            <Image
-              src="/images/solar-water-system.jpg"
-              alt="Solar-powered irrigation equipment installed beside a farm"
-              fill
-              sizes="(max-width: 800px) 100vw, 43vw"
-            />
-            <div className="services-photo-caption">
-              <span>OASIS FIELD NOTES</span>
-              <strong>Water systems, planned with purpose.</strong>
-            </div>
-          </div>
+        <div className="page-width">
           <div className="services-list-block">
             <SectionHeading
               eyebrow="How we can help"
-              title="Support that starts with listening."
-              description="Every farm has different conditions. Tell us what you are working with and we can discuss the next practical step."
+              title="Practical support for your water system."
+              description="Explore the service areas below. Each farm is different, so share your water source, crops, site conditions and goals to discuss a suitable next step."
             />
             <div className="service-detail-list">
               {services.map((service, index) => {
@@ -79,15 +69,40 @@ export default function ServicesPage() {
                     id={service.slug}
                     key={service.number}
                   >
-                    <span className="service-detail-icon">
-                      <Icon size={19} aria-hidden="true" />
-                    </span>
-                    <div>
-                      <span className="service-detail-number">{service.number}</span>
-                      <h3>{service.title}</h3>
-                      <p>{service.description}</p>
+                    <div className="service-detail-image">
+                      <Image
+                        src={service.image}
+                        alt={service.alt}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1050px) 50vw, 33vw"
+                      />
+                      <span className="service-detail-number">
+                        {service.number}
+                      </span>
                     </div>
-                    <ArrowUpRight size={17} aria-hidden="true" />
+                    <div className="service-detail-content">
+                      <span className="service-detail-icon">
+                        <Icon size={18} aria-hidden="true" />
+                      </span>
+                      <h3>
+                        <Link href={`/services/${service.slug}/`}>
+                          {service.title}
+                        </Link>
+                      </h3>
+                      <p>{service.description}</p>
+                      <Link
+                        className="service-detail-link"
+                        href={whatsappLink(
+                          `Hello Oasis, I would like to enquire about ${service.title.toLowerCase()} for my farm.`
+                        )}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <MessageCircle size={15} aria-hidden="true" />
+                        Enquire about this service
+                        <ArrowUpRight size={15} aria-hidden="true" />
+                      </Link>
+                    </div>
                   </article>
                 );
               })}

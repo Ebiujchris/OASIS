@@ -25,7 +25,7 @@ function ServicesLinks({ mobile = false }: { mobile?: boolean }) {
       pageHref="/services/"
       pageLabel="All services"
       links={services.map((service) => ({
-        href: `/services/#${service.slug}`,
+        href: `/services/${service.slug}/`,
         label: service.title,
       }))}
       mobile={mobile}

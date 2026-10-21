@@ -333,41 +333,125 @@ export const services = [
     slug: "irrigation",
     title: "Irrigation planning & installation",
     description:
-      "Discuss your crops, water source and farm layout to plan and install an irrigation setup suited to your needs.",
+      "Plan an irrigation layout around your crops, available water and field conditions. Discuss the equipment, pipe routes and installation support that may suit your farm.",
+    detailIntro:
+      "Plan how water will move from its source through the field to the crop. The layout depends on the crop arrangement, field size, water supply and how the farm will be operated.",
+    detailPoints: [
+      "Discuss drip or other irrigation layouts for the crops and planting pattern.",
+      "Consider water source, field levels, pipe routes and the areas to be covered.",
+      "Review suitable components and what installation support the project may need.",
+    ],
+    detailChecklist: [
+      "Crop type and spacing",
+      "Approximate area and field layout",
+      "Water source and any existing equipment",
+    ],
+    image: "/images/drip-lines-on-crops.jpg",
+    alt: "Drip irrigation lines laid beside crops in a cultivated field",
   },
   {
     number: "02",
     slug: "boreholes",
     title: "Boreholes & water supply",
     description:
-      "Talk through borehole water and supply options for your farm or irrigation project.",
+      "Explore how water can be supplied from a borehole or another source to storage or irrigation. Share the source, location and intended use so the options can be discussed.",
+    detailIntro:
+      "Discuss how a borehole or other available source could connect to storage, a pump and the farm’s water distribution. Source yield, location and intended use all matter when planning a supply.",
+    detailPoints: [
+      "Describe the source and any known information about its output.",
+      "Plan the route from the source to a storage tank, outlet or irrigation system.",
+      "Consider how water demand and storage needs relate to the proposed setup.",
+    ],
+    detailChecklist: [
+      "Source type and location",
+      "Any known yield or existing pump details",
+      "Where the water needs to go and how it will be used",
+    ],
+    image: "/images/borehole-water-outlet.jpg",
+    alt: "Water discharging from a large borehole outlet pipe",
   },
   {
     number: "03",
     slug: "water-pumps",
     title: "Water pumps",
     description:
-      "Explore pump options for moving water from your source to storage or irrigation lines.",
+      "Discuss moving water from its source to a tank, outlet or irrigation network. The right pump depends on the water source, delivery route and the demands of the setup.",
+    detailIntro:
+      "A pump must suit the source and the work it needs to do. Discuss the lift, delivery distance, pipework and required flow before deciding what pump configuration to consider.",
+    detailPoints: [
+      "Identify whether water is being drawn from a borehole, pond, tank or another source.",
+      "Consider the vertical lift, delivery distance and pipe size.",
+      "Match the intended use—such as filling storage or feeding irrigation—to pump requirements.",
+    ],
+    detailChecklist: [
+      "Water source and approximate lift height",
+      "Distance and route to the delivery point",
+      "Required use, flow and available power source",
+    ],
+    image: "/images/farm-water-pumping-team.jpg",
+    alt: "A petrol water pump positioned beside a farm water channel",
   },
   {
     number: "04",
     slug: "solar-equipment",
     title: "Solar equipment",
     description:
-      "Discuss solar-powered equipment options for farm water pumping and distribution.",
+      "Consider solar-powered equipment for water pumping and farm use. Discuss the site, water requirements and equipment already in place before choosing a system.",
+    detailIntro:
+      "Explore whether solar power could support water pumping or other farm equipment at your site. A useful discussion starts with the equipment’s power needs, when it will run and the available sunlight.",
+    detailPoints: [
+      "Review the pump or equipment specifications and expected operating hours.",
+      "Consider the site, panel placement and the route between panels and equipment.",
+      "Discuss whether storage or another power source is part of the planned setup.",
+    ],
+    detailChecklist: [
+      "Equipment model or power rating, if known",
+      "Daily usage and water-pumping requirements",
+      "Site photos and existing solar or electrical equipment",
+    ],
+    image: "/images/solar-farm-panel-array.jpg",
+    alt: "A ground-mounted solar panel array installed at a farm",
   },
   {
     number: "05",
     slug: "repairs-maintenance",
     title: "Repairs & maintenance",
     description:
-      "Get help identifying irrigation or water-system issues and planning practical maintenance.",
+      "Get support to describe an issue with irrigation lines, fittings or water equipment and discuss practical next steps. Photos and details about the setup help explain the problem.",
+    detailIntro:
+      "When part of a water system is not working as expected, clear details help identify what to inspect. Share the affected equipment, symptoms and any recent changes so possible next steps can be discussed.",
+    detailPoints: [
+      "Describe leaks, blocked lines, low flow or components that are not operating as expected.",
+      "Check which section, valve, filter or connection is affected.",
+      "Discuss inspection and suitable repair or maintenance options for the existing setup.",
+    ],
+    detailChecklist: [
+      "Photos or a short video of the affected area",
+      "System type and affected section",
+      "When the issue began and what has already been checked",
+    ],
+    image: "/images/irrigation-manifold-project.jpg",
+    alt: "Installed irrigation manifold with blue valves and connected pipework",
   },
   {
     number: "06",
     slug: "product-guidance",
     title: "Irrigation product guidance",
     description:
-      "Get guidance on choosing compatible fittings, valves and drip irrigation components.",
+      "Compare fittings, valves, emitters and other drip-system components for your setup. Share pipe sizes or product photos so compatibility and availability can be checked.",
+    detailIntro:
+      "Choose components with the pipework and operating needs of your system in mind. Share measurements, product photos or an existing layout to discuss which fittings, valves or emitters may be suitable.",
+    detailPoints: [
+      "Compare connectors, tees, end pieces, valves and drip emitters.",
+      "Check product dimensions against the pipe or tubing already in use.",
+      "Ask about product options and confirm current availability before purchasing.",
+    ],
+    detailChecklist: [
+      "Pipe or tubing diameter and type",
+      "Photos of the connection point or existing component",
+      "Quantity needed and intended use",
+    ],
+    image: "/images/irrigation-fittings.jpg",
+    alt: "Irrigation pipe assembly with blue valves and connected fittings",
   },
 ];
