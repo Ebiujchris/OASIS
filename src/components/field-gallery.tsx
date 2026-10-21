@@ -1,8 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 
 type FieldGalleryProps = {
   compact?: boolean;
+  moreLink?: { href: string; label: string };
   photos: {
     image: string;
     alt: string;
@@ -19,6 +22,7 @@ type FieldGalleryProps = {
 
 export function FieldGallery({
   compact = false,
+  moreLink,
   photos,
   videos = [],
 }: FieldGalleryProps) {
@@ -37,9 +41,15 @@ export function FieldGallery({
                 : "Browse more photos of crop watering, irrigation pipe, fittings and water storage activities."
             }
           />
-          <span className="field-gallery-note">
-            Products &amp; field activities
-          </span>
+          {moreLink ? (
+            <Link className="text-link section-top-link" href={moreLink.href}>
+              {moreLink.label} <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          ) : (
+            <span className="field-gallery-note">
+              Products &amp; field activities
+            </span>
+          )}
         </div>
         <div className="field-photo-grid">
           {photos.map((photo, index) => (

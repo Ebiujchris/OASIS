@@ -6,6 +6,19 @@ type BrandProps = {
   motto?: boolean;
 };
 
+function animatedLetters(text: string, offset = 0) {
+  return Array.from(text).map((letter, index) => (
+    <span
+      aria-hidden="true"
+      className="brand-letter"
+      key={`${letter}-${index}`}
+      style={{ animationDelay: `${offset + index * 55}ms` }}
+    >
+      {letter === " " ? "\u00a0" : letter}
+    </span>
+  ));
+}
+
 export function Brand({ light = false, motto = false }: BrandProps) {
   return (
     <Link
@@ -22,8 +35,10 @@ export function Brand({ light = false, motto = false }: BrandProps) {
         priority
       />
       <span className="brand-name">
-        <strong>OASIS</strong>
-        <span>Irrigation solutions</span>
+        <strong aria-label="OASIS">{animatedLetters("OASIS")}</strong>
+        <span aria-label="Irrigation solutions">
+          {animatedLetters("Irrigation solutions", 280)}
+        </span>
         {motto ? (
           <span className="brand-motto">
             Smart Irrigation. Better Harvests. Sustainable Future.

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ArrowRight, BadgeCheck, PackageSearch } from "lucide-react";
+import { ArrowRight, BadgeCheck } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
 import { SectionHeading } from "@/components/section-heading";
@@ -29,10 +30,17 @@ export default function ProductsPage() {
               </Link>
             </div>
           </div>
-          <div className="page-hero-aside">
-            <PackageSearch size={30} strokeWidth={1.4} aria-hidden="true" />
-            <strong>Ask before you order.</strong>
-            <span>Product ranges and availability may vary.</span>
+          <div className="page-hero-image-card">
+            <Image
+              src="/images/irrigation-mainline-connections.jpg"
+              alt="Blue drip-line connectors installed in a larger irrigation pipe"
+              fill
+              sizes="(max-width: 640px) 100vw, 32vw"
+            />
+            <span className="page-hero-image-shade" />
+            <span className="page-hero-image-caption">
+              Irrigation components for your system
+            </span>
           </div>
         </div>
       </section>

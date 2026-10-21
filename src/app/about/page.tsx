@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, Droplets, Leaf, MapPin, Sprout } from "lucide-react";
+import { ArrowUpRight, Droplets, Leaf, Sprout } from "lucide-react";
 import Image from "next/image";
 import { SectionHeading } from "@/components/section-heading";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
-import { company } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "About Oasis Irrigation Solutions",
@@ -25,10 +24,17 @@ export default function AboutPage() {
               their farms.
             </p>
           </div>
-          <div className="page-hero-aside">
-            <MapPin size={30} strokeWidth={1.4} aria-hidden="true" />
-            <strong>Rooted in local needs.</strong>
-            <span>{company.locations.join(" & ")} · Uganda</span>
+          <div className="page-hero-image-card">
+            <Image
+              src="/images/solar-installation-team.jpg"
+              alt="A team carrying a large solar panel at a farm site"
+              fill
+              sizes="(max-width: 640px) 100vw, 32vw"
+            />
+            <span className="page-hero-image-shade" />
+            <span className="page-hero-image-caption">
+              Solar installation for farm water systems
+            </span>
           </div>
         </div>
       </section>

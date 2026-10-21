@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import {
-  ArrowDownRight,
   ArrowRight,
   ArrowUpRight,
   BadgeCheck,
@@ -14,7 +13,7 @@ import { FieldGallery } from "@/components/field-gallery";
 import { ProductCard } from "@/components/product-card";
 import { SectionHeading } from "@/components/section-heading";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
-import { company, fieldPhotos, fieldVideos, products, services } from "@/data/site";
+import { company, fieldPhotos, products, services } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Irrigation Products & Farm Solutions in Uganda",
@@ -40,6 +39,34 @@ const reasons = [
   },
 ];
 
+const faqs = [
+  {
+    question: "What irrigation products can I ask Oasis about?",
+    answer:
+      "The catalogue includes drip fittings and accessories, emitters, valves, pipes, water storage and water-delivery equipment. Contact Oasis to check suitability and current availability.",
+  },
+  {
+    question: "Can Oasis help plan or install an irrigation system?",
+    answer:
+      "Oasis offers irrigation planning and installation support. Share your crops, water source and farm layout so the team can discuss a practical approach for your setup.",
+  },
+  {
+    question: "Do you work with boreholes, pumps and solar equipment?",
+    answer:
+      "These are among the water-supply services you can discuss with Oasis. Get in touch to talk through your water source and the equipment you may need.",
+  },
+  {
+    question: "How do I request a quote or check product availability?",
+    answer:
+      "Contact Oasis by WhatsApp or through the contact page. Include your location, the products or services you are interested in, and a few details about your project.",
+  },
+  {
+    question: "Where can I find Oasis?",
+    answer:
+      "Oasis serves customers throughout Uganda, with offices in Kampala and Gulu. Visit the contact page for contact details and to confirm office information before visiting.",
+  },
+];
+
 export default function HomePage() {
   return (
     <>
@@ -53,10 +80,14 @@ export default function HomePage() {
               Grow more with <span>smarter irrigation.</span>
             </h1>
             <p>
-              Practical irrigation products and farm support to help you make
-              better use of water and care for every crop.
+              Practical irrigation products, system planning and farm support
+              to help you make better use of water and care for every crop.
             </p>
             <div className="hero-actions">
+              <Link className="button" href="/contact/">
+                Request an irrigation quote{" "}
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
               <Link className="button button-outline" href="/products/">
                 Explore products <ArrowRight size={16} aria-hidden="true" />
               </Link>
@@ -198,7 +229,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <FieldGallery compact photos={fieldPhotos} videos={fieldVideos} />
+      <FieldGallery
+        compact
+        photos={fieldPhotos.slice(0, 5)}
+        moreLink={{ href: "/projects/", label: "See more projects" }}
+      />
 
       <section className="section process-section">
         <div className="page-width process-layout">
@@ -219,7 +254,6 @@ export default function HomePage() {
                 <h3>Share your needs</h3>
                 <p>Tell us about your crops, water source and farm.</p>
               </div>
-              <ArrowDownRight size={19} aria-hidden="true" />
             </article>
             <article>
               <span>02</span>
@@ -227,7 +261,6 @@ export default function HomePage() {
                 <h3>Explore your options</h3>
                 <p>Discuss suitable products and an approach for your setup.</p>
               </div>
-              <ArrowDownRight size={19} aria-hidden="true" />
             </article>
             <article>
               <span>03</span>
@@ -235,8 +268,36 @@ export default function HomePage() {
                 <h3>Plan the next step</h3>
                 <p>Arrange supply or installation support for your project.</p>
               </div>
-              <ArrowRight size={19} aria-hidden="true" />
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section home-faq-section">
+        <div className="page-width home-faq-layout">
+          <div className="home-faq-intro">
+            <SectionHeading
+              eyebrow="Good to know"
+              title="Questions about getting started?"
+              description="A few quick answers about products, irrigation support and contacting Oasis."
+            />
+            <Link className="text-link" href="/contact/">
+              Ask us a question <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="home-faq-list">
+            {faqs.map((faq, index) => (
+              <details className="home-faq-item" key={faq.question}>
+                <summary>
+                  <span className="home-faq-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <strong>{faq.question}</strong>
+                  <span className="home-faq-toggle" aria-hidden="true" />
+                </summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
@@ -257,7 +318,10 @@ export default function HomePage() {
 
       <section className="home-location-note page-width">
         <span><span className="caption-dot" /> Here to help growers</span>
-        <p>Connect with Oasis in {company.locations.join(" or ")}.</p>
+        <p>
+          Serving growers throughout Uganda, with offices in{" "}
+          {company.locations.join(" and ")}.
+        </p>
         <Link className="text-link" href="/contact/">
           Find contact details <ArrowUpRight size={15} aria-hidden="true" />
         </Link>

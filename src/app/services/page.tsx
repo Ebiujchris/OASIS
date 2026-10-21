@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, Check, Droplets, Ruler, Sprout, Wrench } from "lucide-react";
+import {
+  ArrowUpRight,
+  BadgeCheck,
+  Check,
+  Droplets,
+  Ruler,
+  Sprout,
+  Wrench,
+} from "lucide-react";
 import Image from "next/image";
 import { SectionHeading } from "@/components/section-heading";
 import { FieldGallery } from "@/components/field-gallery";
@@ -12,7 +20,7 @@ export const metadata: Metadata = {
     "Learn about irrigation planning, installation, water storage and product guidance from Oasis Irrigation Solutions.",
 };
 
-const icons = [Ruler, Wrench, Droplets, Sprout];
+const icons = [Ruler, Droplets, Droplets, Sprout, Wrench, BadgeCheck];
 
 export default function ServicesPage() {
   return (
@@ -28,10 +36,17 @@ export default function ServicesPage() {
             </p>
             <WhatsAppCta compact />
           </div>
-          <div className="page-hero-aside">
-            <Sprout size={30} strokeWidth={1.4} aria-hidden="true" />
-            <strong>Built around your farm.</strong>
-            <span>Discuss your crops, site and water source with us.</span>
+          <div className="page-hero-image-card">
+            <Image
+              src="/images/irrigation-installation-team.jpg"
+              alt="An irrigation technician assembling blue pipe connections in a field"
+              fill
+              sizes="(max-width: 640px) 100vw, 32vw"
+            />
+            <span className="page-hero-image-shade" />
+            <span className="page-hero-image-caption">
+              Irrigation pipework being installed
+            </span>
           </div>
         </div>
       </section>
@@ -59,7 +74,11 @@ export default function ServicesPage() {
               {services.map((service, index) => {
                 const Icon = icons[index];
                 return (
-                  <article className="service-detail-item" key={service.number}>
+                  <article
+                    className="service-detail-item"
+                    id={service.slug}
+                    key={service.number}
+                  >
                     <span className="service-detail-icon">
                       <Icon size={19} aria-hidden="true" />
                     </span>

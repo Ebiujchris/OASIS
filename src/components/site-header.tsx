@@ -1,15 +1,37 @@
 import { Menu, Phone } from "lucide-react";
 import Link from "next/link";
-import { company } from "@/data/site";
+import { company, services } from "@/data/site";
 import { Brand } from "./brand";
+import { HeaderDropdown } from "./header-dropdown";
 
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/products/", label: "Products" },
-  { href: "/services/", label: "Services" },
-  { href: "/about/", label: "About" },
-  { href: "/contact/", label: "Contact" },
-];
+function AboutLinks({ mobile = false }: { mobile?: boolean }) {
+  return (
+    <HeaderDropdown
+      label="About"
+      ariaLabel="About Oasis"
+      pageHref="/about/"
+      pageLabel="About Oasis"
+      links={[{ href: "/about/team/", label: "Our Team" }]}
+      mobile={mobile}
+    />
+  );
+}
+
+function ServicesLinks({ mobile = false }: { mobile?: boolean }) {
+  return (
+    <HeaderDropdown
+      label="Services"
+      ariaLabel="Irrigation services"
+      pageHref="/services/"
+      pageLabel="All services"
+      links={services.map((service) => ({
+        href: `/services/#${service.slug}`,
+        label: service.title,
+      }))}
+      mobile={mobile}
+    />
+  );
+}
 
 export function SiteHeader() {
   return (
@@ -26,11 +48,12 @@ export function SiteHeader() {
       <div className="header-inner">
         <Brand light motto />
         <nav className="desktop-nav" aria-label="Main navigation">
-          {links.map((link) => (
-            <Link key={link.href} href={link.href}>
-              {link.label}
-            </Link>
-          ))}
+          <Link href="/">Home</Link>
+          <AboutLinks />
+          <Link href="/products/">Products</Link>
+          <ServicesLinks />
+          <Link href="/projects/">Projects</Link>
+          <Link href="/contact/">Contact</Link>
         </nav>
         <a className="header-phone" href={`tel:${company.phone}`}>
           <Phone size={15} aria-hidden="true" />
@@ -41,11 +64,12 @@ export function SiteHeader() {
             <Menu size={22} aria-hidden="true" />
           </summary>
           <nav aria-label="Mobile navigation">
-            {links.map((link) => (
-              <Link key={link.href} href={link.href}>
-                {link.label}
-              </Link>
-            ))}
+            <Link href="/">Home</Link>
+            <AboutLinks mobile />
+            <Link href="/products/">Products</Link>
+            <ServicesLinks mobile />
+            <Link href="/projects/">Projects</Link>
+            <Link href="/contact/">Contact</Link>
             <a href={`tel:${company.phone}`}>
               <Phone size={15} aria-hidden="true" />
               {company.phoneDisplay}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowUpRight, MapPin, MessageCircle, Phone } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { ContactForm } from "./contact-form";
 import { company, whatsappLink } from "@/data/site";
@@ -7,7 +8,7 @@ import { company, whatsappLink } from "@/data/site";
 export const metadata: Metadata = {
   title: "Contact & Request a Quote",
   description:
-    "Contact Oasis Irrigation Solutions by phone or WhatsApp for irrigation product enquiries and project support in Kampala and Gulu.",
+    "Contact Oasis Irrigation Solutions by phone or WhatsApp for irrigation products and project support throughout Uganda. Offices in Kampala and Gulu.",
 };
 
 export default function ContactPage() {
@@ -23,10 +24,17 @@ export default function ContactPage() {
               getting started, we’d be happy to hear about your project.
             </p>
           </div>
-          <div className="page-hero-aside">
-            <MessageCircle size={30} strokeWidth={1.4} aria-hidden="true" />
-            <strong>Talk directly with Oasis.</strong>
-            <span>Send a message or call us to get started.</span>
+          <div className="page-hero-image-card">
+            <Image
+              src="/images/farm-water-point-team.jpg"
+              alt="People collecting water at an outdoor water point"
+              fill
+              sizes="(max-width: 640px) 100vw, 32vw"
+            />
+            <span className="page-hero-image-shade" />
+            <span className="page-hero-image-caption">
+              Talk with Oasis about your water needs
+            </span>
           </div>
         </div>
       </section>
@@ -62,10 +70,10 @@ export default function ContactPage() {
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
             <div className="contact-locations">
-              <h3><MapPin size={17} aria-hidden="true" /> Serving Kampala &amp; Gulu</h3>
+              <h3><MapPin size={17} aria-hidden="true" /> Offices in Kampala &amp; Gulu</h3>
               <p>
-                Contact us for the nearest location and directions. Please
-                confirm the exact address before visiting.
+                Oasis serves customers throughout Uganda. Contact us for
+                office directions and confirm the exact address before visiting.
               </p>
               <div className="location-pills">
                 {company.locations.map((location) => (

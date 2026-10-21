@@ -66,9 +66,9 @@ export function SiteFooter() {
           </a>
           <span>
             <MapPin size={15} aria-hidden="true" />
-            {company.locations.join(" & ")}
+            Offices in {company.locations.join(" & ")}
           </span>
-          <p>Contact us for directions to the nearest location.</p>
+          <p>Serving growers throughout Uganda. Contact us for office directions.</p>
         </div>
       </div>
       <div className="footer-bottom">

@@ -45,12 +45,12 @@ export const products = [
     detail: "Storage and distribution",
   },
   {
-    name: "Drip line control valves",
+    name: "8 LPH PC emitters",
     description:
-      "Valve components used to manage water flow between irrigation lines.",
+      "Pressure-compensating emitters for controlled water delivery in drip irrigation systems.",
     image: "/images/drip-valves.jpg",
-    alt: "A selection of blue and black drip irrigation valve fittings",
-    detail: "Flow control",
+    alt: "A selection of blue and black 8 LPH pressure-compensating drip emitters",
+    detail: "8 LPH | Pressure compensating",
   },
   {
     name: "Drip connectors & joiners",
@@ -137,6 +137,24 @@ export const fieldPhotos = [
     caption: "Preparing pipe for a project",
     type: "Pipework",
   },
+  {
+    image: "/images/irrigation-manifold-project.jpg",
+    alt: "Blue valves and pipework installed along a wall",
+    caption: "Installed irrigation pipework",
+    type: "System installation",
+  },
+  {
+    image: "/images/water-outlet-project.jpg",
+    alt: "Water flowing from a pipe outlet at a project site",
+    caption: "Testing a water outlet",
+    type: "Water supply",
+  },
+  {
+    image: "/images/irrigation-pipe-team-project.jpg",
+    alt: "A team moving a large coil of irrigation pipe across a field",
+    caption: "Moving pipe at a farm site",
+    type: "Pipework",
+  },
 ];
 
 export const fieldVideos = [
@@ -155,6 +173,54 @@ export const fieldVideos = [
 ];
 
 export const projectPhotos = [
+  {
+    image: "/images/irrigation-trench-installation.jpg",
+    alt: "Workers connecting irrigation pipes in an open trench",
+    caption: "Connecting pipework during installation",
+    type: "Irrigation installation",
+  },
+  {
+    image: "/images/irrigation-trench-preparation.jpg",
+    alt: "A worker preparing a trench for buried farm pipework",
+    caption: "Preparing a route for pipework",
+    type: "Installation preparation",
+  },
+  {
+    image: "/images/irrigation-mainline-connections.jpg",
+    alt: "Blue connectors fitted into large irrigation pipes",
+    caption: "Mainline pipe connections",
+    type: "Irrigation pipework",
+  },
+  {
+    image: "/images/solar-installation-team.jpg",
+    alt: "A team carrying a solar panel at a farm site",
+    caption: "Moving solar equipment into position",
+    type: "Solar equipment",
+  },
+  {
+    image: "/images/solar-panels-farm.jpg",
+    alt: "Solar panels installed at a farm site",
+    caption: "Solar panels at a farm site",
+    type: "Solar water systems",
+  },
+  {
+    image: "/images/farm-water-pumping.jpg",
+    alt: "A petrol-powered pump beside a farm water source",
+    caption: "Water pump at a farm source",
+    type: "Water pumping",
+  },
+  {
+    image: "/images/farm-water-pumping-team.jpg",
+    alt: "A team operating a water point and filling containers",
+    caption: "Water point in use",
+    type: "Water supply",
+  },
+  {
+    image: "/images/water-tank-frame-project.jpg",
+    alt: "Steel support frame being assembled for a farm water tank",
+    caption: "Assembling a tank support frame",
+    type: "Water storage",
+  },
   {
     image: "/images/tank-installation-team.jpg",
     alt: "Workers and lifting equipment at a raised tank installation",
@@ -197,30 +263,74 @@ export const projectPhotos = [
     caption: "Water flowing at the outlet",
     type: "Water supply",
   },
+  {
+    image: "/images/irrigation-trench-installation.jpg",
+    alt: "Workers digging a trench for irrigation pipework",
+    caption: "Preparing a route for irrigation pipe",
+    type: "Installation work",
+  },
+  {
+    image: "/images/solar-pump-system.jpg",
+    alt: "Solar panels installed at a farm water site",
+    caption: "Solar equipment at a farm site",
+    type: "Solar water systems",
+  },
+  {
+    image: "/images/farm-water-pumping.jpg",
+    alt: "A water pump operating beside a farm water source",
+    caption: "Pumping water at a farm",
+    type: "Water pumping",
+  },
+  {
+    image: "/images/water-tank-frame-project.jpg",
+    alt: "Steel support frame being assembled for a farm water tank",
+    caption: "Assembling a tank support frame",
+    type: "Water storage",
+  },
 ];
+
+export const projectGalleryPhotos = [...fieldPhotos.slice(5), ...projectPhotos];
 
 export const services = [
   {
     number: "01",
-    title: "Irrigation planning",
+    slug: "irrigation",
+    title: "Irrigation planning & installation",
     description:
-      "Talk through your farm, water source and crops to explore an irrigation setup suited to your needs.",
+      "Discuss your crops, water source and farm layout to plan and install an irrigation setup suited to your needs.",
   },
   {
     number: "02",
-    title: "System installation",
+    slug: "boreholes",
+    title: "Boreholes & water supply",
     description:
-      "Get help with putting irrigation equipment in place and setting up a practical system on your farm.",
+      "Talk through borehole water and supply options for your farm or irrigation project.",
   },
   {
     number: "03",
-    title: "Water supply & storage",
+    slug: "water-pumps",
+    title: "Water pumps",
     description:
-      "Explore water storage, pumping and distribution options for your irrigation project.",
+      "Explore pump options for moving water from your source to storage or irrigation lines.",
   },
   {
     number: "04",
-    title: "Product guidance",
+    slug: "solar-equipment",
+    title: "Solar equipment",
+    description:
+      "Discuss solar-powered equipment options for farm water pumping and distribution.",
+  },
+  {
+    number: "05",
+    slug: "repairs-maintenance",
+    title: "Repairs & maintenance",
+    description:
+      "Get help identifying irrigation or water-system issues and planning practical maintenance.",
+  },
+  {
+    number: "06",
+    slug: "product-guidance",
+    title: "Irrigation product guidance",
     description:
       "Get guidance on choosing compatible fittings, valves and drip irrigation components.",
   },
