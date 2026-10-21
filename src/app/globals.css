@@ -3181,3 +3181,256 @@ img {
     will-change: auto;
   }
 }
+
+.home-page .hero-section {
+  padding-top: 42px;
+  padding-bottom: 36px;
+}
+
+.home-page .hero-inner {
+  min-height: unset;
+  gap: clamp(36px, 5vw, 72px);
+}
+
+.home-page .hero-visual {
+  min-height: clamp(390px, 38vw, 460px);
+}
+
+.home-page .trust-inner {
+  min-height: 64px;
+}
+
+.home-page .section {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.home-page .products-section {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.home-page .product-grid {
+  margin-top: 30px;
+  gap: 17px;
+}
+
+.home-page .product-image-frame {
+  aspect-ratio: 1.65;
+}
+
+.home-page .product-card-content {
+  padding: 16px 17px 17px;
+}
+
+.home-page .product-card p {
+  min-height: 42px;
+  margin-top: 6px;
+}
+
+.home-page .product-enquiry-link {
+  margin-top: 11px;
+}
+
+.home-page .service-feature-image {
+  min-height: 390px;
+}
+
+.home-page .reason-grid {
+  margin-top: 28px;
+}
+
+.home-page .reason-card {
+  min-height: 165px;
+  padding: 18px 20px 20px;
+}
+
+.home-page .reason-card h3 {
+  margin-top: 14px;
+}
+
+.home-page .field-gallery-compact {
+  padding-top: 64px;
+  padding-bottom: 66px;
+}
+
+.home-page .field-photo-grid {
+  margin-top: 28px;
+  grid-auto-rows: 165px;
+  gap: 12px;
+}
+
+.home-page .field-photo-card {
+  min-height: 165px;
+}
+
+.home-page .home-faq-item summary {
+  min-height: 68px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.home-page .home-faq-item > p {
+  margin-bottom: 16px;
+}
+
+.home-page .process-section {
+  padding-top: 66px;
+  padding-bottom: 68px;
+}
+
+.home-page .process-steps article {
+  min-height: 74px;
+}
+
+.home-page .contact-banner-inner {
+  min-height: 190px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.home-page .home-location-note {
+  min-height: 68px;
+}
+
+@media (max-width: 800px) {
+  .home-page .hero-section {
+    padding-top: 40px;
+    padding-bottom: 34px;
+  }
+
+  .home-page .hero-visual {
+    min-height: 350px;
+  }
+
+  .home-page .section {
+    padding-top: 54px;
+    padding-bottom: 54px;
+  }
+
+  .home-page .service-feature-image {
+    min-height: 320px;
+  }
+
+  .home-page .reason-card {
+    min-height: unset;
+    padding: 17px 18px;
+  }
+
+  .home-page .process-section {
+    padding-top: 52px;
+    padding-bottom: 54px;
+  }
+
+  .home-page .contact-banner-inner {
+    min-height: 205px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-page .hero-section {
+    padding-top: 30px;
+    padding-bottom: 26px;
+  }
+
+  .home-page .hero-inner {
+    gap: 23px;
+  }
+
+  .home-page .hero-visual {
+    min-height: clamp(250px, 78vw, 330px);
+  }
+
+  .home-page .section {
+    padding-top: 42px;
+    padding-bottom: 44px;
+  }
+
+  .home-page .product-grid {
+    margin-top: 22px;
+    gap: 12px;
+  }
+
+  .home-page .product-image-frame {
+    aspect-ratio: 1.8;
+  }
+
+  .home-page .product-card-content {
+    padding: 14px 15px;
+  }
+
+  .home-page .product-card p {
+    min-height: unset;
+  }
+
+  .home-page .service-feature {
+    gap: 22px;
+  }
+
+  .home-page .service-feature-image {
+    min-height: 245px;
+  }
+
+  .home-page .reason-grid {
+    margin-top: 20px;
+    gap: 9px;
+  }
+
+  .home-page .field-gallery-compact {
+    padding-top: 44px;
+    padding-bottom: 46px;
+  }
+
+  .home-page .field-photo-grid {
+    margin-top: 20px;
+    gap: 8px;
+  }
+
+  .home-page .field-photo-card {
+    aspect-ratio: 16 / 9;
+  }
+
+  .home-page .home-faq-layout {
+    gap: 20px;
+  }
+
+  .home-page .home-faq-item summary {
+    min-height: 60px;
+    grid-template-columns: 24px minmax(0, 1fr) 30px;
+    gap: 7px;
+  }
+
+  .home-page .home-faq-item > p {
+    margin-right: 34px;
+    margin-left: 31px;
+    font-size: 13px;
+  }
+
+  .home-page .process-section {
+    padding-top: 43px;
+    padding-bottom: 46px;
+  }
+
+  .home-page .process-layout {
+    gap: 20px;
+  }
+
+  .home-page .process-steps article {
+    min-height: 66px;
+  }
+
+  .home-page .contact-banner-inner {
+    min-height: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    gap: 16px;
+  }
+
+  .home-page .home-location-note {
+    min-height: 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}

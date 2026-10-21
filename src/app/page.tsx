@@ -69,7 +69,7 @@ const faqs = [
 
 export default function HomePage() {
   return (
-    <>
+    <div className="home-page">
       <section className="hero-section">
         <div className="hero-inner page-width">
           <div className="hero-copy">
@@ -326,6 +326,6 @@ export default function HomePage() {
           Find contact details <ArrowUpRight size={15} aria-hidden="true" />
         </Link>
       </section>
-    </>
+    </div>
   );
 }
