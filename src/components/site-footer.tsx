@@ -1,4 +1,4 @@
-import { ArrowUpRight, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { company, whatsappLink } from "@/data/site";
 import { Brand } from "./brand";
@@ -69,6 +69,10 @@ export function SiteFooter() {
           <a href={`tel:${company.phone}`}>
             <Phone size={15} aria-hidden="true" />
             {company.phoneDisplay}
+          </a>
+          <a href="mailto:admin@oasisirrigationsolutions.com">
+            <Mail size={15} aria-hidden="true" />
+            admin@oasisirrigationsolutions.com
           </a>
           <span>
             <MapPin size={15} aria-hidden="true" />
