@@ -1523,6 +1523,20 @@ img {
   font-weight: 700;
 }
 
+.footer-follow {
+  display: inline-flex;
+  margin-top: 17px;
+  align-items: center;
+  gap: 11px;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.footer-follow-divider {
+  color: rgba(255, 255, 255, 0.4);
+}
+
 .footer-social-link {
   display: inline-flex;
   align-items: center;

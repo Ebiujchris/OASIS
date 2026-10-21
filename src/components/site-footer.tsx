@@ -21,6 +21,41 @@ export function SiteFooter() {
           >
             Chat with Oasis <ArrowUpRight size={16} aria-hidden="true" />
           </a>
+          <div className="footer-follow">
+            <span>Follow</span>
+            <span className="footer-follow-divider" aria-hidden="true">
+              |
+            </span>
+            <a
+              className="footer-social-link"
+              href="https://www.tiktok.com/@oasis.irrigation3?_r=1&_t=ZS-9AiSDSQTBMQ.."
+              target="_blank"
+              rel="noreferrer"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M19.6 8.2a7.1 7.1 0 0 1-4.3-1.5v7.1a5.6 5.6 0 1 1-5.6-5.6c.4 0 .8 0 1.2.1v3.1a2.6 2.6 0 1 0 1.8 2.5V2h3.1a7 7 0 0 0 3.8 4.1v2.1Z"
+                  transform="translate(-1 1)"
+                  fill="#69e9e4"
+                />
+                <path
+                  d="M19.6 8.2a7.1 7.1 0 0 1-4.3-1.5v7.1a5.6 5.6 0 1 1-5.6-5.6c.4 0 .8 0 1.2.1v3.1a2.6 2.6 0 1 0 1.8 2.5V2h3.1a7 7 0 0 0 3.8 4.1v2.1Z"
+                  transform="translate(1 -1)"
+                  fill="#ff6681"
+                />
+                <path
+                  d="M19.6 8.2a7.1 7.1 0 0 1-4.3-1.5v7.1a5.6 5.6 0 1 1-5.6-5.6c.4 0 .8 0 1.2.1v3.1a2.6 2.6 0 1 0 1.8 2.5V2h3.1a7 7 0 0 0 3.8 4.1v2.1Z"
+                  fill="white"
+                />
+              </svg>
+              TikTok
+            </a>
+          </div>
         </div>
         <div className="footer-column">
           <h2>Explore</h2>
@@ -34,35 +69,6 @@ export function SiteFooter() {
           <a href={`tel:${company.phone}`}>
             <Phone size={15} aria-hidden="true" />
             {company.phoneDisplay}
-          </a>
-          <a
-            className="footer-social-link"
-            href="https://www.tiktok.com/@oasis.irrigation3?_r=1&_t=ZS-9AiSDSQTBMQ.."
-            target="_blank"
-            rel="noreferrer"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M19.6 8.2a7.1 7.1 0 0 1-4.3-1.5v7.1a5.6 5.6 0 1 1-5.6-5.6c.4 0 .8 0 1.2.1v3.1a2.6 2.6 0 1 0 1.8 2.5V2h3.1a7 7 0 0 0 3.8 4.1v2.1Z"
-                transform="translate(-1 1)"
-                fill="#69e9e4"
-              />
-              <path
-                d="M19.6 8.2a7.1 7.1 0 0 1-4.3-1.5v7.1a5.6 5.6 0 1 1-5.6-5.6c.4 0 .8 0 1.2.1v3.1a2.6 2.6 0 1 0 1.8 2.5V2h3.1a7 7 0 0 0 3.8 4.1v2.1Z"
-                transform="translate(1 -1)"
-                fill="#ff6681"
-              />
-              <path
-                d="M19.6 8.2a7.1 7.1 0 0 1-4.3-1.5v7.1a5.6 5.6 0 1 1-5.6-5.6c.4 0 .8 0 1.2.1v3.1a2.6 2.6 0 1 0 1.8 2.5V2h3.1a7 7 0 0 0 3.8 4.1v2.1Z"
-                fill="white"
-              />
-            </svg>
-            TikTok
           </a>
           <span>
             <MapPin size={15} aria-hidden="true" />
