@@ -643,7 +643,7 @@ img {
 
 .hero-visual {
   position: relative;
-  min-height: 486px;
+  min-height: 550px;
   border-radius: 6px 80px 6px 6px;
   background: #d9dfd2;
   box-shadow: 0 24px 55px rgba(35, 53, 35, 0.11);
@@ -1661,8 +1661,8 @@ img {
 
 .page-hero-image-card {
   position: relative;
-  width: clamp(330px, 38vw, 470px);
-  height: 340px;
+  width: clamp(360px, 40vw, 560px);
+  height: 390px;
   flex: 0 0 auto;
   overflow: hidden;
   background: #d9dfd2;
@@ -2304,7 +2304,7 @@ img {
   }
 
   .hero-visual {
-    min-height: 430px;
+    min-height: 455px;
   }
 
   .product-grid-all {
@@ -2377,7 +2377,7 @@ img {
   }
 
   .hero-visual {
-    min-height: 385px;
+    min-height: 410px;
   }
 
   .hero-image-card {
@@ -2735,7 +2735,7 @@ img {
   }
 
   .hero-visual {
-    min-height: min(99vw, 420px);
+    min-height: min(112vw, 470px);
     border-top-right-radius: 55px;
   }
 
@@ -3004,7 +3004,7 @@ img {
 
   .page-hero-image-card {
     width: 100%;
-    height: 280px;
+    height: 350px;
   }
 
   .page-hero-actions {

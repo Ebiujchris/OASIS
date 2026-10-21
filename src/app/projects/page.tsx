@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { FieldGallery } from "@/components/field-gallery";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
 import { fieldVideos, projectGalleryPhotos } from "@/data/site";
@@ -23,6 +24,18 @@ export default function ProjectsPage() {
               confirm the right support for your project.
             </p>
             <WhatsAppCta compact />
+          </div>
+          <div className="page-hero-image-card">
+            <Image
+              src="/images/bolted-water-storage-tank.jpg"
+              alt="A large bolted water storage tank inside a fenced compound"
+              fill
+              sizes="(max-width: 640px) 100vw, 40vw"
+            />
+            <span className="page-hero-image-shade" />
+            <span className="page-hero-image-caption">
+              Water storage at a project site
+            </span>
           </div>
         </div>
       </section>

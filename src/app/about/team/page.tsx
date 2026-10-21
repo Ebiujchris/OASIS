@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { FieldGallery } from "@/components/field-gallery";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
 
@@ -43,6 +44,18 @@ export default function TeamPage() {
               project and the support you need.
             </p>
             <WhatsAppCta compact />
+          </div>
+          <div className="page-hero-image-card">
+            <Image
+              src="/images/solar-installation-team.jpg"
+              alt="Team members carrying a solar panel at a farm site"
+              fill
+              sizes="(max-width: 640px) 100vw, 40vw"
+            />
+            <span className="page-hero-image-shade" />
+            <span className="page-hero-image-caption">
+              Team members working with solar equipment
+            </span>
           </div>
         </div>
       </section>
