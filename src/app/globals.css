@@ -4311,10 +4311,10 @@ img {
 }
 .hp-ticker__item {
   display:inline-flex;align-items:center;gap:8px;
-  color:rgba(255,255,255,.65);font-size:12px;font-weight:700;
+  color:#e7dcc0;font-size:12px;font-weight:700;
   letter-spacing:.12em;text-transform:uppercase;flex-shrink:0;
 }
-.hp-ticker__item svg { color:#7dc98f }
+.hp-ticker__item svg { color:#d0ad5f }
 
 /* ── SECTION SHARED ── */
 .hp-section { padding:96px 0 }
