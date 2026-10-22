@@ -2,330 +2,406 @@ import type { Metadata } from "next";
 import {
   ArrowRight,
   ArrowUpRight,
-  BadgeCheck,
   Droplets,
   Leaf,
-  Ruler,
+  MapPin,
+  MessageCircle,
+  Phone,
+  ShieldCheck,
+  Sun,
+  Wrench,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { FieldGallery } from "@/components/field-gallery";
-import { ProductCard } from "@/components/product-card";
-import { SectionHeading } from "@/components/section-heading";
-import { WhatsAppCta } from "@/components/whatsapp-cta";
-import { company, fieldPhotos, products, services } from "@/data/site";
+import { company, fieldPhotos, products, services, whatsappLink } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Irrigation Products & Farm Solutions in Uganda",
+  title: "Oasis Irrigation Solutions | Smart Irrigation for Uganda",
   description:
-    "Discover practical drip irrigation products, installation and farm support from Oasis Irrigation Solutions.",
+    "Practical drip irrigation products, expert installation and farm support for growers across Uganda. Offices in Kampala and Gulu.",
 };
 
-const reasons = [
+const pillars = [
   {
     icon: Droplets,
-    title: "Water-wise thinking",
-    text: "Explore irrigation options that make considered use of the water available to your farm.",
+    label: "Drip Systems",
+    text: "Precision water delivery directly to root zones — less waste, more yield.",
   },
   {
-    icon: Ruler,
-    title: "Advice for your setup",
-    text: "Talk through your crops, water source and project before choosing system components.",
+    icon: Sun,
+    label: "Solar Pumping",
+    text: "Off-grid solar water pumps for farms away from the mains grid.",
   },
   {
-    icon: BadgeCheck,
-    title: "Help beyond the product",
-    text: "Get practical support as you plan, select and set up irrigation equipment.",
-  },
-];
-
-const faqs = [
-  {
-    question: "What irrigation products can I ask Oasis about?",
-    answer:
-      "The catalogue includes drip fittings and accessories, emitters, valves, pipes, water storage and water-delivery equipment. Contact Oasis to check suitability and current availability.",
+    icon: Wrench,
+    label: "Installation",
+    text: "Full on-site planning, pipe laying and system commissioning.",
   },
   {
-    question: "Can Oasis help plan or install an irrigation system?",
-    answer:
-      "Oasis offers irrigation planning and installation support. Share your crops, water source and farm layout so the team can discuss a practical approach for your setup.",
+    icon: ShieldCheck,
+    label: "Maintenance",
+    text: "Ongoing repairs, part replacements and system health checks.",
   },
   {
-    question: "Do you work with boreholes, pumps and solar equipment?",
-    answer:
-      "These are among the water-supply services you can discuss with Oasis. Get in touch to talk through your water source and the equipment you may need.",
+    icon: Droplets,
+    label: "Water Storage",
+    text: "Tanks and storage options to help manage water for farm use.",
   },
   {
-    question: "How do I request a quote or check product availability?",
-    answer:
-      "Contact Oasis by WhatsApp or through the contact page. Include your location, the products or services you are interested in, and a few details about your project.",
-  },
-  {
-    question: "Where can I find Oasis?",
-    answer:
-      "Oasis serves customers throughout Uganda, with offices in Kampala and Gulu. Visit the contact page for contact details and to confirm office information before visiting.",
+    icon: Leaf,
+    label: "Boreholes & Water Supply",
+    text: "Water supply from boreholes and other sources connected to tanks, pumps and irrigation.",
   },
 ];
 
 export default function HomePage() {
   return (
-    <div className="home-page">
-      <section className="hero-section">
-        <div className="hero-inner page-width">
-          <div className="hero-copy">
-            <span className="eyebrow">
-              <span className="eyebrow-mark" /> Irrigation solutions in Uganda
+    <div className="hp">
+
+      {/* ══════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════ */}
+      <section className="hp-hero">
+        <div className="hp-water-effects" aria-hidden="true">
+          <span className="hp-water-ripple hp-water-ripple--one" />
+          <span className="hp-water-ripple hp-water-ripple--two" />
+          <svg className="hp-water-drop hp-water-drop--one" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22a7 7 0 0 0 7-7c0-5-7-13-7-13S5 10 5 15a7 7 0 0 0 7 7Z" />
+          </svg>
+          <svg className="hp-water-drop hp-water-drop--two" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22a7 7 0 0 0 7-7c0-5-7-13-7-13S5 10 5 15a7 7 0 0 0 7 7Z" />
+          </svg>
+          <svg className="hp-water-drop hp-water-drop--three" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22a7 7 0 0 0 7-7c0-5-7-13-7-13S5 10 5 15a7 7 0 0 0 7 7Z" />
+          </svg>
+          <svg className="hp-water-drop hp-water-drop--four" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22a7 7 0 0 0 7-7c0-5-7-13-7-13S5 10 5 15a7 7 0 0 0 7 7Z" />
+          </svg>
+        </div>
+        <div className="hp-leaf-drips" aria-hidden="true">
+          <svg className="hp-leaf-drip hp-leaf-drip--one" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22a7 7 0 0 0 7-7c0-5-7-13-7-13S5 10 5 15a7 7 0 0 0 7 7Z" />
+          </svg>
+          <svg className="hp-leaf-drip hp-leaf-drip--two" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22a7 7 0 0 0 7-7c0-5-7-13-7-13S5 10 5 15a7 7 0 0 0 7 7Z" />
+          </svg>
+          <svg className="hp-leaf-drip hp-leaf-drip--three" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22a7 7 0 0 0 7-7c0-5-7-13-7-13S5 10 5 15a7 7 0 0 0 7 7Z" />
+          </svg>
+        </div>
+        <div className="hp-hero__body page-width">
+          <div className="hp-hero__copy">
+            <span className="hp-chip">
+              <span className="hp-chip__dot" />
+              Irrigation solutions across Uganda
             </span>
-            <h1>
-              Grow more with <span>smarter irrigation.</span>
+            <h1 className="hp-hero__h1">
+              Water your crops<br />
+              <span className="hp-hero__accent">the smart way.</span>
             </h1>
-            <p>
-              Practical irrigation products, system planning and farm support
-              to help you make better use of water and care for every crop.
+            <p className="hp-hero__lead">
+              Drip irrigation, boreholes, solar pumps and full installation
+              support for farms in Kampala, Gulu and across Uganda.
             </p>
-            <div className="hero-actions">
-              <Link className="button" href="/contact/">
-                Request an irrigation quote{" "}
-                <ArrowUpRight size={16} aria-hidden="true" />
+            <div className="hp-hero__ctas">
+              <Link
+                href={whatsappLink("Hello Oasis, I'd like a free quote for my farm.")}
+                target="_blank" rel="noreferrer"
+                className="hp-cta-btn hp-cta-btn--primary"
+              >
+                <MessageCircle size={18} /> Get a free quote
               </Link>
-              <Link className="button button-outline" href="/products/">
-                Explore products <ArrowRight size={16} aria-hidden="true" />
+              <Link href="/products/" className="hp-cta-btn hp-cta-btn--outline">
+                Explore products <ArrowRight size={17} />
               </Link>
             </div>
-            <div className="hero-note">
-              <span className="hero-note-icon">
-                <Leaf size={16} aria-hidden="true" />
-              </span>
-              <span>
-                <strong>Smart irrigation. Better harvests.</strong>
-                <small>Thoughtful solutions for growing farms.</small>
-              </span>
+            <div className="hp-hero__meta">
+              <span><MapPin size={13} /> Kampala &amp; Gulu</span>
+              <span className="hp-hero__meta-sep" />
+              <a href={`tel:${company.phone}`}><Phone size={13} /> {company.phoneDisplay}</a>
             </div>
           </div>
-          <div className="hero-visual">
+
+          <figure className="hp-hero__visual">
             <Image
-              className="hero-image"
               src="/images/farm-irrigation.jpg"
-              alt="Watering crops on a farm with an irrigation hose"
+              alt="A grower watering crops in a farm field"
               fill
               priority
-              sizes="(max-width: 800px) 100vw, 52vw"
+              className="hp-hero__photo"
+              sizes="(max-width: 768px) 100vw, (max-width: 1100px) 45vw, 50vw"
             />
-            <div className="hero-image-shade" />
-            <div className="hero-photo-caption">
-              <span className="caption-dot" />
-              Water where your crops need it
-            </div>
-            <div className="hero-image-card">
-              <span className="image-card-icon">
-                <Droplets size={19} aria-hidden="true" />
+            <div className="hp-hero__photo-shade" aria-hidden="true" />
+            <figcaption>
+              <span className="hp-hero__photo-icon">
+                <Droplets size={18} aria-hidden="true" />
               </span>
               <span>
-                <strong>Every farm is different.</strong>
-                <small>Start with a conversation.</small>
+                <strong>Watering crops in the field</strong>
+                <small>Practical irrigation support across Uganda</small>
               </span>
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </div>
-            <span className="hero-side-label">OASIS / IRRIGATION SOLUTIONS</span>
-          </div>
-        </div>
-        <div className="hero-bottom-rule" />
-      </section>
-
-      <section className="trust-strip" aria-label="Oasis service highlights">
-        <div className="trust-inner page-width">
-          <span className="trust-label">A better way to grow</span>
-          <span><Droplets size={17} aria-hidden="true" /> Water-conscious solutions</span>
-          <span><Ruler size={17} aria-hidden="true" /> Practical system support</span>
-          <span><Leaf size={17} aria-hidden="true" /> Made for growing farms</span>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      <section className="section products-section">
-        <div className="page-width">
-          <div className="section-topline">
-            <SectionHeading
-              eyebrow="What we offer"
-              title="Find the right pieces for your farm."
-              description="Explore irrigation components and solutions, then get in touch to check what suits your setup."
-            />
-            <Link className="text-link section-top-link" href="/products/">
-              Browse all products <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
-          <div className="product-grid">
-            {products.slice(0, 3).map((product) => (
-              <ProductCard key={product.name} product={product} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section service-feature-section">
-        <div className="service-feature page-width">
-          <div className="service-feature-image">
-            <Image
-              src="/images/solar-water-system.jpg"
-              alt="Solar-powered water system set up beside a farm"
-              fill
-              sizes="(max-width: 800px) 100vw, 48vw"
-            />
-            <div className="service-image-label">
-              <span>01 / 03</span>
-              Water systems &amp; farm projects
-            </div>
-          </div>
-          <div className="service-feature-copy">
-            <SectionHeading
-              eyebrow="More than equipment"
-              title="The right support makes the difference."
-              description="From understanding your water source to selecting and setting up equipment, we help make irrigation feel more straightforward."
-            />
-            <div className="service-list">
-              {services.slice(0, 3).map((service) => (
-                <div className="service-list-item" key={service.number}>
-                  <span>{service.number}</span>
-                  <strong>{service.title}</strong>
-                  <ArrowUpRight size={17} aria-hidden="true" />
-                </div>
-              ))}
-            </div>
-            <Link className="text-link" href="/services/">
-              Explore our services <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="section why-section">
-        <div className="page-width">
-          <div className="why-heading">
-            <SectionHeading
-              eyebrow="The Oasis approach"
-              title="Good irrigation starts with good questions."
-              description="Your crops, water source and farm layout all matter. We help you think through the details before you choose a solution."
-            />
-            <span className="why-decoration" aria-hidden="true">
-              <Droplets size={44} strokeWidth={1.2} />
+      {/* ══════════════════════════════════════════
+          TICKER / TRUST BAR
+      ══════════════════════════════════════════ */}
+      <div className="hp-ticker">
+        <div className="hp-ticker__track">
+          {["Drip Irrigation", "Solar Pumps", "Boreholes", "Water Storage",
+            "Pipe Fittings", "Valves & Fittings", "Installation", "Repairs",
+            "Drip Irrigation", "Solar Pumps", "Boreholes", "Water Storage",
+            "Pipe Fittings", "Valves & Fittings", "Installation", "Repairs"].map((t, i) => (
+            <span key={i} className="hp-ticker__item">
+              <Droplets size={12} />
+              {t}
             </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════
+          PILLARS — what we cover
+      ══════════════════════════════════════════ */}
+      <section className="hp-section hp-pillars">
+        <div className="page-width">
+          <div className="hp-sec-head">
+            <p className="hp-label">What we cover</p>
+            <h2>Everything your farm needs.</h2>
           </div>
-          <div className="reason-grid">
-            {reasons.map((reason, index) => {
-              const Icon = reason.icon;
+          <div className="hp-pillars__grid">
+            {pillars.map((p, i) => {
+              const Icon = p.icon;
               return (
-                <article className="reason-card" key={reason.title}>
-                  <div className="reason-card-top">
-                    <span className="reason-icon">
-                      <Icon size={20} aria-hidden="true" />
-                    </span>
-                    <span>0{index + 1}</span>
-                  </div>
-                  <h3>{reason.title}</h3>
-                  <p>{reason.text}</p>
-                </article>
+                <div
+                  key={p.label}
+                  className="hp-pillar"
+                  style={{ "--i": i } as React.CSSProperties}
+                >
+                  <span className="hp-pillar__icon"><Icon size={22} /></span>
+                  <strong>{p.label}</strong>
+                  <p>{p.text}</p>
+                </div>
               );
             })}
           </div>
-        </div>
-      </section>
-
-      <FieldGallery
-        compact
-        photos={fieldPhotos.slice(0, 5)}
-        moreLink={{ href: "/projects/", label: "See more projects" }}
-      />
-
-      <section className="section process-section">
-        <div className="page-width process-layout">
-          <div className="process-intro">
-            <SectionHeading
-              eyebrow="Getting started"
-              title="From first question to flowing water."
-              description="A simple path to help you move from an irrigation idea to a setup that works for your farm."
-            />
-            <Link className="text-link" href="/contact/">
-              Tell us about your farm <ArrowUpRight size={16} aria-hidden="true" />
+          <div className="hp-coverage-note">
+            <MapPin size={21} aria-hidden="true" />
+            <div>
+              <strong>Serving growers throughout Uganda</strong>
+              <span>Our offices are in Kampala and Gulu.</span>
+            </div>
+            <Link href="/contact/">
+              Talk to our team <ArrowRight size={15} aria-hidden="true" />
             </Link>
-          </div>
-          <div className="process-steps">
-            <article>
-              <span>01</span>
-              <div>
-                <h3>Share your needs</h3>
-                <p>Tell us about your crops, water source and farm.</p>
-              </div>
-            </article>
-            <article>
-              <span>02</span>
-              <div>
-                <h3>Explore your options</h3>
-                <p>Discuss suitable products and an approach for your setup.</p>
-              </div>
-            </article>
-            <article>
-              <span>03</span>
-              <div>
-                <h3>Plan the next step</h3>
-                <p>Arrange supply or installation support for your project.</p>
-              </div>
-            </article>
           </div>
         </div>
       </section>
 
-      <section className="section home-faq-section">
-        <div className="page-width home-faq-layout">
-          <div className="home-faq-intro">
-            <SectionHeading
-              eyebrow="Good to know"
-              title="Questions about getting started?"
-              description="A few quick answers about products, irrigation support and contacting Oasis."
-            />
-            <Link className="text-link" href="/contact/">
-              Ask us a question <ArrowUpRight size={16} aria-hidden="true" />
+      {/* ══════════════════════════════════════════
+          PRODUCTS
+      ══════════════════════════════════════════ */}
+      <section className="hp-section hp-products">
+        <div className="page-width">
+          <div className="hp-sec-head hp-sec-head--row">
+            <div>
+              <p className="hp-label">Products</p>
+              <h2>Quality equipment for every farm.</h2>
+            </div>
+            <Link href="/products/" className="hp-text-link">
+              View all products <ArrowUpRight size={15} />
             </Link>
           </div>
-          <div className="home-faq-list">
-            {faqs.map((faq, index) => (
-              <details className="home-faq-item" key={faq.question}>
-                <summary>
-                  <span className="home-faq-number">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <strong>{faq.question}</strong>
-                  <span className="home-faq-toggle" aria-hidden="true" />
-                </summary>
-                <p>{faq.answer}</p>
-              </details>
+          <div className="hp-products__grid">
+            {products.slice(0, 6).map((p, i) => (
+              <article
+                key={p.name}
+                className="hp-prod-card"
+                style={{ "--i": i } as React.CSSProperties}
+              >
+                <div className="hp-prod-card__img">
+                  <Image src={p.image} alt={p.alt} fill
+                    sizes="(max-width:600px) 100vw,(max-width:1024px) 50vw,33vw" />
+                  <div className="hp-prod-card__overlay" />
+                </div>
+                <div className="hp-prod-card__body">
+                  <span className="hp-badge">{p.detail}</span>
+                  <h3>{p.name}</h3>
+                  <p>{p.description}</p>
+                  <Link
+                    href={whatsappLink(`Hello Oasis, I'd like to ask about: ${p.name}`)}
+                    target="_blank" rel="noreferrer"
+                    className="hp-text-link hp-text-link--sm"
+                  >
+                    Ask about this <ArrowUpRight size={13} />
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="contact-banner">
-        <div className="contact-banner-inner page-width">
-          <div>
-            <span className="eyebrow eyebrow-light">Let’s talk irrigation</span>
-            <h2>Ready to make every drop count?</h2>
-            <p>Tell us what you’re growing and what you need help with.</p>
+      {/* ══════════════════════════════════════════
+          FEATURE SPLIT — solar water system image
+      ══════════════════════════════════════════ */}
+      <section className="hp-split">
+        <div className="hp-split__img">
+          <Image
+            src="/images/solar-water-system.jpg"
+            alt="Solar-powered water system at a Ugandan farm"
+            fill
+            sizes="55vw"
+            className="hp-split__photo"
+          />
+          <div className="hp-split__photo-label">
+            <span>Solar water system · Uganda</span>
           </div>
-          <WhatsAppCta />
         </div>
-        <span className="banner-watermark" aria-hidden="true">
-          <Droplets />
-        </span>
+        <div className="hp-split__copy">
+          <p className="hp-label">The Oasis approach</p>
+          <h2>Good irrigation starts with good questions.</h2>
+          <p>
+            Your crops, water source and field layout all shape the right system.
+            We start every project by understanding your farm before recommending
+            any equipment.
+          </p>
+          <ul className="hp-split__list">
+            <li><span />Crop type, spacing and field size</li>
+            <li><span />Water source — borehole, pond or mains</li>
+            <li><span />Budget and phasing of installation</li>
+            <li><span />Long-term maintenance support</li>
+          </ul>
+          <div className="hp-split__ctas">
+            <Link href="/contact/" className="hp-cta-btn hp-cta-btn--primary">
+              Start a conversation <ArrowUpRight size={17} />
+            </Link>
+            <Link href="/services/" className="hp-cta-btn hp-cta-btn--text">
+              Our services <ArrowRight size={17} />
+            </Link>
+          </div>
+        </div>
       </section>
 
-      <section className="home-location-note page-width">
-        <span><span className="caption-dot" /> Here to help growers</span>
-        <p>
-          Serving growers throughout Uganda, with offices in{" "}
-          {company.locations.join(" and ")}.
-        </p>
-        <Link className="text-link" href="/contact/">
-          Find contact details <ArrowUpRight size={15} aria-hidden="true" />
-        </Link>
+      {/* ══════════════════════════════════════════
+          SERVICES
+      ══════════════════════════════════════════ */}
+      <section className="hp-section hp-services">
+        <div className="page-width">
+          <div className="hp-sec-head hp-sec-head--row">
+            <div>
+              <p className="hp-label">Services</p>
+              <h2>Complete irrigation support.</h2>
+            </div>
+            <Link href="/services/" className="hp-text-link">
+              All services <ArrowUpRight size={15} />
+            </Link>
+          </div>
+          <div className="hp-svc-grid">
+            {services.map((s, i) => (
+              <Link
+                key={s.slug}
+                href={`/services/${s.slug}/`}
+                className="hp-svc-card"
+                style={{ "--i": i } as React.CSSProperties}
+              >
+                <div className="hp-svc-card__img">
+                  <Image src={s.image} alt={s.alt} fill sizes="400px" />
+                  <div className="hp-svc-card__dim" />
+                </div>
+                <div className="hp-svc-card__body">
+                  <span className="hp-svc-card__num">{s.number}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.description}</p>
+                  <span className="hp-svc-card__arrow">
+                    <ArrowUpRight size={18} />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
+
+      {/* ══════════════════════════════════════════
+          GALLERY
+      ══════════════════════════════════════════ */}
+      <section className="hp-section hp-gallery">
+        <div className="page-width">
+          <div className="hp-sec-head hp-sec-head--row">
+            <div>
+              <p className="hp-label">Field work</p>
+              <h2>Projects across Uganda.</h2>
+            </div>
+            <Link href="/projects/" className="hp-text-link">
+              See all projects <ArrowUpRight size={15} />
+            </Link>
+          </div>
+          <div className="hp-gallery__grid">
+            {fieldPhotos.slice(0, 7).map((ph, i) => (
+              <figure
+                key={ph.image}
+                className={`hp-gallery__item${i === 0 ? " hp-gallery__item--hero" : ""}`}
+                style={{ "--i": i } as React.CSSProperties}
+              >
+                <Image src={ph.image} alt={ph.alt} fill sizes="(max-width:600px) 100vw, 50vw" />
+                <div className="hp-gallery__shade" />
+                <figcaption>
+                  <span>{ph.type}</span>
+                  <strong>{ph.caption}</strong>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          FINAL CTA
+      ══════════════════════════════════════════ */}
+      <section className="hp-final-cta">
+        <div className="page-width hp-final-cta__inner">
+          <div className="hp-final-cta__body">
+            <p className="hp-label">Let’s plan your next step</p>
+            <h2>Ready to make every drop count?</h2>
+            <p className="hp-final-cta__lead">
+              Tell us about your farm and water source. We’ll help you explore
+              an irrigation approach that fits your needs.
+            </p>
+            <div className="hp-final-cta__actions">
+              <Link
+                href={whatsappLink("Hello Oasis, I'd like to discuss an irrigation project for my farm.")}
+                target="_blank" rel="noreferrer"
+                className="hp-cta-btn hp-cta-btn--primary"
+              >
+                <MessageCircle size={18} /> Chat on WhatsApp
+              </Link>
+              <Link href="/contact/" className="hp-cta-btn hp-cta-btn--outline">
+                Contact us <ArrowRight size={17} />
+              </Link>
+            </div>
+            <div className="hp-final-cta__locations">
+              <MapPin size={15} aria-hidden="true" />
+              <span>Serving growers throughout Uganda · Offices in Kampala and Gulu</span>
+            </div>
+          </div>
+          <figure className="hp-final-cta__visual">
+            <Image
+              src="/images/irrigation-installation-team.jpg"
+              alt="Oasis team installing water pipes at a farm"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <figcaption>
+              <span>From planning to installation</span>
+              <strong>Practical support, built around your farm.</strong>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
     </div>
   );
 }

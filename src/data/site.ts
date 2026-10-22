@@ -29,7 +29,7 @@ export const products = [
     detail: "Rings and line accessories",
   },
   {
-    name: "Valves & system fittings",
+    name: "Solar motorised borehole",
     description:
       "Irrigation valves and fittings to help manage water flow through a system.",
     image: "/images/irrigation-fittings.jpg",
@@ -122,8 +122,8 @@ export const fieldPhotos = [
   {
     image: "/images/farm-water-team.jpg",
     alt: "People testing water flowing from a pipe at an open field site",
-    caption: "Testing a field water point",
-    type: "Water systems",
+    caption: "Farm drainage",
+    type: "Farm drainage",
   },
   {
     image: "/images/drip-lines-on-crops.jpg",
