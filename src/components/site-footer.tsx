@@ -6,6 +6,35 @@ import { Brand } from "./brand";
 export function SiteFooter() {
   return (
     <footer className="site-footer">
+      <svg
+        className="footer-top-curve"
+        viewBox="0 0 1440 80"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient
+            id="footer-curve-gradient"
+            x1="0"
+            y1="0"
+            x2="1"
+            y2="0"
+            gradientUnits="objectBoundingBox"
+          >
+            <stop offset="0%" stopColor="#214d2b" />
+            <stop offset="47%" stopColor="#214d2b" />
+            <stop offset="53%" stopColor="#6b4c1e" />
+            <stop offset="100%" stopColor="#6b4c1e" />
+          </linearGradient>
+        </defs>
+        <path d="M0 25 C300 42 540 60 760 44 C1010 26 1240 9 1440 4 L1440 80 L0 80 Z" fill="#182f1d" />
+        <path
+          d="M0 25 C300 42 540 60 760 44 C1010 26 1240 9 1440 4"
+          fill="none"
+          stroke="url(#footer-curve-gradient)"
+          strokeWidth="9"
+        />
+      </svg>
       <div className="footer-main">
         <div className="footer-brand-block">
           <Brand light />
