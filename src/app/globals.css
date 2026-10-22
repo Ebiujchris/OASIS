@@ -1918,6 +1918,23 @@ img {
   color: #c4a962;
 }
 
+.brand-light .brand-name > span:not(.brand-motto) {
+  position: relative;
+  display: inline-block;
+  align-self: flex-start;
+  padding-top: 3px;
+}
+
+.brand-light .brand-name > span:not(.brand-motto)::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #795c32, #c49a4a);
+  content: "";
+}
+
 .footer-brand-block > p {
   max-width: 320px;
   margin: 20px 0 17px;
