@@ -4209,7 +4209,8 @@ img {
   align-items: center;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 5% 8%, rgba(224, 233, 214, 0.72), transparent 34%),
+    radial-gradient(ellipse at 12% 38%, rgba(215, 230, 205, 0.72), transparent 45%),
+    radial-gradient(ellipse at 55% 100%, rgba(245, 239, 219, 0.42), transparent 43%),
     #f8f8f2;
 }
 .hp-water-effects {
