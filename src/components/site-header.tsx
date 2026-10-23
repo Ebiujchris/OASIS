@@ -7,7 +7,13 @@ import { useState } from "react";
 import { company, services } from "@/data/site";
 import { HeaderDropdown } from "./header-dropdown";
 
-function AboutLinks({ mobile = false }: { mobile?: boolean }) {
+function AboutLinks({
+  mobile = false,
+  onNavigate,
+}: {
+  mobile?: boolean;
+  onNavigate?: () => void;
+}) {
   return (
     <HeaderDropdown
       label="About"
@@ -16,11 +22,18 @@ function AboutLinks({ mobile = false }: { mobile?: boolean }) {
       pageLabel="About Oasis"
       links={[{ href: "/about/team/", label: "Our Team" }]}
       mobile={mobile}
+      onNavigate={onNavigate}
     />
   );
 }
 
-function ServicesLinks({ mobile = false }: { mobile?: boolean }) {
+function ServicesLinks({
+  mobile = false,
+  onNavigate,
+}: {
+  mobile?: boolean;
+  onNavigate?: () => void;
+}) {
   return (
     <HeaderDropdown
       label="Services"
@@ -32,6 +45,7 @@ function ServicesLinks({ mobile = false }: { mobile?: boolean }) {
         label: s.title,
       }))}
       mobile={mobile}
+      onNavigate={onNavigate}
     />
   );
 }
@@ -47,7 +61,7 @@ export function SiteHeader() {
         <div className="sh__left">
           <Link href="/" className="sh__brand" aria-label="Oasis Irrigation Solutions">
             <Image
-              src="/images/oasis-logo.jpg"
+              src="/images/oasis-logo.webp"
               alt="Oasis logo"
               width={90}
               height={90}
@@ -75,12 +89,11 @@ export function SiteHeader() {
         {/* ── Right: leaf photo ── */}
         <div className="sh__leaves-wrap" aria-hidden="true">
           <Image
-            src="/images/header-leaves.png"
+            src="/images/header-leaves.webp"
             alt=""
             fill
-            priority
             className="sh__leaves"
-            sizes="45vw"
+            sizes="22vw"
           />
         </div>
 
@@ -138,7 +151,7 @@ export function SiteHeader() {
         >
           <div className="sh-mobile-menu__panel" onClick={(e) => e.stopPropagation()}>
             <div className="sh-mobile-menu__head">
-              <Image src="/images/oasis-logo.jpg" alt="" width={40} height={40}
+              <Image src="/images/oasis-logo.webp" alt="" width={40} height={40}
                 style={{ borderRadius: "50%", objectFit: "cover" }} />
               <span>OASIS</span>
               <button
@@ -151,9 +164,9 @@ export function SiteHeader() {
               </button>
             </div>
             <Link href="/"          onClick={() => setMenuOpen(false)}>Home</Link>
-            <AboutLinks mobile />
+            <AboutLinks mobile onNavigate={() => setMenuOpen(false)} />
             <Link href="/products/" onClick={() => setMenuOpen(false)}>Products</Link>
-            <ServicesLinks mobile />
+            <ServicesLinks mobile onNavigate={() => setMenuOpen(false)} />
             <Link href="/projects/" onClick={() => setMenuOpen(false)}>Projects</Link>
             <Link href="/contact/"  onClick={() => setMenuOpen(false)}>Contact</Link>
             <a href={`tel:${company.phone}`}>

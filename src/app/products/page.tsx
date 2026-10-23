@@ -32,9 +32,10 @@ export default function ProductsPage() {
           </div>
           <div className="page-hero-image-card">
             <Image
-              src="/images/irrigation-mainline-connections.jpg"
+              src="/images/irrigation-mainline-connections.webp"
               alt="Blue drip-line connectors installed in a larger irrigation pipe"
               fill
+              priority
               sizes="(max-width: 640px) 100vw, 32vw"
             />
             <span className="page-hero-image-shade" />

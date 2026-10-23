@@ -80,7 +80,7 @@ export const products = [
     name: "Drip irrigation in the field",
     description:
       "See drip irrigation lines in use around growing crops and ask about options for your farm.",
-    image: "/images/drip-lines-on-crops.jpg",
+    image: "/images/drip-lines-on-crops.webp",
     alt: "Drip irrigation tubing laid around young crops",
     detail: "Drip systems",
   },
@@ -88,7 +88,7 @@ export const products = [
     name: "Water delivery equipment",
     description:
       "Discuss water-delivery options for irrigation layouts using a borehole or another source.",
-    image: "/images/borehole-water-outlet.jpg",
+    image: "/images/borehole-water-outlet.webp",
     alt: "Water flowing from a borehole outlet pipe at a farm site",
     detail: "Water supply",
   },
@@ -126,7 +126,7 @@ export const fieldPhotos = [
     type: "Farm drainage",
   },
   {
-    image: "/images/drip-lines-on-crops.jpg",
+    image: "/images/drip-lines-on-crops.webp",
     alt: "Drip lines placed alongside young leafy crops",
     caption: "Drip lines alongside crops",
     type: "Drip irrigation",
@@ -210,7 +210,7 @@ export const projectPhotos = [
     type: "Water pumping",
   },
   {
-    image: "/images/farm-water-pumping-team.jpg",
+    image: "/images/farm-water-pumping-team.webp",
     alt: "A team operating a water point and filling containers",
     caption: "Water point in use",
     type: "Water supply",
@@ -258,13 +258,13 @@ export const projectPhotos = [
     type: "Water access",
   },
   {
-    image: "/images/borehole-water-outlet.jpg",
+    image: "/images/borehole-water-outlet.webp",
     alt: "Water running from an outlet pipe at a rural water source",
     caption: "Water flowing at the outlet",
     type: "Water supply",
   },
   {
-    image: "/images/solar-pump-system.jpg",
+    image: "/images/solar-water-system.jpg",
     alt: "Solar panels installed at a farm water site",
     caption: "Solar equipment at a farm site",
     type: "Solar water systems",
@@ -276,7 +276,7 @@ export const projectPhotos = [
     type: "Water supply",
   },
   {
-    image: "/images/solar-farm-panel-array.jpg",
+    image: "/images/solar-farm-panel-array.webp",
     alt: "Rows of solar panels installed on a farm",
     caption: "Solar panels at a farm site",
     type: "Solar equipment",
@@ -346,7 +346,7 @@ export const services = [
       "Approximate area and field layout",
       "Water source and any existing equipment",
     ],
-    image: "/images/drip-lines-on-crops.jpg",
+    image: "/images/drip-lines-on-crops.webp",
     alt: "Drip irrigation lines laid beside crops in a cultivated field",
   },
   {
@@ -367,7 +367,7 @@ export const services = [
       "Any known yield or existing pump details",
       "Where the water needs to go and how it will be used",
     ],
-    image: "/images/borehole-water-outlet.jpg",
+    image: "/images/borehole-water-outlet.webp",
     alt: "Water discharging from a large borehole outlet pipe",
   },
   {
@@ -388,7 +388,7 @@ export const services = [
       "Distance and route to the delivery point",
       "Required use, flow and available power source",
     ],
-    image: "/images/farm-water-pumping-team.jpg",
+    image: "/images/farm-water-pumping-team.webp",
     alt: "A petrol water pump positioned beside a farm water channel",
   },
   {
@@ -409,7 +409,7 @@ export const services = [
       "Daily usage and water-pumping requirements",
       "Site photos and existing solar or electrical equipment",
     ],
-    image: "/images/solar-farm-panel-array.jpg",
+    image: "/images/solar-farm-panel-array.webp",
     alt: "A ground-mounted solar panel array installed at a farm",
   },
   {
@@ -430,7 +430,7 @@ export const services = [
       "System type and affected section",
       "When the issue began and what has already been checked",
     ],
-    image: "/images/irrigation-manifold-project.jpg",
+    image: "/images/irrigation-manifold-project.webp",
     alt: "Installed irrigation manifold with blue valves and connected pipework",
   },
   {
@@ -451,7 +451,7 @@ export const services = [
       "Photos of the connection point or existing component",
       "Quantity needed and intended use",
     ],
-    image: "/images/irrigation-fittings.jpg",
+    image: "/images/irrigation-fittings.webp",
     alt: "Irrigation pipe assembly with blue valves and connected fittings",
   },
 ];

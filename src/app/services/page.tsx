@@ -40,9 +40,10 @@ export default function ServicesPage() {
           </div>
           <div className="page-hero-image-card">
             <Image
-              src="/images/irrigation-installation-team.jpg"
+              src="/images/irrigation-installation-team.webp"
               alt="An irrigation technician assembling blue pipe connections in a field"
               fill
+              priority
               sizes="(max-width: 640px) 100vw, 32vw"
             />
             <span className="page-hero-image-shade" />

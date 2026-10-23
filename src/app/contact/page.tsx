@@ -26,9 +26,10 @@ export default function ContactPage() {
           </div>
           <div className="page-hero-image-card">
             <Image
-              src="/images/farm-water-point-team.jpg"
+              src="/images/farm-water-point-team.webp"
               alt="People collecting water at an outdoor water point"
               fill
+              priority
               sizes="(max-width: 640px) 100vw, 32vw"
             />
             <span className="page-hero-image-shade" />

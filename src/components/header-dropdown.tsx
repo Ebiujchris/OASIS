@@ -11,6 +11,7 @@ type HeaderDropdownProps = {
   pageLabel: string;
   links: { href: string; label: string }[];
   mobile?: boolean;
+  onNavigate?: () => void;
 };
 
 export function HeaderDropdown({
@@ -20,12 +21,13 @@ export function HeaderDropdown({
   pageLabel,
   links,
   mobile = false,
+  onNavigate,
 }: HeaderDropdownProps) {
   const menuId = useId();
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const isOpen = hovered || focused || clicked;
+  const isOpen = mobile ? clicked : hovered || focused || clicked;
 
   function handleBlur(event: FocusEvent<HTMLDivElement>) {
     if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
@@ -36,10 +38,10 @@ export function HeaderDropdown({
   return (
     <div
       className={`header-nav-dropdown${isOpen ? " is-open" : ""}${mobile ? " header-nav-dropdown-mobile" : ""}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocus={() => setFocused(true)}
-      onBlur={handleBlur}
+      onMouseEnter={mobile ? undefined : () => setHovered(true)}
+      onMouseLeave={mobile ? undefined : () => setHovered(false)}
+      onFocus={mobile ? undefined : () => setFocused(true)}
+      onBlur={mobile ? undefined : handleBlur}
     >
       <button
         className="header-nav-trigger"
@@ -56,9 +58,9 @@ export function HeaderDropdown({
         aria-label={ariaLabel}
         hidden={!isOpen}
       >
-        <Link href={pageHref}>{pageLabel}</Link>
+        <Link href={pageHref} onClick={onNavigate}>{pageLabel}</Link>
         {links.map((link) => (
-          <Link key={link.href} href={link.href}>
+          <Link key={link.href} href={link.href} onClick={onNavigate}>
             {link.label}
           </Link>
         ))}

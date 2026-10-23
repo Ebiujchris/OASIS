@@ -40,9 +40,10 @@ export default function AboutPage() {
           </div>
           <div className="page-hero-image-card">
             <Image
-              src="/images/solar-installation-team.jpg"
+              src="/images/solar-installation-team.webp"
               alt="A team carrying a large solar panel at a farm site"
               fill
+              priority
               sizes="(max-width: 640px) 100vw, 32vw"
             />
             <span className="page-hero-image-shade" />

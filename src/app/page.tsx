@@ -170,7 +170,7 @@ export default function HomePage() {
 
           <figure className="hp-hero__visual">
             <Image
-              src="/images/farm-irrigation.jpg"
+              src="/images/farm-irrigation.webp"
               alt="A grower watering crops in a farm field"
               fill
               priority

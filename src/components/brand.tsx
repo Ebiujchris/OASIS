@@ -28,11 +28,10 @@ export function Brand({ light = false, motto = false }: BrandProps) {
     >
       <Image
         className="brand-mark"
-        src="/images/oasis-logo.jpg"
+        src="/images/oasis-logo.webp"
         alt=""
         width={50}
         height={50}
-        priority
       />
       <span className="brand-name">
         <strong aria-label="OASIS">{animatedLetters("OASIS")}</strong>

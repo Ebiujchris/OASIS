@@ -47,9 +47,10 @@ export default function TeamPage() {
           </div>
           <div className="page-hero-image-card">
             <Image
-              src="/images/solar-installation-team.jpg"
+              src="/images/solar-installation-team.webp"
               alt="Team members carrying a solar panel at a farm site"
               fill
+              priority
               sizes="(max-width: 640px) 100vw, 40vw"
             />
             <span className="page-hero-image-shade" />

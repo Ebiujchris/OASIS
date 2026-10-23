@@ -27,9 +27,10 @@ export default function ProjectsPage() {
           </div>
           <div className="page-hero-image-card">
             <Image
-              src="/images/bolted-water-storage-tank.jpg"
+              src="/images/bolted-water-storage-tank.webp"
               alt="A large bolted water storage tank inside a fenced compound"
               fill
+              priority
               sizes="(max-width: 640px) 100vw, 40vw"
             />
             <span className="page-hero-image-shade" />
