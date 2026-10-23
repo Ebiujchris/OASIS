@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   ArrowRight,
   ArrowUpRight,
+  ClipboardList,
   Droplets,
   Leaf,
   MapPin,
@@ -9,6 +10,7 @@ import {
   Phone,
   ShieldCheck,
   Sun,
+  Truck,
   Wrench,
 } from "lucide-react";
 import Image from "next/image";
@@ -20,6 +22,50 @@ export const metadata: Metadata = {
   description:
     "Practical drip irrigation products, expert installation and farm support for growers across Uganda. Offices in Kampala and Gulu.",
 };
+
+const howItWorks = [
+  {
+    icon: ClipboardList,
+    step: "01",
+    title: "Tell us about your farm",
+    body: "Share your crop type, water source, field size and what you need help with. No technical knowledge required.",
+  },
+  {
+    icon: Wrench,
+    step: "02",
+    title: "We plan the right system",
+    body: "Our team reviews the details and recommends suitable equipment, pipe routes and installation support.",
+  },
+  {
+    icon: Truck,
+    step: "03",
+    title: "We deliver & install",
+    body: "Equipment is sourced and our team installs it on-site. We stay available for maintenance and follow-up support.",
+  },
+];
+
+const frequentlyAskedQuestions = [
+  {
+    question: "What should I share when I first contact Oasis?",
+    answer:
+      "Tell us what you grow, your farm location, available water source and the area you want to irrigate. If you are unsure about any detail, just share what you know.",
+  },
+  {
+    question: "Can you help me choose an irrigation system?",
+    answer:
+      "Yes. We start by understanding your crops, field layout and water source, then discuss suitable products, planning and installation support.",
+  },
+  {
+    question: "Do you support farms outside Kampala and Gulu?",
+    answer:
+      "Oasis serves growers throughout Uganda. Contact the team with your location and project details to discuss the support available for your farm.",
+  },
+  {
+    question: "Can I ask about one product or service?",
+    answer:
+      "Absolutely. You can enquire about a specific product or service, or describe your project if you are still deciding what you need.",
+  },
+];
 
 const pillars = [
   {
@@ -176,7 +222,7 @@ export default function HomePage() {
               const Icon = p.icon;
               return (
                 <div
-                  key={p.label}
+                  key={`pillar-${i}`}
                   className="hp-pillar"
                   style={{ "--i": i } as React.CSSProperties}
                 >
@@ -240,6 +286,68 @@ export default function HomePage() {
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          HOW IT WORKS
+      ══════════════════════════════════════════ */}
+      <section className="hp-section hp-how">
+        <div className="page-width">
+          <div className="hp-how__layout">
+            <div className="hp-how__process">
+              <div className="hp-how__heading">
+                <p className="hp-label">Simple process</p>
+                <h2>From first message to working system.</h2>
+              </div>
+              <div className="hp-how__grid">
+                {howItWorks.map((step, i) => {
+                  const Icon = step.icon;
+                  return (
+                    <div key={step.step} className="hp-how__card" style={{ "--i": i } as React.CSSProperties}>
+                      <span className="hp-how__num">{step.step}</span>
+                      <span className="hp-how__icon"><Icon size={20} /></span>
+                      <h3>{step.title}</h3>
+                      <p>{step.body}</p>
+                      {i < howItWorks.length - 1 && (
+                        <span className="hp-how__arrow" aria-hidden="true" />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="hp-how__cta">
+                <Link
+                  href={whatsappLink("Hello Oasis, I'd like to discuss an irrigation system for my farm.")}
+                  target="_blank" rel="noreferrer"
+                  className="hp-cta-btn hp-cta-btn--primary"
+                >
+                  <MessageCircle size={18} /> Start the conversation
+                </Link>
+              </div>
+            </div>
+            <div className="hp-faq">
+              <div className="hp-how__heading">
+                <p className="hp-label">Quick answers</p>
+                <h2>Frequently asked questions.</h2>
+              </div>
+              <div className="hp-faq__list">
+                {frequentlyAskedQuestions.map((item) => (
+                  <details className="hp-faq__item" key={item.question}>
+                    <summary>
+                      <span className="hp-faq__question">{item.question}</span>
+                      <span className="hp-faq__toggle" aria-hidden="true" />
+                    </summary>
+                    <p className="hp-faq__answer">
+                      <span style={{ "--typing-steps": item.answer.length } as React.CSSProperties}>
+                        {item.answer}
+                      </span>
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

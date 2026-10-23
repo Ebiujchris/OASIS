@@ -5050,3 +5050,581 @@ img {
     padding-top: 78px;
   }
 }
+
+
+/* ── HOW IT WORKS ── */
+.hp-how {
+  background: var(--sage);
+  padding: 96px 0;
+}
+.hp-how__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 28px;
+}
+@keyframes hp-how-enter {
+  from { opacity:0; translate:0 22px }
+  to   { opacity:1; translate:0 0 }
+}
+.hp-how__card {
+  position: relative;
+  padding: 36px 30px 32px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 6px 22px rgba(33,77,43,.045);
+  text-align: center;
+  animation: hp-how-enter .65s calc(var(--i,0)*110ms) cubic-bezier(.2,.8,.2,1) both;
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, border-color .3s ease;
+}
+.hp-how__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(33,77,43,.1);
+  border-color: #b8cebc;
+}
+.hp-how__num {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 16px;
+}
+.hp-how__icon {
+  display: inline-grid;
+  width: 56px; height: 56px;
+  place-items: center;
+  background: linear-gradient(135deg, var(--green), var(--green-mid));
+  color: #c5e88a;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(33,77,43,.18);
+  margin-bottom: 20px;
+}
+.hp-how__card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--green-deep);
+  letter-spacing: -.025em;
+  margin: 0 0 12px;
+}
+.hp-how__card p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0;
+}
+/* connector arrow between cards */
+.hp-how__arrow {
+  position: absolute;
+  top: 50%;
+  right: -22px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), #8dc96a);
+  border-radius: 2px;
+  z-index: 2;
+}
+.hp-how__arrow::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid #8dc96a;
+}
+.hp-how__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+@media (max-width: 860px) {
+  .hp-how__grid { grid-template-columns: 1fr; gap: 16px }
+  .hp-how__arrow { display: none }
+}
+@media (max-width: 640px) {
+  .hp-how { padding: 64px 0 }
+}
+
+/* Keep the full homepage experience while reducing its overall scroll length. */
+.hp-hero {
+  min-height: clamp(500px, calc(100svh - 160px), 680px);
+}
+
+.hp-hero__body {
+  padding-top: clamp(42px, 4.5vw, 62px);
+  padding-bottom: clamp(46px, 5vw, 66px);
+}
+
+.hp-hero__visual {
+  height: clamp(350px, 40vw, 510px);
+}
+
+.hp-ticker {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.hp-section {
+  padding: 64px 0;
+}
+
+.hp-sec-head {
+  margin-bottom: 34px;
+}
+
+.hp-pillars__grid,
+.hp-svc-grid {
+  gap: 18px;
+}
+
+.hp-pillar {
+  padding: 24px 22px;
+}
+
+.hp-pillar__icon {
+  margin-bottom: 14px;
+}
+
+.hp-coverage-note {
+  margin-top: 18px;
+  padding: 14px 18px;
+}
+
+.hp-products__grid {
+  gap: 19px;
+}
+
+.hp-prod-card__img {
+  aspect-ratio: 1.65;
+}
+
+.hp-prod-card__body {
+  padding: 18px 20px 21px;
+}
+
+.hp-how__grid {
+  gap: 18px;
+}
+
+.hp-how__card {
+  padding: 26px 22px;
+}
+
+.hp-how__cta {
+  margin-top: 32px;
+}
+
+.hp-split {
+  min-height: 490px;
+}
+
+.hp-split__copy {
+  padding: 54px 52px;
+}
+
+.hp-split__copy > p {
+  margin-bottom: 21px;
+}
+
+.hp-split__list {
+  margin-bottom: 26px;
+  gap: 9px;
+}
+
+.hp-svc-card {
+  min-height: 250px;
+}
+
+.hp-gallery__grid {
+  grid-template-rows: 185px 185px;
+  gap: 12px;
+}
+
+.hp-final-cta {
+  padding: clamp(42px, 5vw, 64px) 0;
+}
+
+.hp-final-cta__body {
+  padding: 24px 0;
+}
+
+.hp-final-cta__visual {
+  min-height: 340px;
+}
+
+@media (max-width: 1100px) {
+  .hp-split {
+    min-height: 0;
+  }
+
+  .hp-split__img {
+    min-height: 340px;
+  }
+
+  .hp-split__copy {
+    padding: 44px 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hp-hero__body {
+    gap: 28px;
+    padding-top: 44px;
+    padding-bottom: 48px;
+  }
+
+  .hp-hero__visual {
+    height: clamp(300px, 60vw, 420px);
+  }
+
+  .hp-section {
+    padding: 46px 0;
+  }
+
+  .hp-sec-head {
+    margin-bottom: 26px;
+  }
+
+  .hp-split__img {
+    min-height: 300px;
+  }
+
+  .hp-split__copy {
+    padding: 38px 28px;
+  }
+
+  .hp-svc-card {
+    min-height: 220px;
+  }
+
+  .hp-gallery__grid {
+    grid-template-rows: 170px 170px;
+  }
+
+  .hp-final-cta {
+    padding: 40px 0;
+  }
+
+  .hp-final-cta__body {
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hp-hero__body {
+    gap: 22px;
+    padding-top: 34px;
+    padding-bottom: 38px;
+  }
+
+  .hp-hero__visual {
+    height: clamp(250px, 68vw, 320px);
+  }
+
+  .hp-section {
+    padding: 36px 0;
+  }
+
+  .hp-sec-head {
+    margin-bottom: 21px;
+  }
+
+  .hp-products__grid {
+    gap: 15px;
+  }
+
+  .hp-prod-card__img {
+    aspect-ratio: 2;
+  }
+
+  .hp-how__grid {
+    gap: 13px;
+  }
+
+  .hp-how__card {
+    padding: 22px 19px;
+  }
+
+  .hp-split__copy {
+    padding: 34px 22px;
+  }
+
+  .hp-gallery__grid {
+    grid-template-rows: none;
+    grid-auto-rows: 170px;
+    gap: 11px;
+  }
+
+  .hp-final-cta {
+    padding: 34px 0;
+  }
+}
+
+.hp-split__copy .hp-cta-btn--text {
+  color: #e2c778;
+}
+
+.hp-split__copy .hp-cta-btn--text:hover {
+  color: #f4e3ad;
+}
+
+.hp-how {
+  background:
+    radial-gradient(ellipse at 95% 10%, rgba(208, 173, 95, 0.1), transparent 32%),
+    var(--sage);
+}
+
+.hp-how__layout {
+  display: grid;
+  align-items: start;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(32px, 5vw, 72px);
+}
+
+.hp-how__heading {
+  margin-bottom: 24px;
+}
+
+.hp-how__heading h2 {
+  max-width: 520px;
+  margin: 0;
+  color: var(--green-deep);
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.hp-how__grid {
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.hp-how__card {
+  display: grid;
+  padding: 17px 18px;
+  align-items: center;
+  text-align: left;
+  grid-template-columns: 48px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 4px 14px;
+  border-color: rgba(121, 92, 50, 0.14);
+}
+
+.hp-how__card:hover {
+  border-color: rgba(196, 154, 74, 0.55);
+  box-shadow: 0 12px 28px rgba(121, 92, 50, 0.1);
+}
+
+.hp-how__num {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+  color: #9a7938;
+}
+
+.hp-how__icon {
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  grid-column: 1;
+  grid-row: 2;
+  color: #e2c778;
+  border: 1px solid rgba(226, 199, 120, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 5px 12px rgba(33, 77, 43, 0.14);
+}
+
+.hp-how__card h3 {
+  margin: 0;
+  font-size: 16px;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.hp-how__card p {
+  font-size: 13px;
+  line-height: 1.6;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.hp-how__arrow {
+  display: none;
+}
+
+.hp-how__cta {
+  margin-top: 18px;
+  justify-content: flex-start;
+}
+
+.hp-how__cta .hp-cta-btn {
+  padding: 12px 20px;
+  font-size: 14px;
+}
+
+.hp-faq__list {
+  border-top: 1px solid rgba(121, 92, 50, 0.24);
+}
+
+.hp-faq__item {
+  border-bottom: 1px solid rgba(121, 92, 50, 0.24);
+}
+
+.hp-faq__item summary {
+  display: grid;
+  min-height: 68px;
+  padding: 13px 2px;
+  align-items: center;
+  cursor: pointer;
+  grid-template-columns: minmax(0, 1fr) 34px;
+  gap: 14px;
+  list-style: none;
+}
+
+.hp-faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.hp-faq__question {
+  color: var(--green-deep);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+  transition: color 180ms ease;
+}
+
+.hp-faq__item summary:hover .hp-faq__question,
+.hp-faq__item[open] .hp-faq__question {
+  color: #8c6b30;
+}
+
+.hp-faq__toggle {
+  position: relative;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  color: #9a7938;
+  background: rgba(208, 173, 95, 0.14);
+  border: 1px solid rgba(154, 121, 56, 0.2);
+  border-radius: 50%;
+  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.hp-faq__toggle::before,
+.hp-faq__toggle::after {
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  content: "";
+}
+
+.hp-faq__toggle::after {
+  transform: rotate(90deg);
+  transition: transform 180ms ease;
+}
+
+.hp-faq__item[open] .hp-faq__toggle {
+  color: #fff;
+  background: #9a7938;
+  transform: rotate(180deg);
+}
+
+.hp-faq__item[open] .hp-faq__toggle::after {
+  transform: rotate(0);
+}
+
+.hp-faq__answer {
+  margin: -2px 45px 17px 2px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.hp-faq__answer span {
+  display: inline;
+}
+
+.hp-faq__item[open] .hp-faq__answer span {
+  animation: hp-faq-type 1.8s steps(var(--typing-steps), end) both;
+}
+
+@keyframes hp-faq-type {
+  from { clip-path: inset(0 100% 0 0) }
+  to { clip-path: inset(0 0 0 0) }
+}
+
+@media (max-width: 860px) {
+  .hp-how__layout {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .hp-how__heading h2 {
+    max-width: 620px;
+  }
+
+  .hp-faq {
+    padding-top: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hp-how__layout {
+    gap: 34px;
+  }
+
+  .hp-how__heading {
+    margin-bottom: 19px;
+  }
+
+  .hp-how__card {
+    padding: 15px 14px;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 4px 11px;
+  }
+
+  .hp-how__icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hp-how__card h3 {
+    font-size: 15px;
+  }
+
+  .hp-how__card p {
+    font-size: 12px;
+  }
+
+  .hp-faq__item summary {
+    min-height: 62px;
+    gap: 9px;
+  }
+
+  .hp-faq__question {
+    font-size: 14px;
+  }
+
+  .hp-faq__answer {
+    margin-right: 38px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-faq__item[open] .hp-faq__answer span {
+    animation: none;
+    clip-path: none;
+  }
+}

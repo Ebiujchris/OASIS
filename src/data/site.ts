@@ -29,12 +29,12 @@ export const products = [
     detail: "Rings and line accessories",
   },
   {
-    name: "Solar motorised borehole",
+    name: "Solar motorized borehole",
     description:
-      "Irrigation valves and fittings to help manage water flow through a system.",
-    image: "/images/irrigation-fittings.jpg",
-    alt: "Irrigation pipe assembly with blue valves and metal fittings",
-    detail: "Flow control and pipe fittings",
+      "A solar-powered motorized borehole pump to provide a dependable water supply for farms, including sites without grid electricity.",
+    image: "/images/water-outlet-project.jpg",
+    alt: "Water flowing from a borehole outlet pipe",
+    detail: "Solar borehole pumping",
   },
   {
     name: "Water storage solutions",
