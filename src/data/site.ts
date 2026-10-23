@@ -37,6 +37,14 @@ export const products = [
     detail: "Solar borehole pumping",
   },
   {
+    name: "Petrol water pump",
+    description:
+      "A portable petrol-powered pump for moving water from a farm source to irrigation or storage.",
+    image: "/images/farm-water-pumping-team.jpg",
+    alt: "A petrol-powered water pump positioned beside a farm water channel",
+    detail: "Farm water pumping",
+  },
+  {
     name: "Water storage solutions",
     description:
       "Water storage and distribution components for farm and irrigation projects.",
@@ -56,7 +64,7 @@ export const products = [
     name: "Drip connectors & joiners",
     description:
       "Connector pieces for joining compatible sections of an irrigation line.",
-    image: "/images/drip-connectors-assorted.jpg",
+    image: "/images/drip-connectors.jpg",
     alt: "Blue irrigation line connectors arranged for selection",
     detail: "Line connectors",
   },
@@ -126,34 +134,34 @@ export const fieldPhotos = [
     type: "Farm drainage",
   },
   {
+    image: "/images/children-at-rural-water-outlet.webp",
+    alt: "Children gathered around water flowing at a rural water point",
+    caption: "Children at a rural water point",
+    type: "Community water access",
+  },
+  {
+    image: "/images/farm-irrigation.jpg",
+    alt: "A farmer watering crops with a hose in a field",
+    caption: "Watering crops with a hose",
+    type: "Farm irrigation",
+  },
+  {
     image: "/images/drip-lines-on-crops.webp",
-    alt: "Drip lines placed alongside young leafy crops",
-    caption: "Drip lines alongside crops",
+    alt: "Drip irrigation tubing arranged around a young tree",
+    caption: "Drip lines around a young tree",
     type: "Drip irrigation",
   },
   {
     image: "/images/irrigation-pipe-team.jpg",
-    alt: "Workers handling coiled irrigation pipe at a farm site",
-    caption: "Preparing pipe for a project",
-    type: "Pipework",
-  },
-  {
-    image: "/images/irrigation-manifold-project.jpg",
-    alt: "Blue valves and pipework installed along a wall",
-    caption: "Installed irrigation pipework",
+    alt: "Blue irrigation manifold with valves and a pressure gauge mounted on a wall",
+    caption: "Installed blue irrigation manifold",
     type: "System installation",
   },
   {
     image: "/images/water-outlet-project.jpg",
-    alt: "Water flowing from a pipe outlet at a project site",
-    caption: "Testing a water outlet",
-    type: "Water supply",
-  },
-  {
-    image: "/images/irrigation-pipe-team-project.jpg",
-    alt: "A team moving a large coil of irrigation pipe across a field",
-    caption: "Moving pipe at a farm site",
-    type: "Pipework",
+    alt: "Water flowing from a motorized borehole outlet pipe",
+    caption: "Motorized borehole water outlet",
+    type: "Borehole water supply",
   },
 ];
 
@@ -205,15 +213,15 @@ export const projectPhotos = [
   },
   {
     image: "/images/farm-water-pumping.jpg",
-    alt: "A petrol-powered pump beside a farm water source",
-    caption: "Water pump at a farm source",
-    type: "Water pumping",
+    alt: "A worker welding a blue steel support frame for a farm water tank",
+    caption: "Welding a tank support frame",
+    type: "Water storage",
   },
   {
     image: "/images/farm-water-pumping-team.webp",
-    alt: "A team operating a water point and filling containers",
-    caption: "Water point in use",
-    type: "Water supply",
+    alt: "A petrol-powered water pump positioned beside a farm water channel",
+    caption: "Petrol pump at a farm water source",
+    type: "Water pumping",
   },
   {
     image: "/images/water-tank-frame-project.jpg",
@@ -240,28 +248,16 @@ export const projectPhotos = [
     type: "Project activity",
   },
   {
-    image: "/images/concrete-water-reservoir.jpg",
-    alt: "Concrete reservoir structure under construction at a farm site",
-    caption: "Concrete water reservoir",
-    type: "Water infrastructure",
-  },
-  {
     image: "/images/farm-water-system.jpg",
-    alt: "Water infrastructure beside a planted field",
-    caption: "Water infrastructure by the field",
-    type: "Farm water systems",
+    alt: "A steel tank support frame installed beside a farm field",
+    caption: "Steel support frame for a farm water tank",
+    type: "Water storage",
   },
   {
     image: "/images/community-water-point.jpg",
-    alt: "People gathering at a water point in an open rural area",
-    caption: "A water point in use",
-    type: "Water access",
-  },
-  {
-    image: "/images/borehole-water-outlet.webp",
-    alt: "Water running from an outlet pipe at a rural water source",
-    caption: "Water flowing at the outlet",
-    type: "Water supply",
+    alt: "Solar panels sheltering water-pumping equipment beside a farm pond",
+    caption: "Solar-powered water system beside a farm pond",
+    type: "Solar water systems",
   },
   {
     image: "/images/solar-water-system.jpg",
@@ -271,8 +267,8 @@ export const projectPhotos = [
   },
   {
     image: "/images/farm-water-outlet-flow.jpg",
-    alt: "Water flowing from a large outlet pipe at a farm water source",
-    caption: "Water flowing from an outlet pipe",
+    alt: "Water running from a large borehole outlet pipe",
+    caption: "Water discharging from a borehole outlet",
     type: "Water supply",
   },
   {
