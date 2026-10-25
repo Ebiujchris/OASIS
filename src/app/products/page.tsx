@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
 import { SectionHeading } from "@/components/section-heading";
+import { HeroWaterEffects } from "@/components/hero-water-effects";
 import { products } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function ProductsPage() {
   return (
     <>
       <section className="page-hero">
+        <HeroWaterEffects />
         <div className="page-width page-hero-inner">
           <div>
             <span className="eyebrow">Products / Irrigation essentials</span>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { FieldGallery } from "@/components/field-gallery";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
+import { HeroWaterEffects } from "@/components/hero-water-effects";
 
 export const metadata: Metadata = {
   title: "Our Team",
@@ -34,6 +35,7 @@ export default function TeamPage() {
   return (
     <>
       <section className="page-hero">
+        <HeroWaterEffects />
         <div className="page-width page-hero-inner">
           <div>
             <span className="eyebrow">About Oasis / Our Team</span>

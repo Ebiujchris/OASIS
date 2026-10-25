@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { FieldGallery } from "@/components/field-gallery";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
+import { HeroWaterEffects } from "@/components/hero-water-effects";
 import { fieldVideos, projectGalleryPhotos } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export default function ProjectsPage() {
   return (
     <>
       <section className="page-hero">
+        <HeroWaterEffects />
         <div className="page-width page-hero-inner">
           <div>
             <span className="eyebrow">Projects / From the field</span>

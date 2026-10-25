@@ -3,6 +3,7 @@ import { ArrowUpRight, MapPin, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ContactForm } from "./contact-form";
+import { HeroWaterEffects } from "@/components/hero-water-effects";
 import { company, whatsappLink } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function ContactPage() {
   return (
     <>
       <section className="page-hero contact-page-hero">
+        <HeroWaterEffects />
         <div className="page-width page-hero-inner">
           <div>
             <span className="eyebrow">Contact / Let’s talk</span>

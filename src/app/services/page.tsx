@@ -14,6 +14,7 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { FieldGallery } from "@/components/field-gallery";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
+import { HeroWaterEffects } from "@/components/hero-water-effects";
 import { projectPhotos, services, whatsappLink } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function ServicesPage() {
   return (
     <>
       <section className="page-hero">
+        <HeroWaterEffects />
         <div className="page-width page-hero-inner">
           <div>
             <span className="eyebrow">Services / Support for your setup</span>

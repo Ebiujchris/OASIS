@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowUpRight, Check, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { HeroWaterEffects } from "@/components/hero-water-effects";
 import { services, whatsappLink } from "@/data/site";
 
 type ServicePageProps = {
@@ -40,6 +41,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   return (
     <>
       <section className="page-hero service-page-hero">
+        <HeroWaterEffects />
         <div className="page-width page-hero-inner">
           <div>
             <span className="eyebrow">

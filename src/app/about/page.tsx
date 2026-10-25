@@ -14,6 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
+import { HeroWaterEffects } from "@/components/hero-water-effects";
 import { company, services } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function AboutPage() {
   return (
     <>
       <section className="page-hero about-page-hero">
+        <HeroWaterEffects />
         <div className="page-width page-hero-inner">
           <div>
             <span className="eyebrow">About Oasis / Our approach</span>
