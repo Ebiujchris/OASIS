@@ -1399,10 +1399,10 @@ img {
 }
 
 .product-card p {
-  min-height: 47px;
+  min-height: 80px;
   margin: 8px 0 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.65;
 }
 
@@ -1854,7 +1854,7 @@ img {
   max-width: 300px;
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.7;
 }
 
@@ -2433,8 +2433,8 @@ img {
 }
 
 .product-grid-all .product-card p {
-  min-height: 68px;
-  font-size: 12px;
+  min-height: 80px;
+  font-size: 16px;
 }
 
 .catalogue-note {
@@ -4567,7 +4567,7 @@ img {
   display:block;font-size:16px;font-weight:700;
   color:var(--green-deep);margin-bottom:8px;
 }
-.hp-pillar p { margin:0;font-size:13px;color:var(--muted);line-height:1.65 }
+.hp-pillar p { margin:0;font-size:16px;color:var(--muted);line-height:1.65 }
 .hp-coverage-note {
   display:flex;
   margin-top:24px;
@@ -4640,7 +4640,7 @@ img {
   letter-spacing:-.02em;margin:0 0 8px;
 }
 .hp-prod-card__body > p {
-  font-size:13px;color:var(--muted);line-height:1.65;margin:0;min-height:42px;
+  font-size:16px;color:var(--muted);line-height:1.65;margin:0;min-height:84px;
 }
 
 /* ── FEATURE SPLIT ── */
@@ -4721,8 +4721,8 @@ img {
   margin:0 0 8px;line-height:1.3;
 }
 .hp-svc-card p {
-  font-size:12px;line-height:1.6;
-  color:rgba(255,255,255,.68);margin:0 0 14px;
+  font-size:16px;line-height:1.6;
+  color:rgba(255,255,255,.82);margin:0 0 14px;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
 }
 .hp-svc-card__arrow {
@@ -5701,7 +5701,7 @@ img {
 }
 
 .hp-how__card p {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.6;
   grid-column: 2;
   grid-row: 2;
@@ -5859,7 +5859,7 @@ img {
   }
 
   .hp-how__card p {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .hp-faq__item summary {
@@ -6017,7 +6017,7 @@ img {
 .about-service-card p {
   margin: 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.7;
 }
 
@@ -6115,10 +6115,6 @@ img {
 
   .about-service-card h3 {
     font-size: 15px;
-  }
-
-  .about-service-card p {
-    font-size: 11px;
   }
 
   .about-coverage {

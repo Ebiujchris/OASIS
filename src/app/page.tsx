@@ -247,50 +247,6 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          PRODUCTS
-      ══════════════════════════════════════════ */}
-      <section className="hp-section hp-products">
-        <div className="page-width">
-          <div className="hp-sec-head hp-sec-head--row">
-            <div>
-              <p className="hp-label">Products</p>
-              <h2>Quality equipment for every farm.</h2>
-            </div>
-            <Link href="/products/" className="hp-text-link">
-              View all products <ArrowUpRight size={15} />
-            </Link>
-          </div>
-          <div className="hp-products__grid">
-            {products.slice(0, 6).map((p, i) => (
-              <article
-                key={p.name}
-                className="hp-prod-card"
-                style={{ "--i": i } as React.CSSProperties}
-              >
-                <div className="hp-prod-card__img">
-                  <Image src={p.image} alt={p.alt} fill
-                    sizes="(max-width:600px) 100vw,(max-width:1024px) 50vw,33vw" />
-                  <div className="hp-prod-card__overlay" />
-                </div>
-                <div className="hp-prod-card__body">
-                  <span className="hp-badge">{p.detail}</span>
-                  <h3>{p.name}</h3>
-                  <p>{p.description}</p>
-                  <Link
-                    href={whatsappLink(`Hello Oasis, I'd like to ask about: ${p.name}`)}
-                    target="_blank" rel="noreferrer"
-                    className="hp-text-link hp-text-link--sm"
-                  >
-                    Ask about this <ArrowUpRight size={13} />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
           HOW IT WORKS
       ══════════════════════════════════════════ */}
       <section className="hp-section hp-how">
@@ -348,6 +304,50 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          PRODUCTS
+      ══════════════════════════════════════════ */}
+      <section className="hp-section hp-products">
+        <div className="page-width">
+          <div className="hp-sec-head hp-sec-head--row">
+            <div>
+              <p className="hp-label">Products</p>
+              <h2>Quality equipment for every farm.</h2>
+            </div>
+            <Link href="/products/" className="hp-text-link">
+              View all products <ArrowUpRight size={15} />
+            </Link>
+          </div>
+          <div className="hp-products__grid">
+            {products.slice(0, 6).map((p, i) => (
+              <article
+                key={p.name}
+                className="hp-prod-card"
+                style={{ "--i": i } as React.CSSProperties}
+              >
+                <div className="hp-prod-card__img">
+                  <Image src={p.image} alt={p.alt} fill
+                    sizes="(max-width:600px) 100vw,(max-width:1024px) 50vw,33vw" />
+                  <div className="hp-prod-card__overlay" />
+                </div>
+                <div className="hp-prod-card__body">
+                  <span className="hp-badge">{p.detail}</span>
+                  <h3>{p.name}</h3>
+                  <p>{p.description}</p>
+                  <Link
+                    href={whatsappLink(`Hello Oasis, I'd like to ask about: ${p.name}`)}
+                    target="_blank" rel="noreferrer"
+                    className="hp-text-link hp-text-link--sm"
+                  >
+                    Ask about this <ArrowUpRight size={13} />
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
