@@ -342,6 +342,23 @@ export const services = [
       "Approximate area and field layout",
       "Water source and any existing equipment",
     ],
+    detailPhotos: [
+      {
+        image: "/images/irrigation-trench-preparation.jpg",
+        alt: "Workers preparing a trench through a cultivated field",
+        caption: "Preparing a route for irrigation pipework",
+      },
+      {
+        image: "/images/irrigation-trench-installation.jpg",
+        alt: "A technician assembling blue irrigation pipes and valves in a trench",
+        caption: "Connecting irrigation lines in the field",
+      },
+      {
+        image: "/images/drip-irrigation-tree-line.jpg",
+        alt: "Drip tubing arranged around a young tree",
+        caption: "Drip irrigation around young crops",
+      },
+    ],
     image: "/images/drip-lines-on-crops.webp",
     alt: "Drip irrigation lines laid beside crops in a cultivated field",
   },
@@ -362,6 +379,23 @@ export const services = [
       "Source type and location",
       "Any known yield or existing pump details",
       "Where the water needs to go and how it will be used",
+    ],
+    detailPhotos: [
+      {
+        image: "/images/farm-water-point-team.webp",
+        alt: "People collecting water from an outlet at a rural water point",
+        caption: "Water supply at a rural outlet",
+      },
+      {
+        image: "/images/farm-water-source-pond.jpg",
+        alt: "A farm pond serving as an available water source",
+        caption: "An alternative farm water source",
+      },
+      {
+        image: "/images/tank-installation-team.jpg",
+        alt: "A team installing elevated water storage tanks at a farm",
+        caption: "Connecting water supply with storage",
+      },
     ],
     image: "/images/borehole-water-outlet.webp",
     alt: "Water discharging from a large borehole outlet pipe",
@@ -384,6 +418,23 @@ export const services = [
       "Distance and route to the delivery point",
       "Required use, flow and available power source",
     ],
+    detailPhotos: [
+      {
+        image: "/images/farm-water-source-pond.jpg",
+        alt: "A farm pond serving as an available water source",
+        caption: "A source for farm water pumping",
+      },
+      {
+        image: "/images/farm-water-point-team.webp",
+        alt: "Water being drawn from an outlet at a farm water point",
+        caption: "Moving water from a supply point",
+      },
+      {
+        image: "/images/water-outlet-project.jpg",
+        alt: "Water flowing from a motorized borehole outlet pipe",
+        caption: "Water delivered from a borehole",
+      },
+    ],
     image: "/images/farm-water-pumping-team.webp",
     alt: "A petrol water pump positioned beside a farm water channel",
   },
@@ -404,6 +455,23 @@ export const services = [
       "Equipment model or power rating, if known",
       "Daily usage and water-pumping requirements",
       "Site photos and existing solar or electrical equipment",
+    ],
+    detailPhotos: [
+      {
+        image: "/images/solar-installation-team.webp",
+        alt: "Workers positioning a solar panel array at a farm",
+        caption: "Positioning solar panels on site",
+      },
+      {
+        image: "/images/solar-panels-farm.jpg",
+        alt: "Solar panels installed beside a cultivated farm",
+        caption: "Solar panels at a farm",
+      },
+      {
+        image: "/images/solar-water-system.jpg",
+        alt: "A raised solar-powered water system structure at a farm",
+        caption: "Solar equipment for farm water supply",
+      },
     ],
     image: "/images/solar-farm-panel-array.webp",
     alt: "A ground-mounted solar panel array installed at a farm",
@@ -426,6 +494,23 @@ export const services = [
       "System type and affected section",
       "When the issue began and what has already been checked",
     ],
+    detailPhotos: [
+      {
+        image: "/images/irrigation-mainline-connections.webp",
+        alt: "Blue connectors fitted to two irrigation mainline pipes",
+        caption: "Checking mainline connections",
+      },
+      {
+        image: "/images/irrigation-installation-team.webp",
+        alt: "A technician assembling pipe connections in a field trench",
+        caption: "Working on buried pipe connections",
+      },
+      {
+        image: "/images/irrigation-trench-installation.jpg",
+        alt: "A technician fitting valves to irrigation pipes in a trench",
+        caption: "Inspecting valves and pipework",
+      },
+    ],
     image: "/images/irrigation-manifold-project.webp",
     alt: "Installed irrigation manifold with blue valves and connected pipework",
   },
@@ -446,6 +531,23 @@ export const services = [
       "Pipe or tubing diameter and type",
       "Photos of the connection point or existing component",
       "Quantity needed and intended use",
+    ],
+    detailPhotos: [
+      {
+        image: "/images/drip-connectors.jpg",
+        alt: "Blue drip-line connectors arranged for selection",
+        caption: "Connectors for drip-line assemblies",
+      },
+      {
+        image: "/images/irrigation-fittings-assorted.jpg",
+        alt: "A selection of blue and dark irrigation pipe fittings",
+        caption: "Comparing pipe fittings",
+      },
+      {
+        image: "/images/drip-rubber-rings.jpg",
+        alt: "Black rubber rings used with drip irrigation components",
+        caption: "Small parts for drip systems",
+      },
     ],
     image: "/images/irrigation-fittings.webp",
     alt: "Irrigation pipe assembly with blue valves and connected fittings",

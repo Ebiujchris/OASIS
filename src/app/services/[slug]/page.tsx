@@ -111,6 +111,29 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </aside>
         </div>
       </section>
+      <section className="section service-photo-section">
+        <div className="page-width">
+          <div className="service-photo-heading">
+            <span className="eyebrow">From the field</span>
+            <h2>More from {service.title.toLowerCase()}.</h2>
+          </div>
+          <div className="service-photo-grid">
+            {service.detailPhotos.map((photo) => (
+              <figure className="service-photo-card" key={photo.image}>
+                <div className="service-photo-image">
+                  <Image
+                    src={photo.image}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1050px) 50vw, 33vw"
+                  />
+                </div>
+                <figcaption>{photo.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }

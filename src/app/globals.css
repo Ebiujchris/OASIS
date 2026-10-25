@@ -2384,6 +2384,61 @@ img {
   margin-top: 25px;
 }
 
+.service-photo-section {
+  background: var(--sage);
+}
+
+.service-photo-heading {
+  margin-bottom: 28px;
+}
+
+.service-photo-heading h2 {
+  margin: 10px 0 0;
+  color: var(--green-deep);
+  font-size: clamp(28px, 3vw, 38px);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.service-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.service-photo-card {
+  overflow: hidden;
+  margin: 0;
+  background: var(--white);
+  border: 1px solid #e3e8dc;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(25, 49, 27, 0.07);
+}
+
+.service-photo-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #e8ede4;
+}
+
+.service-photo-image img {
+  object-fit: cover;
+  transition: transform 350ms ease;
+}
+
+.service-photo-card:hover .service-photo-image img {
+  transform: scale(1.04);
+}
+
+.service-photo-card figcaption {
+  padding: 15px 17px 17px;
+  color: var(--green-deep);
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
 .subtle-link {
   display: inline-flex;
   align-items: center;
@@ -3171,6 +3226,11 @@ img {
     gap: 30px;
   }
 
+  .service-photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
   .service-page-checklist {
     padding: 24px;
   }
@@ -3731,6 +3791,10 @@ img {
   .service-page-information-inner {
     grid-template-columns: 1fr;
     gap: 35px;
+  }
+
+  .service-photo-grid {
+    grid-template-columns: 1fr;
   }
 
   .service-page-checklist {
