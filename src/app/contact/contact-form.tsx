@@ -1,11 +1,49 @@
 "use client";
 
 import { ArrowUpRight, MessageCircle } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import { whatsappLink } from "@/data/site";
 
+const contactTopics = [
+  {
+    label: "Drip irrigation",
+    value: "Drip irrigation products",
+    description: "Products, fittings or a new system",
+    detailsPrompt: "what you grow, the area to irrigate or the products you need",
+  },
+  {
+    label: "Plan a system",
+    value: "Irrigation system planning",
+    description: "Advice for your farm or growing space",
+    detailsPrompt: "your crop, farm size and available water source",
+  },
+  {
+    label: "Pumps & water",
+    value: "Water storage or pumping",
+    description: "Pumps, boreholes or water storage",
+    detailsPrompt: "your water source and whether you need pumping or storage",
+  },
+  {
+    label: "Installation",
+    value: "Installation support",
+    description: "Installation or support for a system",
+    detailsPrompt: "the system you have or the work you need help with",
+  },
+  {
+    label: "Something else",
+    value: "Other irrigation enquiry",
+    description: "Another product or project question",
+    detailsPrompt: "what you would like to ask the Oasis team",
+  },
+] as const;
+
 export function ContactForm() {
-  const [status, setStatus] = useState("");
+  const [selectedTopic, setSelectedTopic] = useState("");
+  const [previewMessage, setPreviewMessage] = useState("");
+  const selectedTopicDetails = contactTopics.find(
+    (topic) => topic.value === selectedTopic,
+  );
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -16,26 +54,24 @@ export function ContactForm() {
       `Name: ${formData.get("name")}`,
       `Phone: ${formData.get("phone") || "Not provided"}`,
       `Farm location: ${formData.get("location") || "Not provided"}`,
-      `Irrigation need: ${formData.get("need")}`,
+      `Topic: ${formData.get("need")}`,
       `Project details: ${formData.get("details") || "Not provided"}`,
     ].join("\n");
 
-    const whatsappWindow = window.open(whatsappLink(message), "_blank");
-    if (whatsappWindow) {
-      whatsappWindow.opener = null;
-      setStatus("WhatsApp opened in a new tab. Review your message and send it to Oasis.");
-    } else {
-      window.location.assign(whatsappLink(message));
-    }
+    setPreviewMessage(message);
   }
 
   return (
-    <form className="quote-form" onSubmit={handleSubmit}>
+    <form
+      className="quote-form"
+      onSubmit={handleSubmit}
+      onChange={() => setPreviewMessage("")}
+    >
       <div className="form-heading">
         <span className="form-icon"><MessageCircle size={18} aria-hidden="true" /></span>
         <div>
           <h2>Tell us about your project</h2>
-          <p>Your details will be added to a WhatsApp message for Oasis.</p>
+          <p>Choose a topic, then share only the details you know.</p>
         </div>
       </div>
       <div className="form-grid">
@@ -51,29 +87,78 @@ export function ContactForm() {
           Farm location
           <input name="location" placeholder="Town or district" autoComplete="address-level2" />
         </label>
-        <label>
-          What do you need help with? <span aria-hidden="true">*</span>
-          <select name="need" defaultValue="" required>
-            <option value="" disabled>Select a topic</option>
-            <option>Drip irrigation products</option>
-            <option>Irrigation system planning</option>
-            <option>Installation support</option>
-            <option>Water storage or pumping</option>
-            <option>Other irrigation enquiry</option>
-          </select>
-        </label>
+        <fieldset className="form-full contact-topic-group">
+          <legend>
+            What do you need help with? <span aria-hidden="true">*</span>
+          </legend>
+          <div className="contact-topic-grid">
+            {contactTopics.map((topic) => (
+              <label
+                className={`contact-topic-option${selectedTopic === topic.value ? " is-selected" : ""}`}
+                key={topic.value}
+              >
+                <input
+                  type="radio"
+                  name="need"
+                  value={topic.value}
+                  required
+                  checked={selectedTopic === topic.value}
+                  onChange={() => setSelectedTopic(topic.value)}
+                />
+                <span className="contact-topic-option__copy">
+                  <strong>{topic.label}</strong>
+                  <small>{topic.description}</small>
+                </span>
+                <span className="contact-topic-option__indicator" aria-hidden="true" />
+              </label>
+            ))}
+          </div>
+        </fieldset>
         <label className="form-full">
-          A few project details
-          <textarea name="details" rows={4} placeholder="What are you growing, and what would you like to know?" />
+          A few project details <span className="contact-optional">(optional)</span>
+          <textarea
+            name="details"
+            rows={4}
+            placeholder={
+              selectedTopicDetails
+                ? `For example, ${selectedTopicDetails.detailsPrompt}.`
+                : "Tell us what you are growing or what you would like to know."
+            }
+          />
         </label>
       </div>
       <button className="button form-submit" type="submit">
-        Prepare WhatsApp enquiry <ArrowUpRight size={17} aria-hidden="true" />
+        Preview WhatsApp message <ArrowUpRight size={17} aria-hidden="true" />
       </button>
       <p className="form-privacy">
-        This form does not store or submit information to a website server.
+        Your details are not stored on this website.
       </p>
-      <p className="form-status" role="status" aria-live="polite">{status}</p>
+      {previewMessage && (
+        <section className="contact-message-preview" aria-labelledby="contact-preview-title">
+          <div className="contact-message-preview__heading">
+            <div>
+              <span className="eyebrow">Review before sending</span>
+              <h3 id="contact-preview-title">Your WhatsApp message</h3>
+            </div>
+            <button
+              className="contact-preview-edit"
+              type="button"
+              onClick={() => setPreviewMessage("")}
+            >
+              Edit details
+            </button>
+          </div>
+          <pre>{previewMessage}</pre>
+          <a
+            className="button form-submit contact-preview-send"
+            href={whatsappLink(previewMessage)}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open WhatsApp to send <ArrowUpRight size={17} aria-hidden="true" />
+          </a>
+        </section>
+      )}
     </form>
   );
 }
