@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import { ArrowRight, BadgeCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ProductCard } from "@/components/product-card";
+import { ProductCatalogue } from "@/components/product-catalogue";
 import { SectionHeading } from "@/components/section-heading";
 import { HeroWaterEffects } from "@/components/hero-water-effects";
 import { products } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Drip Irrigation Products & Fittings",
+  title: "Irrigation Products, Pumps & Fittings",
   description:
-    "Browse drip irrigation fittings, valves, accessories and water storage solutions from Oasis Irrigation Solutions.",
+    "Browse drip irrigation fittings, pumps, pipes and water storage from Oasis Irrigation Solutions in Uganda.",
 };
 
 export default function ProductsPage() {
@@ -53,17 +53,13 @@ export default function ProductsPage() {
             <SectionHeading
               eyebrow="Browse the range"
               title="Irrigation products"
-              description="Explore fittings, valves, pipe options and water storage equipment photographed for a closer look. Contact Oasis to confirm product details and current availability."
+              description="Find irrigation fittings, pumps, pipes and water storage by category. Ask Oasis about product details and current availability."
             />
             <span className="catalogue-count">
-              {String(products.length).padStart(2, "0")} categories
+              {String(products.length).padStart(2, "0")} products
             </span>
           </div>
-          <div className="product-grid product-grid-all">
-            {products.map((product) => (
-              <ProductCard key={product.name} product={product} />
-            ))}
-          </div>
+          <ProductCatalogue />
         </div>
       </section>
       <section className="catalogue-note">

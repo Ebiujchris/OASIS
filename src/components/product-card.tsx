@@ -1,14 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import type { Product } from "@/data/site";
 import { whatsappLink } from "@/data/site";
-
-type Product = {
-  name: string;
-  description: string;
-  image: string;
-  alt: string;
-  detail: string;
-};
 
 export function ProductCard({ product }: { product: Product }) {
   return (
@@ -24,6 +17,7 @@ export function ProductCard({ product }: { product: Product }) {
         />
       </div>
       <div className="product-card-content">
+        <span className="product-category-pill">{product.category}</span>
         <span className="product-detail">{product.detail}</span>
         <h3>{product.name}</h3>
         <p>{product.description}</p>
@@ -33,7 +27,7 @@ export function ProductCard({ product }: { product: Product }) {
           target="_blank"
           rel="noreferrer"
         >
-          Ask about this product <ArrowUpRight size={16} aria-hidden="true" />
+          Check availability on WhatsApp <ArrowUpRight size={16} aria-hidden="true" />
         </a>
       </div>
     </article>

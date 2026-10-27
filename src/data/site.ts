@@ -11,14 +11,37 @@ export function whatsappLink(message: string) {
   return `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
-export const products = [
+export const productCategories = [
+  "All products",
+  "Drip irrigation",
+  "Pumps & water",
+  "Pipes & fittings",
+  "Water storage",
+] as const;
+
+export type ProductCategory = Exclude<
+  (typeof productCategories)[number],
+  "All products"
+>;
+
+export type Product = {
+  name: string;
+  description: string;
+  image: string;
+  alt: string;
+  detail: string;
+  category: ProductCategory;
+};
+
+export const products: Product[] = [
   {
-    name: "Drip irrigation fittings",
+    name: "Drip connectors & fittings",
     description:
-      "Connectors and small components for assembling and maintaining a drip irrigation layout.",
+      "Connectors, tees, joiners and end pieces for assembling and maintaining a drip irrigation layout.",
     image: "/images/drip-connectors.jpg",
     alt: "Blue irrigation connectors ready to be fitted to a drip system",
-    detail: "Connectors, tees and end pieces",
+    detail: "Connectors, tees, joiners and end pieces",
+    category: "Drip irrigation",
   },
   {
     name: "Drip line accessories",
@@ -27,6 +50,7 @@ export const products = [
     image: "/images/drip-rubber-rings.jpg",
     alt: "Black rubber irrigation rings arranged for product selection",
     detail: "Rings and line accessories",
+    category: "Drip irrigation",
   },
   {
     name: "Solar motorized borehole",
@@ -35,6 +59,7 @@ export const products = [
     image: "/images/water-outlet-project.jpg",
     alt: "Water flowing from a borehole outlet pipe",
     detail: "Solar borehole pumping",
+    category: "Pumps & water",
   },
   {
     name: "Petrol water pump",
@@ -43,6 +68,7 @@ export const products = [
     image: "/images/farm-water-pumping-team.jpg",
     alt: "A petrol-powered water pump positioned beside a farm water channel",
     detail: "Farm water pumping",
+    category: "Pumps & water",
   },
   {
     name: "Water storage solutions",
@@ -51,6 +77,7 @@ export const products = [
     image: "/images/water-storage.jpg",
     alt: "Elevated water tanks on a steel support structure",
     detail: "Storage and distribution",
+    category: "Water storage",
   },
   {
     name: "8 LPH PC emitters",
@@ -59,14 +86,7 @@ export const products = [
     image: "/images/drip-valves.jpg",
     alt: "A selection of blue and black 8 LPH pressure-compensating drip emitters",
     detail: "8 LPH | Pressure compensating",
-  },
-  {
-    name: "Drip connectors & joiners",
-    description:
-      "Connector pieces for joining compatible sections of an irrigation line.",
-    image: "/images/drip-connectors.jpg",
-    alt: "Blue irrigation line connectors arranged for selection",
-    detail: "Line connectors",
+    category: "Drip irrigation",
   },
   {
     name: "Irrigation pipes & coils",
@@ -75,6 +95,7 @@ export const products = [
     image: "/images/irrigation-pipe-team.jpg",
     alt: "Workers handling a large coil of irrigation pipe in a field",
     detail: "Pipes and hoses",
+    category: "Pipes & fittings",
   },
   {
     name: "Pipe fittings & joints",
@@ -83,14 +104,16 @@ export const products = [
     image: "/images/irrigation-fittings-assorted.jpg",
     alt: "Blue and dark irrigation connectors displayed together",
     detail: "System fittings",
+    category: "Pipes & fittings",
   },
   {
-    name: "Drip irrigation in the field",
+    name: "Drip irrigation systems",
     description:
-      "See drip irrigation lines in use around growing crops and ask about options for your farm.",
+      "Explore drip irrigation options for crops and ask us to help plan a system for your farm.",
     image: "/images/drip-lines-on-crops.webp",
     alt: "Drip irrigation tubing laid around young crops",
-    detail: "Drip systems",
+    detail: "System planning",
+    category: "Drip irrigation",
   },
   {
     name: "Water delivery equipment",
@@ -99,6 +122,7 @@ export const products = [
     image: "/images/borehole-water-outlet.webp",
     alt: "Water flowing from a borehole outlet pipe at a farm site",
     detail: "Water supply",
+    category: "Pumps & water",
   },
 ];
 
