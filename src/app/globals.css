@@ -3191,6 +3191,152 @@ img {
   line-height: 1.7;
 }
 
+.water-journey-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(58px, 7vw, 88px) 0;
+  background:
+    radial-gradient(ellipse at 6% 100%, rgba(196, 154, 74, 0.1), transparent 34%),
+    radial-gradient(ellipse at 96% 0%, rgba(125, 160, 112, 0.14), transparent 36%),
+    #f4f6ef;
+}
+
+.water-journey-section .section-heading {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.water-journey {
+  position: relative;
+  display: grid;
+  margin: 46px 0 0;
+  padding: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 25px;
+  list-style: none;
+}
+
+.water-journey__step {
+  position: relative;
+  min-height: 225px;
+  padding: 24px 21px 22px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #e1e7dc;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(25, 49, 27, 0.055);
+  animation: water-journey-enter 650ms both;
+}
+
+.water-journey__step:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.water-journey__step:nth-child(3) {
+  animation-delay: 160ms;
+}
+
+.water-journey__step:nth-child(4) {
+  animation-delay: 240ms;
+}
+
+.water-journey__number {
+  color: #94713c;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.water-journey__icon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  margin-top: 17px;
+  place-items: center;
+  color: #d7edbc;
+  background: linear-gradient(145deg, var(--green), var(--green-deep));
+  border: 4px solid #edf3e9;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(33, 77, 43, 0.17);
+}
+
+.water-journey__step h3 {
+  margin: 16px 0 5px;
+  color: var(--green-deep);
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+
+.water-journey__step p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.water-journey__connector {
+  position: absolute;
+  z-index: 1;
+  top: 41px;
+  right: -25px;
+  display: grid;
+  width: 25px;
+  height: 24px;
+  place-items: center;
+  color: #a47b3d;
+}
+
+.water-journey__connector::before {
+  position: absolute;
+  z-index: -1;
+  inset: 11px 1px;
+  background: linear-gradient(90deg, #d6dfcd, #c49a4a, #d6dfcd);
+  background-size: 200% 100%;
+  content: "";
+  animation: water-journey-flow 2.8s linear infinite;
+}
+
+.water-journey__note {
+  margin: 23px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.water-journey__link {
+  display: flex;
+  width: fit-content;
+  margin: 14px auto 0;
+  align-items: center;
+  gap: 7px;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 750;
+  transition: gap 180ms ease, color 180ms ease;
+}
+
+.water-journey__link:hover {
+  gap: 11px;
+  color: #987442;
+}
+
+@keyframes water-journey-flow {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes water-journey-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .contact-section {
   padding-top: 78px;
   padding-bottom: 98px;
@@ -6772,12 +6918,61 @@ img {
     padding-bottom: 64px;
   }
 
+  .water-journey {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .water-journey__step {
+    min-height: 205px;
+  }
+
+  .water-journey__connector {
+    display: none;
+  }
+
   .about-services-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 600px) {
+  .water-journey-section {
+    padding: 54px 0;
+  }
+
+  .water-journey {
+    margin-top: 29px;
+    gap: 10px;
+  }
+
+  .water-journey__step {
+    min-height: 195px;
+    padding: 17px 14px;
+    border-radius: 12px;
+  }
+
+  .water-journey__icon {
+    width: 45px;
+    height: 45px;
+    margin-top: 13px;
+    border-radius: 13px;
+  }
+
+  .water-journey__step h3 {
+    margin-top: 12px;
+    font-size: 15px;
+  }
+
+  .water-journey__step p {
+    font-size: 12px;
+  }
+
+  .water-journey__note {
+    margin-top: 18px;
+    font-size: 12px;
+  }
+
   .about-services-heading {
     align-items: flex-start;
     flex-direction: column;
@@ -6830,6 +7025,371 @@ img {
   .about-services-all,
   .about-coverage > a {
     transition: none;
+  }
+
+  .water-journey__step {
+    animation: none;
+  }
+
+  .water-journey__connector::before {
+    animation: none;
+  }
+
+  .water-journey__link {
+    transition: none;
+  }
+}
+
+.about-page-hero {
+  padding: clamp(34px, 4vw, 56px) 0;
+}
+
+.about-page-hero .page-hero-inner {
+  min-height: clamp(340px, 35vw, 410px);
+}
+
+.about-story-section {
+  padding-top: 54px;
+  padding-bottom: 62px;
+}
+
+.about-copy .section-heading h2 {
+  font-size: clamp(32px, 3.4vw, 41px);
+}
+
+.about-copy .section-heading > p {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.about-copy > p {
+  margin: 13px 0 16px;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.about-photo-stack {
+  min-height: 380px;
+}
+
+.about-photo-large {
+  height: 310px;
+}
+
+.about-photo-small {
+  height: 164px;
+}
+
+.water-journey-section {
+  padding: 42px 0 48px;
+}
+
+.water-journey-section .section-heading > p {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.water-journey {
+  margin-top: 26px;
+  gap: 16px;
+}
+
+.water-journey__step {
+  min-height: 184px;
+  padding: 18px 17px;
+}
+
+.water-journey__icon {
+  margin-top: 12px;
+}
+
+.water-journey__step h3 {
+  margin-top: 12px;
+}
+
+.about-services-section {
+  padding-top: 54px;
+  padding-bottom: 50px;
+}
+
+.about-services-heading .section-heading > p {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.about-services-grid {
+  margin-top: 24px;
+  gap: 12px;
+}
+
+.about-service-card {
+  min-height: 194px;
+  padding: 18px 19px 16px;
+}
+
+.about-service-card__number {
+  top: 18px;
+  right: 19px;
+}
+
+.about-service-card h3 {
+  margin-top: 12px;
+}
+
+.about-service-card p {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.about-coverage {
+  margin-top: 15px;
+  padding: 13px 17px;
+}
+
+.values-section {
+  padding-top: 50px;
+  padding-bottom: 56px;
+}
+
+.values-section .section-heading h2 {
+  font-size: clamp(28px, 2.8vw, 36px);
+}
+
+.values-grid {
+  margin-top: 22px;
+  gap: 13px;
+}
+
+.values-grid article {
+  padding: 18px 19px 19px;
+}
+
+.values-grid h3 {
+  margin-top: 10px;
+}
+
+.about-page-hero ~ .contact-banner .contact-banner-inner {
+  min-height: 172px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+@supports (animation-timeline: view()) {
+  .about-story .about-copy,
+  .about-story .about-photo-stack,
+  .water-journey-section .section-heading,
+  .water-journey__step,
+  .about-services-heading .section-heading,
+  .about-service-card,
+  .about-coverage,
+  .values-section .section-heading,
+  .values-grid article {
+    animation: about-scroll-reveal auto linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 32%;
+  }
+
+  @keyframes about-scroll-reveal {
+    from {
+      opacity: 0.45;
+      transform: translateY(18px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .about-page-hero .page-hero-inner {
+    min-height: unset;
+  }
+
+  .about-photo-stack {
+    min-height: 350px;
+  }
+
+  .about-photo-large {
+    height: 290px;
+  }
+
+  .about-services-section {
+    padding-top: 48px;
+    padding-bottom: 45px;
+  }
+
+  .water-journey {
+    gap: 12px;
+  }
+
+  .about-service-card {
+    min-height: 190px;
+    padding: 17px 17px;
+  }
+
+  .about-service-card__number {
+    top: 17px;
+    right: 17px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-page-hero {
+    padding: 32px 0 38px;
+  }
+
+  .about-page-hero .page-hero-inner {
+    gap: 20px;
+  }
+
+  .about-page-hero .page-hero-image-card {
+    height: clamp(230px, 58vw, 290px);
+  }
+
+  .about-story-section {
+    padding-top: 38px;
+    padding-bottom: 40px;
+  }
+
+  .about-story {
+    gap: 22px;
+  }
+
+  .about-copy .section-heading h2 {
+    font-size: clamp(30px, 8vw, 36px);
+  }
+
+  .about-copy .section-heading > p {
+    font-size: 15px;
+  }
+
+  .about-copy > p {
+    margin-top: 11px;
+    margin-bottom: 13px;
+    font-size: 15px;
+  }
+
+  .about-photo-stack {
+    min-height: 260px;
+  }
+
+  .about-photo-large {
+    height: 215px;
+  }
+
+  .about-photo-small {
+    height: 116px;
+  }
+
+  .water-journey-section {
+    padding: 36px 0 38px;
+  }
+
+  .water-journey-section .section-heading > p,
+  .about-services-heading .section-heading > p {
+    font-size: 15px;
+  }
+
+  .water-journey {
+    margin-top: 19px;
+    gap: 8px;
+  }
+
+  .water-journey__step {
+    min-height: 164px;
+    padding: 13px 11px;
+  }
+
+  .about-services-section {
+    padding-top: 39px;
+    padding-bottom: 35px;
+  }
+
+  .about-services-grid {
+    margin-top: 17px;
+    gap: 8px;
+  }
+
+  .about-service-card {
+    min-height: 178px;
+    padding: 14px 12px;
+  }
+
+  .about-service-card__number {
+    top: 14px;
+    right: 12px;
+  }
+
+  .about-service-card h3 {
+    margin-top: 10px;
+  }
+
+  .about-service-card p {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .about-service-card__link {
+    padding-top: 8px;
+    font-size: 10px;
+  }
+
+  .about-coverage {
+    margin-top: 11px;
+    padding: 12px;
+  }
+
+  .values-section {
+    padding-top: 37px;
+    padding-bottom: 40px;
+  }
+
+  .values-section .section-heading h2 {
+    font-size: 29px;
+  }
+
+  .values-grid {
+    margin-top: 16px;
+    gap: 8px;
+  }
+
+  .values-grid article {
+    padding: 14px;
+  }
+
+  .values-grid article > span {
+    width: 34px;
+    height: 34px;
+  }
+
+  .values-grid h3 {
+    margin-top: 7px;
+  }
+
+  .about-page-hero ~ .contact-banner .contact-banner-inner {
+    min-height: 0;
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-story .about-copy,
+  .about-story .about-photo-stack,
+  .water-journey__step,
+  .about-service-card,
+  .about-coverage,
+  .values-grid article {
+    animation: none !important;
   }
 }
 

@@ -15,6 +15,7 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
 import { HeroWaterEffects } from "@/components/hero-water-effects";
+import { WaterJourney } from "@/components/water-journey";
 import { company, services } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -98,6 +99,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <WaterJourney />
       <section className="section about-services-section">
         <div className="page-width">
           <div className="about-services-heading">
