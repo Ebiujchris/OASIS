@@ -1,29 +1,18 @@
 import type { Metadata } from "next";
-import {
-  ArrowUpRight,
-  BadgeCheck,
-  Check,
-  Droplets,
-  Ruler,
-  Sprout,
-  Wrench,
-  MessageCircle,
-} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { FieldGallery } from "@/components/field-gallery";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
 import { HeroWaterEffects } from "@/components/hero-water-effects";
-import { projectPhotos, services, whatsappLink } from "@/data/site";
+import { ServiceCatalogue } from "@/components/service-catalogue";
+import { projectPhotos } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Irrigation Planning, Installation & Farm Support",
   description:
     "Learn about irrigation planning, installation, water storage and product guidance from Oasis Irrigation Solutions.",
 };
-
-const icons = [Ruler, Droplets, Droplets, Sprout, Wrench, BadgeCheck];
 
 export default function ServicesPage() {
   return (
@@ -63,69 +52,40 @@ export default function ServicesPage() {
               title="Practical support for your water system."
               description="Explore the service areas below. Each farm is different, so share your water source, crops, site conditions and goals to discuss a suitable next step."
             />
-            <div className="service-detail-list">
-              {services.map((service, index) => {
-                const Icon = icons[index];
-                return (
-                  <article
-                    className="service-detail-item"
-                    id={service.slug}
-                    key={service.number}
-                  >
-                    <div className="service-detail-image">
-                      <Image
-                        src={service.image}
-                        alt={service.alt}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1050px) 50vw, 33vw"
-                      />
-                      <span className="service-detail-number">
-                        {service.number}
-                      </span>
-                    </div>
-                    <div className="service-detail-content">
-                      <span className="service-detail-icon">
-                        <Icon size={18} aria-hidden="true" />
-                      </span>
-                      <h3>
-                        <Link href={`/services/${service.slug}/`}>
-                          {service.title}
-                        </Link>
-                      </h3>
-                      <p>{service.description}</p>
-                      <Link
-                        className="service-detail-link"
-                        href={whatsappLink(
-                          `Hello Oasis, I would like to enquire about ${service.title.toLowerCase()} for my farm.`
-                        )}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <MessageCircle size={15} aria-hidden="true" />
-                        Enquire about this service
-                        <ArrowUpRight size={15} aria-hidden="true" />
-                      </Link>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+            <ServiceCatalogue />
           </div>
         </div>
       </section>
-      <FieldGallery photos={projectPhotos} />
+      <FieldGallery interactivePhotos photos={projectPhotos} />
       <section className="section service-process-section">
         <div className="page-width service-process-inner">
           <SectionHeading
-            eyebrow="A clear way forward"
-            title="Start with the details that matter."
-            description="A few details help us understand what kind of support may be useful."
+            eyebrow="Next step"
+            title="Let’s talk about your farm."
             centered
           />
-          <div className="service-checks">
-            {["What are you growing?", "Where does your water come from?", "What area are you irrigating?", "What would you like help with?"].map((item) => (
-              <span key={item}><Check size={16} aria-hidden="true" /> {item}</span>
-            ))}
+          <div className="service-process-steps">
+            <article>
+              <span>01</span>
+              <div>
+                <h3>Tell us about your farm</h3>
+                <p>Share your crops, water source and needs.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>Discuss suitable options</h3>
+                <p>Explore what may work for your setup.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>Plan a next step</h3>
+                <p>Agree what to explore next.</p>
+              </div>
+            </article>
           </div>
           <WhatsAppCta />
         </div>

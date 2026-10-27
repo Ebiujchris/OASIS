@@ -2059,6 +2059,11 @@ img {
 }
 
 @media (max-width: 640px) {
+  .field-gallery-section:not(.project-gallery-section) .project-photo-expand {
+    opacity: 1;
+    transform: none;
+  }
+
   .project-gallery-filters {
     gap: 7px;
   }
@@ -2916,9 +2921,71 @@ img {
   font-size: clamp(32px, 4vw, 43px);
 }
 
+.service-filters {
+  display: flex;
+  margin-top: 28px;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.service-filter {
+  display: inline-flex;
+  min-height: 42px;
+  padding: 7px 13px;
+  align-items: center;
+  gap: 9px;
+  color: #4e594b;
+  background: #fff;
+  border: 1px solid #e3e8df;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 650;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.service-filter:hover {
+  border-color: #b8c8b3;
+  transform: translateY(-1px);
+}
+
+.service-filter[aria-pressed="true"] {
+  color: #fff;
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.service-filter > span {
+  display: inline-grid;
+  min-width: 21px;
+  height: 21px;
+  padding: 0 5px;
+  place-items: center;
+  color: var(--green);
+  background: #e9efe5;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.service-filter[aria-pressed="true"] > span {
+  color: var(--green-deep);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.service-filter-results {
+  margin: 18px 0 -19px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .service-detail-list {
   display: grid;
-  margin-top: 36px;
+  margin-top: 29px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
@@ -2950,12 +3017,45 @@ img {
 }
 
 .service-detail-image img {
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 350ms ease;
 }
 
+.service-image-expand {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  color: #fff;
+  background: rgba(18, 37, 22, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  cursor: zoom-in;
+  opacity: 0;
+  transform: translateY(3px);
+  transition: opacity 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+.service-detail-image:hover .service-image-expand,
+.service-image-expand:focus-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-image-expand:hover {
+  background: var(--green);
+}
+
+.service-lightbox .project-lightbox__image img {
+  object-fit: contain;
+}
+
 .service-detail-item:hover .service-detail-image img {
-  transform: scale(1.035);
+  transform: scale(1.025);
 }
 
 .service-detail-image .service-detail-number {
@@ -3014,14 +3114,57 @@ img {
   line-height: 1.7;
 }
 
+.service-category-label {
+  margin-top: 12px;
+  padding: 4px 8px;
+  color: var(--green);
+  background: #eef3eb;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.service-category-label + h3 {
+  margin-top: 7px;
+}
+
+.service-detail-actions {
+  display: flex;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 4px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .service-detail-link {
   display: inline-flex;
-  margin-top: auto;
   align-items: center;
   gap: 7px;
   color: var(--green);
   font-size: 13px;
   font-weight: 700;
+}
+
+.service-detail-enquiry {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  place-items: center;
+  color: var(--green);
+  background: #edf3e9;
+  border: 1px solid #dfe8d8;
+  border-radius: 50%;
+  transition: color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.service-detail-enquiry:hover {
+  color: #fff;
+  background: var(--green);
+  transform: translateY(-1px);
 }
 
 .service-detail-link svg:last-child {
@@ -3037,37 +3180,65 @@ img {
 }
 
 .service-process-section {
-  padding-top: 85px;
-  padding-bottom: 90px;
+  padding-top: 44px;
+  padding-bottom: 48px;
   text-align: center;
   background: var(--sage);
 }
 
-.service-checks {
-  display: flex;
-  max-width: 780px;
-  margin: 34px auto 29px;
-  flex-wrap: wrap;
-  justify-content: center;
+.service-process-steps {
+  position: relative;
+  display: grid;
+  max-width: 960px;
+  margin: 24px auto 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  text-align: left;
 }
 
-.service-checks span {
-  display: inline-flex;
-  min-height: 39px;
-  padding: 0 13px;
+.service-process-steps article {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  padding: 14px 15px;
   align-items: center;
-  gap: 7px;
-  color: #4e5e49;
-  background: rgba(255, 255, 255, 0.75);
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.88);
   border: 1px solid #e1e7d9;
-  border-radius: 30px;
-  font-size: 12px;
-  font-weight: 600;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(25, 49, 27, 0.045);
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.service-checks svg {
+.service-process-steps article:hover {
+  box-shadow: 0 14px 30px rgba(25, 49, 27, 0.09);
+  transform: translateY(-3px);
+}
+
+.service-process-steps article > span {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  place-items: center;
   color: var(--green);
+  background: #e9efe5;
+  border-radius: 11px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.service-process-steps h3 {
+  margin: 0 0 4px;
+  color: var(--green-deep);
+  font-size: 14px;
+}
+
+.service-process-steps p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 .about-story-section {
@@ -4549,6 +4720,27 @@ img {
     gap: 14px;
   }
 
+  .service-filters {
+    margin-top: 21px;
+    gap: 7px;
+  }
+
+  .service-filter {
+    min-height: 38px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .service-filter-results {
+    margin-top: 15px;
+    font-size: 12px;
+  }
+
+  .service-image-expand {
+    opacity: 1;
+    transform: none;
+  }
+
   .services-list-block .section-heading h2 {
     font-size: 35px;
   }
@@ -4587,13 +4779,14 @@ img {
   }
 
   .service-process-section {
-    padding-top: 58px;
-    padding-bottom: 61px;
+    padding-top: 34px;
+    padding-bottom: 36px;
   }
 
-  .service-checks {
-    margin: 23px auto;
-    justify-content: flex-start;
+  .service-process-steps {
+    margin: 18px auto;
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .about-story-section {

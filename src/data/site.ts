@@ -401,10 +401,24 @@ export const projectPhotos: ProjectPhoto[] = [
 
 export const projectGalleryPhotos = [...fieldPhotos.slice(5), ...projectPhotos];
 
+export const serviceCategories = [
+  "All services",
+  "Irrigation",
+  "Water supply",
+  "Pumps & solar",
+  "Maintenance",
+] as const;
+
+export type ServiceCategory = Exclude<
+  (typeof serviceCategories)[number],
+  "All services"
+>;
+
 export const services = [
   {
     number: "01",
     slug: "irrigation",
+    category: "Irrigation",
     title: "Irrigation planning & installation",
     description:
       "Plan an irrigation layout around your crops, available water and field conditions. Discuss the equipment, pipe routes and installation support that may suit your farm.",
@@ -443,6 +457,7 @@ export const services = [
   {
     number: "02",
     slug: "boreholes",
+    category: "Water supply",
     title: "Boreholes & water supply",
     description:
       "Explore how water can be supplied from a borehole or another source to storage or irrigation. Share the source, location and intended use so the options can be discussed.",
@@ -481,6 +496,7 @@ export const services = [
   {
     number: "03",
     slug: "water-pumps",
+    category: "Pumps & solar",
     title: "Water pumps",
     description:
       "Discuss moving water from its source to a tank, outlet or irrigation network. The right pump depends on the water source, delivery route and the demands of the setup.",
@@ -519,6 +535,7 @@ export const services = [
   {
     number: "04",
     slug: "solar-equipment",
+    category: "Pumps & solar",
     title: "Solar equipment",
     description:
       "Consider solar-powered equipment for water pumping and farm use. Discuss the site, water requirements and equipment already in place before choosing a system.",
@@ -557,6 +574,7 @@ export const services = [
   {
     number: "05",
     slug: "repairs-maintenance",
+    category: "Maintenance",
     title: "Repairs & maintenance",
     description:
       "Get support to describe an issue with irrigation lines, fittings or water equipment and discuss practical next steps. Photos and details about the setup help explain the problem.",
@@ -595,6 +613,7 @@ export const services = [
   {
     number: "06",
     slug: "product-guidance",
+    category: "Irrigation",
     title: "Irrigation product guidance",
     description:
       "Compare fittings, valves, emitters and other drip-system components for your setup. Share pipe sizes or product photos so compatibility and availability can be checked.",

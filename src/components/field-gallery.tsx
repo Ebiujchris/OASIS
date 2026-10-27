@@ -2,9 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
+import { FieldPhotoGallery } from "@/components/field-photo-gallery";
 
 type FieldGalleryProps = {
   compact?: boolean;
+  interactivePhotos?: boolean;
   moreLink?: { href: string; label: string };
   photos: {
     image: string;
@@ -22,6 +24,7 @@ type FieldGalleryProps = {
 
 export function FieldGallery({
   compact = false,
+  interactivePhotos = false,
   moreLink,
   photos,
   videos = [],
@@ -51,50 +54,54 @@ export function FieldGallery({
             </span>
           )}
         </div>
-        <div className="field-photo-grid">
-          {photos.map((photo, index) => (
-            <figure
-              className={`field-photo-card${index === 0 ? " field-photo-featured" : ""}`}
-              key={photo.image}
-            >
-              <Image
-                src={photo.image}
-                alt={photo.alt}
-                fill
-                sizes={
-                  index === 0
-                    ? "(max-width: 640px) 90vw, (max-width: 1050px) 48vw, 48vw"
-                    : "(max-width: 640px) 44vw, (max-width: 1050px) 30vw, 24vw"
-                }
-              />
-              <div className="field-photo-shade" />
-              <figcaption>
-                <span>{photo.type}</span>
-                <strong>{photo.caption}</strong>
-              </figcaption>
-            </figure>
-          ))}
-          {videos.map((video) => (
-            <figure className="field-video-card" key={video.src}>
-              <video
-                aria-label={video.alt}
-                autoPlay
-                controls
-                loop
-                muted
-                playsInline
-                preload="metadata"
+        {interactivePhotos ? (
+          <FieldPhotoGallery photos={photos} videos={videos} />
+        ) : (
+          <div className="field-photo-grid">
+            {photos.map((photo, index) => (
+              <figure
+                className={`field-photo-card${index === 0 ? " field-photo-featured" : ""}`}
+                key={photo.image}
               >
-                <source src={video.src} type="video/mp4" />
-                Your browser does not support the video element.
-              </video>
-              <figcaption>
-                <span>{video.type}</span>
-                <strong>{video.caption}</strong>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+                <Image
+                  src={photo.image}
+                  alt={photo.alt}
+                  fill
+                  sizes={
+                    index === 0
+                      ? "(max-width: 640px) 90vw, (max-width: 1050px) 48vw, 48vw"
+                      : "(max-width: 640px) 44vw, (max-width: 1050px) 30vw, 24vw"
+                  }
+                />
+                <div className="field-photo-shade" />
+                <figcaption>
+                  <span>{photo.type}</span>
+                  <strong>{photo.caption}</strong>
+                </figcaption>
+              </figure>
+            ))}
+            {videos.map((video) => (
+              <figure className="field-video-card" key={video.src}>
+                <video
+                  aria-label={video.alt}
+                  autoPlay
+                  controls
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                >
+                  <source src={video.src} type="video/mp4" />
+                  Your browser does not support the video element.
+                </video>
+                <figcaption>
+                  <span>{video.type}</span>
+                  <strong>{video.caption}</strong>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
         <p className="field-gallery-disclaimer">
           Photos and videos show irrigation products and water-system field activities.
           Ask Oasis about products, availability and project details.
