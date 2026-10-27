@@ -126,66 +126,97 @@ export const products: Product[] = [
   },
 ];
 
-export const fieldPhotos = [
+export const projectCategories = [
+  "All projects",
+  "Irrigation",
+  "Water storage",
+  "Solar",
+  "Water supply",
+] as const;
+
+export type ProjectCategory = Exclude<
+  (typeof projectCategories)[number],
+  "All projects"
+>;
+
+export type ProjectPhoto = {
+  image: string;
+  alt: string;
+  caption: string;
+  type: string;
+  category: ProjectCategory;
+};
+
+export const fieldPhotos: ProjectPhoto[] = [
   {
     image: "/images/field-irrigation-in-action.jpg",
     alt: "A farmer waters crops with a hose in an open field",
-    caption: "Watering crops in the field",
+    caption: "Crops being watered with a hose",
     type: "Field irrigation",
+    category: "Irrigation",
   },
   {
     image: "/images/tank-installation-team.jpg",
     alt: "A team at work installing a raised water tank system",
-    caption: "Water storage installation",
+    caption: "Team installing a raised water tank",
     type: "Project activity",
+    category: "Water storage",
   },
   {
     image: "/images/water-tank-project.jpg",
     alt: "Large elevated water storage tanks on a support structure",
-    caption: "Elevated storage tanks",
+    caption: "Elevated water tanks on a support structure",
     type: "Water storage",
+    category: "Water storage",
   },
   {
     image: "/images/farm-pipe-installation.jpg",
     alt: "Farm workers handle a large pipe during a water system installation",
-    caption: "Pipework at a farm site",
+    caption: "Workers positioning pipework at a farm",
     type: "Installation work",
+    category: "Irrigation",
   },
   {
     image: "/images/farm-water-team.jpg",
     alt: "People testing water flowing from a pipe at an open field site",
-    caption: "Farm drainage",
-    type: "Farm drainage",
+    caption: "Water flowing from a pipe at a field site",
+    type: "Water supply",
+    category: "Water supply",
   },
   {
     image: "/images/children-at-rural-water-outlet.webp",
     alt: "Children gathered around water flowing at a rural water point",
     caption: "Children at a rural water point",
     type: "Community water access",
+    category: "Water supply",
   },
   {
     image: "/images/farm-irrigation.jpg",
     alt: "A farmer watering crops with a hose in a field",
-    caption: "Watering crops with a hose",
+    caption: "Crops being watered with a hose",
     type: "Farm irrigation",
+    category: "Irrigation",
   },
   {
     image: "/images/drip-lines-on-crops.webp",
     alt: "Drip irrigation tubing arranged around a young tree",
     caption: "Drip lines around a young tree",
     type: "Drip irrigation",
+    category: "Irrigation",
   },
   {
     image: "/images/irrigation-pipe-team.jpg",
     alt: "Blue irrigation manifold with valves and a pressure gauge mounted on a wall",
     caption: "Installed blue irrigation manifold",
     type: "System installation",
+    category: "Irrigation",
   },
   {
     image: "/images/water-outlet-project.jpg",
     alt: "Water flowing from a motorized borehole outlet pipe",
     caption: "Motorized borehole water outlet",
     type: "Borehole water supply",
+    category: "Water supply",
   },
 ];
 
@@ -204,144 +235,167 @@ export const fieldVideos = [
   },
 ];
 
-export const projectPhotos = [
+export const projectPhotos: ProjectPhoto[] = [
   {
     image: "/images/irrigation-trench-installation.jpg",
     alt: "Workers connecting irrigation pipes in an open trench",
-    caption: "Connecting pipework during installation",
+    caption: "Workers connecting irrigation pipes in a trench",
     type: "Irrigation installation",
+    category: "Irrigation",
   },
   {
     image: "/images/irrigation-trench-preparation.jpg",
     alt: "A worker preparing a trench for buried farm pipework",
-    caption: "Preparing a route for pipework",
+    caption: "Worker preparing a trench for farm pipework",
     type: "Installation preparation",
+    category: "Irrigation",
   },
   {
     image: "/images/irrigation-mainline-connections.jpg",
     alt: "Blue connectors fitted into large irrigation pipes",
     caption: "Mainline pipe connections",
     type: "Irrigation pipework",
+    category: "Irrigation",
   },
   {
     image: "/images/solar-installation-team.jpg",
     alt: "A team carrying a solar panel at a farm site",
-    caption: "Moving solar equipment into position",
+    caption: "Team carrying a solar panel at a farm",
     type: "Solar equipment",
+    category: "Solar",
   },
   {
     image: "/images/solar-panels-farm.jpg",
     alt: "Solar panels installed at a farm site",
     caption: "Solar panels at a farm site",
     type: "Solar water systems",
+    category: "Solar",
   },
   {
     image: "/images/farm-water-pumping.jpg",
     alt: "A worker welding a blue steel support frame for a farm water tank",
-    caption: "Welding a tank support frame",
+    caption: "Worker welding a steel tank support frame",
     type: "Water storage",
+    category: "Water storage",
   },
   {
     image: "/images/farm-water-pumping-team.webp",
     alt: "A petrol-powered water pump positioned beside a farm water channel",
     caption: "Petrol pump at a farm water source",
     type: "Water pumping",
+    category: "Water supply",
   },
   {
     image: "/images/water-tank-frame-project.jpg",
     alt: "Steel support frame being assembled for a farm water tank",
-    caption: "Assembling a tank support frame",
+    caption: "Steel frame assembly for a farm water tank",
     type: "Water storage",
+    category: "Water storage",
   },
   {
     image: "/images/tank-installation-team.jpg",
     alt: "Workers and lifting equipment at a raised tank installation",
-    caption: "Working on raised water storage",
+    caption: "Workers and lifting equipment at a tank installation",
     type: "Installation",
+    category: "Water storage",
   },
   {
     image: "/images/water-tank-project.jpg",
     alt: "Large water tanks installed on an elevated support structure",
     caption: "Elevated farm water storage",
     type: "Storage systems",
+    category: "Water storage",
   },
   {
     image: "/images/water-project-construction.jpg",
     alt: "Construction work at a water system project site",
-    caption: "Building a water-system base",
-    type: "Project activity",
+    caption: "Water-system base under construction",
+    type: "Water supply construction",
+    category: "Water supply",
   },
   {
     image: "/images/farm-water-system.jpg",
     alt: "A steel tank support frame installed beside a farm field",
     caption: "Steel support frame for a farm water tank",
     type: "Water storage",
+    category: "Water storage",
   },
   {
     image: "/images/community-water-point.jpg",
     alt: "Solar panels sheltering water-pumping equipment beside a farm pond",
     caption: "Solar-powered water system beside a farm pond",
     type: "Solar water systems",
+    category: "Solar",
   },
   {
     image: "/images/solar-water-system.jpg",
     alt: "Solar panels installed at a farm water site",
     caption: "Solar equipment at a farm site",
     type: "Solar water systems",
+    category: "Solar",
   },
   {
     image: "/images/farm-water-outlet-flow.jpg",
     alt: "Water running from a large borehole outlet pipe",
     caption: "Water discharging from a borehole outlet",
     type: "Water supply",
+    category: "Water supply",
   },
   {
     image: "/images/solar-farm-panel-array.webp",
     alt: "Rows of solar panels installed on a farm",
     caption: "Solar panels at a farm site",
     type: "Solar equipment",
+    category: "Solar",
   },
   {
     image: "/images/greenhouse-farm-project.jpg",
     alt: "A greenhouse structure under construction at sunset",
-    caption: "Greenhouse construction",
+    caption: "Greenhouse structure under construction",
     type: "Farm infrastructure",
+    category: "Irrigation",
   },
   {
     image: "/images/bolted-water-storage-tank.jpg",
     alt: "Large bolted water storage tank inside a fenced compound",
     caption: "Large-scale water storage",
     type: "Water storage",
+    category: "Water storage",
   },
   {
     image: "/images/elevated-water-tank-building.jpg",
     alt: "Several water tanks installed on an elevated building structure",
     caption: "Elevated water storage tanks",
     type: "Water storage",
+    category: "Water storage",
   },
   {
     image: "/images/farm-water-source-pond.jpg",
     alt: "A farm water pond beside planted trees",
     caption: "Water source at a farm",
     type: "Water supply",
+    category: "Water supply",
   },
   {
     image: "/images/drip-irrigation-tree-line.jpg",
     alt: "Drip irrigation tubing arranged around a young tree",
     caption: "Drip irrigation around a young tree",
     type: "Drip irrigation",
+    category: "Irrigation",
   },
   {
     image: "/images/solar-water-pump-installation.jpg",
     alt: "Solar panels sheltering water-pumping equipment at a farm",
     caption: "Solar-powered water pumping",
     type: "Solar water systems",
+    category: "Solar",
   },
   {
     image: "/images/solar-farm-lighting.jpg",
     alt: "A solar-powered light installed beside a rural field",
     caption: "Solar lighting at a farm site",
     type: "Solar equipment",
+    category: "Solar",
   },
 ];
 

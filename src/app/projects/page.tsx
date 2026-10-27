@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { FieldGallery } from "@/components/field-gallery";
+import { ProjectGallery } from "@/components/project-gallery";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
 import { HeroWaterEffects } from "@/components/hero-water-effects";
-import { fieldVideos, projectGalleryPhotos } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Projects & Field Work",
@@ -42,7 +41,7 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
-      <FieldGallery photos={projectGalleryPhotos} videos={fieldVideos} />
+      <ProjectGallery />
     </>
   );
 }
