@@ -15,7 +15,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { company, fieldPhotos, products, services, whatsappLink } from "@/data/site";
+import { company, whatsappLink } from "@/data/site";
+import { getSiteContent } from "@/sanity/site-content";
 
 export const metadata: Metadata = {
   title: "Oasis Irrigation Solutions | Smart Irrigation for Uganda",
@@ -100,7 +101,11 @@ const pillars = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const content = await getSiteContent();
+  const homePage = content.homePage;
+  const featuredProducts = content.products.filter((product) => product.featured);
+
   return (
     <div className="hp">
 
@@ -142,12 +147,16 @@ export default function HomePage() {
               Irrigation solutions across Uganda
             </span>
             <h1 className="hp-hero__h1">
-              Water your crops<br />
-              <span className="hp-hero__accent">the smart way.</span>
+              {homePage?.heroTitle || (
+                <>
+                  Water your crops<br />
+                  <span className="hp-hero__accent">the smart way.</span>
+                </>
+              )}
             </h1>
             <p className="hp-hero__lead">
-              Drip irrigation, boreholes, solar pumps and full installation
-              support for farms in Kampala, Gulu and across Uganda.
+              {homePage?.heroLead ||
+                "Drip irrigation, boreholes, solar pumps and full installation support for farms in Kampala, Gulu and across Uganda."}
             </p>
             <div className="hp-hero__ctas">
               <Link
@@ -170,8 +179,11 @@ export default function HomePage() {
 
           <figure className="hp-hero__visual">
             <Image
-              src="/images/farm-irrigation.webp"
-              alt="A grower watering crops in a farm field"
+              src={homePage?.heroImage?.url || "/images/farm-irrigation.webp"}
+              alt={
+                homePage?.heroImage?.alt ||
+                "A grower watering crops in a farm field"
+              }
               fill
               priority
               className="hp-hero__photo"
@@ -316,14 +328,16 @@ export default function HomePage() {
           <div className="hp-sec-head hp-sec-head--row">
             <div>
               <p className="hp-label">Products</p>
-              <h2>Quality equipment for every farm.</h2>
+              <h2>{homePage?.productsHeading || "Quality equipment for every farm."}</h2>
             </div>
             <Link href="/products/" className="hp-text-link">
               View all products <ArrowUpRight size={15} />
             </Link>
           </div>
           <div className="hp-products__grid">
-            {products.slice(0, 6).map((p, i) => (
+            {(featuredProducts.length ? featuredProducts : content.products)
+              .slice(0, 6)
+              .map((p, i) => (
               <article
                 key={p.name}
                 className="hp-prod-card"
@@ -358,8 +372,13 @@ export default function HomePage() {
       <section className="hp-split">
         <div className="hp-split__img">
           <Image
-            src="/images/solar-water-system.jpg"
-            alt="Solar-powered water system at a Ugandan farm"
+            src={
+              homePage?.approachImage?.url || "/images/solar-water-system.jpg"
+            }
+            alt={
+              homePage?.approachImage?.alt ||
+              "Solar-powered water system at a Ugandan farm"
+            }
             fill
             sizes="55vw"
             className="hp-split__photo"
@@ -370,11 +389,10 @@ export default function HomePage() {
         </div>
         <div className="hp-split__copy">
           <p className="hp-label">The Oasis approach</p>
-          <h2>Good irrigation starts with good questions.</h2>
+          <h2>{homePage?.approachHeading || "Good irrigation starts with good questions."}</h2>
           <p>
-            Your crops, water source and field layout all shape the right system.
-            We start every project by understanding your farm before recommending
-            any equipment.
+            {homePage?.approachBody ||
+              "Your crops, water source and field layout all shape the right system. We start every project by understanding your farm before recommending any equipment."}
           </p>
           <ul className="hp-split__list">
             <li><span />Crop type, spacing and field size</li>
@@ -401,14 +419,14 @@ export default function HomePage() {
           <div className="hp-sec-head hp-sec-head--row">
             <div>
               <p className="hp-label">Services</p>
-              <h2>Complete irrigation support.</h2>
+              <h2>{homePage?.servicesHeading || "Complete irrigation support."}</h2>
             </div>
             <Link href="/services/" className="hp-text-link">
               All services <ArrowUpRight size={15} />
             </Link>
           </div>
           <div className="hp-svc-grid">
-            {services.map((s, i) => (
+            {content.services.map((s, i) => (
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}/`}
@@ -441,14 +459,14 @@ export default function HomePage() {
           <div className="hp-sec-head hp-sec-head--row">
             <div>
               <p className="hp-label">Field work</p>
-              <h2>Projects across Uganda.</h2>
+              <h2>{homePage?.galleryHeading || "Projects across Uganda."}</h2>
             </div>
             <Link href="/projects/" className="hp-text-link">
               See all projects <ArrowUpRight size={15} />
             </Link>
           </div>
           <div className="hp-gallery__grid">
-            {fieldPhotos.slice(0, 7).map((ph, i) => (
+            {content.fieldPhotos.slice(0, 7).map((ph, i) => (
               <figure
                 key={ph.image}
                 className={`hp-gallery__item${i === 0 ? " hp-gallery__item--hero" : ""}`}
@@ -473,10 +491,10 @@ export default function HomePage() {
         <div className="page-width hp-final-cta__inner">
           <div className="hp-final-cta__body">
             <p className="hp-label">Let’s plan your next step</p>
-            <h2>Ready to make every drop count?</h2>
+            <h2>{homePage?.ctaHeading || "Ready to make every drop count?"}</h2>
             <p className="hp-final-cta__lead">
-              Tell us about your farm and water source. We’ll help you explore
-              an irrigation approach that fits your needs.
+              {homePage?.ctaLead ||
+                "Tell us about your farm and water source. We’ll help you explore an irrigation approach that fits your needs."}
             </p>
             <div className="hp-final-cta__actions">
               <Link
@@ -497,8 +515,14 @@ export default function HomePage() {
           </div>
           <figure className="hp-final-cta__visual">
             <Image
-              src="/images/irrigation-installation-team.jpg"
-              alt="Oasis team installing water pipes at a farm"
+              src={
+                homePage?.ctaImage?.url ||
+                "/images/irrigation-installation-team.jpg"
+              }
+              alt={
+                homePage?.ctaImage?.alt ||
+                "Oasis team installing water pipes at a farm"
+              }
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
             />

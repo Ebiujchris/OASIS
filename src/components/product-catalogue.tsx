@@ -3,21 +3,21 @@
 import { useState } from "react";
 import { ProductCard } from "@/components/product-card";
 import { productCategories, products } from "@/data/site";
-import type { ProductCategory } from "@/data/site";
+import type { Product, ProductCategory } from "@/data/site";
 
-export function ProductCatalogue() {
+export function ProductCatalogue({ items = products }: { items?: Product[] }) {
   const [activeCategory, setActiveCategory] = useState<
     (typeof productCategories)[number]
   >("All products");
   const visibleProducts =
     activeCategory === "All products"
-      ? products
-      : products.filter((product) => product.category === activeCategory);
+      ? items
+      : items.filter((product) => product.category === activeCategory);
 
   function getCategoryCount(category: ProductCategory | "All products") {
     return category === "All products"
-      ? products.length
-      : products.filter((product) => product.category === category).length;
+      ? items.length
+      : items.filter((product) => product.category === category).length;
   }
 
   return (

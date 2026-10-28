@@ -4,13 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HeroWaterEffects } from "@/components/hero-water-effects";
-import { services, whatsappLink } from "@/data/site";
+import { whatsappLink } from "@/data/site";
+import { getSiteContent } from "@/sanity/site-content";
 
 type ServicePageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const { services } = await getSiteContent();
   return services.map((service) => ({ slug: service.slug }));
 }
 
@@ -18,6 +20,7 @@ export async function generateMetadata({
   params,
 }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
+  const { services } = await getSiteContent();
   const service = services.find((item) => item.slug === slug);
 
   if (!service) {
@@ -32,6 +35,7 @@ export async function generateMetadata({
 
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
+  const { services } = await getSiteContent();
   const service = services.find((item) => item.slug === slug);
 
   if (!service) {

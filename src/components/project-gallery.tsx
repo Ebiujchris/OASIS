@@ -10,8 +10,13 @@ import {
   fieldVideos,
 } from "@/data/site";
 import type { ProjectCategory } from "@/data/site";
+import type { ProjectPhoto } from "@/data/site";
 
-export function ProjectGallery() {
+export function ProjectGallery({
+  photos = projectGalleryPhotos,
+}: {
+  photos?: ProjectPhoto[];
+}) {
   const [activeCategory, setActiveCategory] =
     useState<(typeof projectCategories)[number]>("All projects");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -19,8 +24,8 @@ export function ProjectGallery() {
 
   const visiblePhotos =
     activeCategory === "All projects"
-      ? projectGalleryPhotos
-      : projectGalleryPhotos.filter(
+      ? photos
+      : photos.filter(
           (photo) => photo.category === activeCategory,
         );
   const selectedPhoto =
@@ -34,8 +39,8 @@ export function ProjectGallery() {
 
   function getCategoryCount(category: ProjectCategory | "All projects") {
     return category === "All projects"
-      ? projectGalleryPhotos.length
-      : projectGalleryPhotos.filter((photo) => photo.category === category)
+      ? photos.length
+      : photos.filter((photo) => photo.category === category)
           .length;
   }
 

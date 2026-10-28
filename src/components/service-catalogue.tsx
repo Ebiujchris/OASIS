@@ -16,7 +16,12 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { serviceCategories, services, whatsappLink } from "@/data/site";
+import {
+  serviceCategories,
+  services as defaultServices,
+  whatsappLink,
+} from "@/data/site";
+import type { Service } from "@/data/site";
 
 function getServiceIcon(slug: string) {
   switch (slug) {
@@ -36,15 +41,19 @@ function getServiceIcon(slug: string) {
   }
 }
 
-export function ServiceCatalogue() {
+export function ServiceCatalogue({
+  items = defaultServices,
+}: {
+  items?: Service[];
+}) {
   const [activeCategory, setActiveCategory] =
     useState<(typeof serviceCategories)[number]>("All services");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const visibleServices =
     activeCategory === "All services"
-      ? services
-      : services.filter((service) => service.category === activeCategory);
+      ? items
+      : items.filter((service) => service.category === activeCategory);
   const selectedService =
     selectedIndex === null ? null : visibleServices[selectedIndex] ?? null;
 
@@ -58,8 +67,8 @@ export function ServiceCatalogue() {
     category: (typeof serviceCategories)[number],
   ) {
     return category === "All services"
-      ? services.length
-      : services.filter((service) => service.category === category).length;
+      ? items.length
+      : items.filter((service) => service.category === category).length;
   }
 
   function changePhoto(direction: -1 | 1) {

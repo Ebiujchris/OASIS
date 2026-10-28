@@ -6,7 +6,7 @@ import { FieldGallery } from "@/components/field-gallery";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
 import { HeroWaterEffects } from "@/components/hero-water-effects";
 import { ServiceCatalogue } from "@/components/service-catalogue";
-import { projectPhotos } from "@/data/site";
+import { getSiteContent } from "@/sanity/site-content";
 
 export const metadata: Metadata = {
   title: "Irrigation Planning, Installation & Farm Support",
@@ -14,7 +14,9 @@ export const metadata: Metadata = {
     "Learn about irrigation planning, installation, water storage and product guidance from Oasis Irrigation Solutions.",
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const { services, projectPhotos } = await getSiteContent();
+
   return (
     <>
       <section className="page-hero">
@@ -52,7 +54,7 @@ export default function ServicesPage() {
               title="Practical support for your water system."
               description="Explore the service areas below. Each farm is different, so share your water source, crops, site conditions and goals to discuss a suitable next step."
             />
-            <ServiceCatalogue />
+            <ServiceCatalogue items={services} />
           </div>
         </div>
       </section>

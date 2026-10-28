@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ProductCatalogue } from "@/components/product-catalogue";
 import { SectionHeading } from "@/components/section-heading";
 import { HeroWaterEffects } from "@/components/hero-water-effects";
-import { products } from "@/data/site";
+import { getSiteContent } from "@/sanity/site-content";
 
 export const metadata: Metadata = {
   title: "Irrigation Products, Pumps & Fittings",
@@ -13,7 +13,9 @@ export const metadata: Metadata = {
     "Browse drip irrigation fittings, pumps, pipes and water storage from Oasis Irrigation Solutions in Uganda.",
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const { products } = await getSiteContent();
+
   return (
     <>
       <section className="page-hero">
@@ -59,7 +61,7 @@ export default function ProductsPage() {
               {String(products.length).padStart(2, "0")} products
             </span>
           </div>
-          <ProductCatalogue />
+          <ProductCatalogue items={products} />
         </div>
       </section>
       <section className="catalogue-note">

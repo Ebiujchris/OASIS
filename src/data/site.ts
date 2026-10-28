@@ -31,6 +31,7 @@ export type Product = {
   alt: string;
   detail: string;
   category: ProductCategory;
+  featured?: boolean;
 };
 
 export const products: Product[] = [
@@ -650,3 +651,5 @@ export const services = [
     alt: "Irrigation pipe assembly with blue valves and connected fittings",
   },
 ];
+
+export type Service = (typeof services)[number];

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ProjectGallery } from "@/components/project-gallery";
 import { WhatsAppCta } from "@/components/whatsapp-cta";
 import { HeroWaterEffects } from "@/components/hero-water-effects";
+import { getSiteContent } from "@/sanity/site-content";
 
 export const metadata: Metadata = {
   title: "Projects & Field Work",
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
     "See field photos of irrigation, water supply, solar equipment and storage systems featured by Oasis Irrigation Solutions.",
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const { projectPhotos } = await getSiteContent();
+
   return (
     <>
       <section className="page-hero">
@@ -41,7 +44,7 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
-      <ProjectGallery />
+      <ProjectGallery photos={projectPhotos} />
     </>
   );
 }
