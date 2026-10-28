@@ -8,7 +8,11 @@ export const company = {
 };
 
 export function whatsappLink(message: string) {
-  return `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(message)}`;
+  return whatsappLinkForNumber(company.whatsapp, message);
+}
+
+export function whatsappLinkForNumber(number: string, message: string) {
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
 export const productCategories = [

@@ -1,16 +1,23 @@
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
-import { whatsappLink } from "@/data/site";
+import { company, whatsappLinkForNumber } from "@/data/site";
 
 type WhatsAppCtaProps = {
   compact?: boolean;
+  whatsappNumber?: string;
 };
 
-export function WhatsAppCta({ compact = false }: WhatsAppCtaProps) {
+export function WhatsAppCta({
+  compact = false,
+  whatsappNumber = company.whatsapp,
+}: WhatsAppCtaProps) {
   return (
     <Link
       className={`button${compact ? " button-small" : ""}`}
-      href={whatsappLink("Hello Oasis, I would like to discuss an irrigation solution for my farm.")}
+      href={whatsappLinkForNumber(
+        whatsappNumber,
+        "Hello Oasis, I would like to discuss an irrigation solution for my farm.",
+      )}
       target="_blank"
       rel="noreferrer"
     >

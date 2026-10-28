@@ -48,14 +48,20 @@ and uploads the referenced images; it does not overwrite existing Sanity
 content. Sign in with `npx sanity login` first if the CLI requests
 authentication. Never put a Sanity API token in the repository.
 
-The homepage, product catalogue, services, and project photos are managed in
-Sanity. The dataset is public so the static website can read its published
-marketing content; do not store private information there.
+The homepage, About and Contact pages, product catalogue, services, and
+field/project photos are managed in Sanity. The dataset is public so the
+static website can read its published marketing content; do not store private
+information there.
 
-This site is a static export. A Sanity webhook is configured to trigger a
-production deployment of the Vercel `main` branch when published homepage,
-product, service, or field/project-photo content changes. The CMS code must be
-merged to `main` before those deployments can include Sanity content.
+The About and Contact page documents were added after the initial content
+import. To add them to an existing dataset, run `npm run seed-pages` from
+`studio/`; this creates only missing page documents and leaves published edits
+unchanged.
+
+This site is a static export. A Sanity webhook triggers a production
+deployment of the Vercel `main` branch when published CMS content changes.
+The CMS code must be merged to `main` before those deployments can include
+Sanity content.
 
 To build locally:
 
@@ -67,10 +73,20 @@ The generated site is in `out/`.
 
 ### Vercel publishing hook
 
-The Sanity webhook targets the Vercel deploy hook for the `main` branch, filters
-for `homePage`, `product`, `service`, and `sitePhoto` documents, and triggers on
-create, update, and delete events. If the Vercel hook is rotated, update its URL
-in the Sanity project under **API → Webhooks**. Treat the deploy-hook URL like a
+The existing Sanity webhook targets the Vercel deploy hook for the `main`
+branch and triggers on create, update, and delete. Its document filter needs
+to include `aboutPage` and `contactPage` alongside `homePage`, `product`,
+`service`, and `sitePhoto` for edits to the newly managed pages to trigger
+automatic rebuilds. In Sanity, open **API → Webhooks**, edit the Vercel hook,
+and set the filter to:
+
+```groq
+_type in ["homePage", "aboutPage", "contactPage", "product", "service", "sitePhoto"]
+```
+
+Until that filter is updated, manually trigger a Vercel production deployment
+after publishing About or Contact edits. If the Vercel hook is rotated, update
+its URL in the same Sanity webhook settings. Treat the deploy-hook URL like a
 password; it is stored in Sanity and must not be committed or shared.
 
 ## Update code-based details

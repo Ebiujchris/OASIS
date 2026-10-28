@@ -48,8 +48,70 @@ export type HomePageContent = {
   ctaImage?: SanityImage;
 };
 
+export type AboutPageContent = {
+  metaTitle?: string;
+  metaDescription?: string;
+  heroEyebrow?: string;
+  heroTitle?: string;
+  heroLead?: string;
+  heroImage?: SanityImage;
+  heroImageCaption?: string;
+  storyEyebrow?: string;
+  storyTitle?: string;
+  storyDescription?: string;
+  storyParagraphs?: string[];
+  storyImageLarge?: SanityImage;
+  storyImageSmall?: SanityImage;
+  storyImageLabel?: string;
+  storyImageNote?: string;
+  journeyEyebrow?: string;
+  journeyTitle?: string;
+  journeyDescription?: string;
+  journeySteps?: { title: string; description: string }[];
+  journeyNote?: string;
+  journeyLink?: string;
+  servicesEyebrow?: string;
+  servicesTitle?: string;
+  servicesDescription?: string;
+  servicesLink?: string;
+  coverageTitle?: string;
+  coverageDescription?: string;
+  coverageLink?: string;
+  valuesEyebrow?: string;
+  valuesTitle?: string;
+  values?: { title: string; description: string }[];
+  ctaEyebrow?: string;
+  ctaTitle?: string;
+  ctaDescription?: string;
+};
+
+export type ContactPageContent = {
+  metaTitle?: string;
+  metaDescription?: string;
+  heroEyebrow?: string;
+  heroTitle?: string;
+  heroLead?: string;
+  heroImage?: SanityImage;
+  heroImageCaption?: string;
+  formTitle?: string;
+  formDescription?: string;
+  formPrivacyNote?: string;
+  contactEyebrow?: string;
+  contactTitle?: string;
+  contactDescription?: string;
+  phoneDisplay?: string;
+  phone?: string;
+  whatsapp?: string;
+  locationsTitle?: string;
+  locationsDescription?: string;
+  locations?: string[];
+  servicesLink?: string;
+};
+
 type SanitySiteContent = {
   homePage: HomePageContent | null;
+  aboutPage: AboutPageContent | null;
+  contactPage: ContactPageContent | null;
   products: SanityProduct[];
   services: SanityService[];
   fieldPhotos: SanityPhoto[];
@@ -67,6 +129,26 @@ const siteContentQuery = `{
     "heroImage": {"url": heroImage.asset->url, "alt": heroImage.alt},
     "approachImage": {"url": approachImage.asset->url, "alt": approachImage.alt},
     "ctaImage": {"url": ctaImage.asset->url, "alt": ctaImage.alt}
+  },
+  "aboutPage": *[_type == "aboutPage" && _id == "aboutPage"][0]{
+    metaTitle, metaDescription, heroEyebrow, heroTitle, heroLead,
+    heroImageCaption, storyEyebrow, storyTitle, storyDescription,
+    storyParagraphs, storyImageLabel, storyImageNote,
+    journeyEyebrow, journeyTitle, journeyDescription, journeySteps[]{title, description},
+    journeyNote, journeyLink, servicesEyebrow, servicesTitle, servicesDescription,
+    servicesLink, coverageTitle, coverageDescription, coverageLink,
+    valuesEyebrow, valuesTitle, values[]{title, description},
+    ctaEyebrow, ctaTitle, ctaDescription,
+    "heroImage": {"url": heroImage.asset->url, "alt": heroImage.alt},
+    "storyImageLarge": {"url": storyImageLarge.asset->url, "alt": storyImageLarge.alt},
+    "storyImageSmall": {"url": storyImageSmall.asset->url, "alt": storyImageSmall.alt}
+  },
+  "contactPage": *[_type == "contactPage" && _id == "contactPage"][0]{
+    metaTitle, metaDescription, heroEyebrow, heroTitle, heroLead,
+    heroImageCaption, formTitle, formDescription, formPrivacyNote,
+    contactEyebrow, contactTitle, contactDescription, phoneDisplay, phone, whatsapp,
+    locationsTitle, locationsDescription, locations, servicesLink,
+    "heroImage": {"url": heroImage.asset->url, "alt": heroImage.alt}
   },
   "products": *[_type == "product"] | order(sortOrder asc){
     name, description, detail, category, sortOrder, featured,
@@ -109,6 +191,8 @@ async function fetchSanityContent(): Promise<SanitySiteContent> {
 
   return {
     homePage: payload.result.homePage ?? null,
+    aboutPage: payload.result.aboutPage ?? null,
+    contactPage: payload.result.contactPage ?? null,
     products: payload.result.products ?? [],
     services: payload.result.services ?? [],
     fieldPhotos: payload.result.fieldPhotos ?? [],
@@ -175,6 +259,8 @@ export async function getSiteContent() {
       }));
   return {
     homePage: content.homePage,
+    aboutPage: content.aboutPage,
+    contactPage: content.contactPage,
     products: resolvedProducts,
     services: content.services.length
       ? mapServices(content.services)

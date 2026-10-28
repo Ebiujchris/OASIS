@@ -3,7 +3,7 @@
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { whatsappLink } from "@/data/site";
+import { company, whatsappLinkForNumber } from "@/data/site";
 
 const contactTopics = [
   {
@@ -38,7 +38,19 @@ const contactTopics = [
   },
 ] as const;
 
-export function ContactForm() {
+type ContactFormProps = {
+  whatsappNumber?: string;
+  title?: string;
+  description?: string;
+  privacyNote?: string;
+};
+
+export function ContactForm({
+  whatsappNumber = company.whatsapp,
+  title = "Tell us about your project",
+  description = "Choose a topic, then share only the details you know.",
+  privacyNote = "Your details are not stored on this website.",
+}: ContactFormProps) {
   const [selectedTopic, setSelectedTopic] = useState("");
   const [previewMessage, setPreviewMessage] = useState("");
   const selectedTopicDetails = contactTopics.find(
@@ -70,8 +82,8 @@ export function ContactForm() {
       <div className="form-heading">
         <span className="form-icon"><MessageCircle size={18} aria-hidden="true" /></span>
         <div>
-          <h2>Tell us about your project</h2>
-          <p>Choose a topic, then share only the details you know.</p>
+          <h2>{title}</h2>
+          <p>{description}</p>
         </div>
       </div>
       <div className="form-grid">
@@ -131,7 +143,7 @@ export function ContactForm() {
         Preview WhatsApp message <ArrowUpRight size={17} aria-hidden="true" />
       </button>
       <p className="form-privacy">
-        Your details are not stored on this website.
+        {privacyNote}
       </p>
       {previewMessage && (
         <section className="contact-message-preview" aria-labelledby="contact-preview-title">
@@ -151,7 +163,7 @@ export function ContactForm() {
           <pre>{previewMessage}</pre>
           <a
             className="button form-submit contact-preview-send"
-            href={whatsappLink(previewMessage)}
+            href={whatsappLinkForNumber(whatsappNumber, previewMessage)}
             target="_blank"
             rel="noreferrer"
           >
