@@ -7,6 +7,7 @@ import {
   projectGalleryPhotos,
   services,
 } from "../../src/data/site";
+import { homepageDefaults } from "./homepage-defaults";
 
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID || "jnwipq1i";
 const dataset = process.env.SANITY_STUDIO_DATASET || "production";
@@ -67,18 +68,7 @@ async function imageValue(src: string, alt: string) {
 const homePage = {
   _id: "homePage",
   _type: "homePage",
-  heroTitle: "Water your crops the smart way.",
-  heroLead:
-    "Drip irrigation, boreholes, solar pumps and full installation support for farms in Kampala, Gulu and across Uganda.",
-  productsHeading: "Quality equipment for every farm.",
-  approachHeading: "Good irrigation starts with good questions.",
-  approachBody:
-    "Your crops, water source and field layout all shape the right system. We start every project by understanding your farm before recommending any equipment.",
-  servicesHeading: "Complete irrigation support.",
-  galleryHeading: "Projects across Uganda.",
-  ctaHeading: "Ready to make every drop count?",
-  ctaLead:
-    "Tell us about your farm and water source. We’ll help you explore an irrigation approach that fits your needs.",
+  ...homepageDefaults,
 };
 
 const docs: { _id: string; _type: string; [key: string]: unknown }[] = [

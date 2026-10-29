@@ -49,9 +49,28 @@ content. Sign in with `npx sanity login` first if the CLI requests
 authentication. Never put a Sanity API token in the repository.
 
 The homepage, About and Contact pages, product catalogue, services, and
-field/project photos are managed in Sanity. The dataset is public so the
-static website can read its published marketing content; do not store private
-information there.
+field/project photos are managed in Sanity. Homepage content includes its
+section copy, buttons, process steps, FAQs, and image captions. The hero,
+approach, and closing call-to-action images are on the Homepage content
+document; product and service card images are on their respective entries;
+homepage gallery images are managed under Field & project photos. The dataset
+is public so the static website can read its published marketing content; do
+not store private information there.
+
+To add the expanded homepage fields to an existing dataset, run this from
+`studio/`:
+
+```bash
+npm run seed-homepage
+```
+
+It fills in fields that are missing while preserving existing homepage edits.
+After the updated code is available in `studio/`, publish the new editor
+schema to the hosted Studio with:
+
+```bash
+npm run deploy
+```
 
 The About and Contact page documents were added after the initial content
 import. To add them to an existing dataset, run `npm run seed-pages` from

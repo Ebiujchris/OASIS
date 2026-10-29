@@ -18,11 +18,19 @@ import Link from "next/link";
 import { company, whatsappLink } from "@/data/site";
 import { getSiteContent } from "@/sanity/site-content";
 
-export const metadata: Metadata = {
+const defaultMetadata: Metadata = {
   title: "Oasis Irrigation Solutions | Smart Irrigation for Uganda",
   description:
     "Practical drip irrigation products, expert installation and farm support for growers across Uganda. Offices in Kampala and Gulu.",
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { homePage } = await getSiteContent();
+  return {
+    title: homePage?.metaTitle || defaultMetadata.title,
+    description: homePage?.metaDescription || defaultMetadata.description,
+  };
+}
 
 const howItWorks = [
   {
@@ -101,10 +109,33 @@ const pillars = [
   },
 ];
 
+const tickerItems = [
+  "Drip Irrigation",
+  "Solar Pumps",
+  "Boreholes",
+  "Water Storage",
+  "Pipe Fittings",
+  "Valves & Fittings",
+  "Installation",
+  "Repairs",
+];
+
 export default async function HomePage() {
   const content = await getSiteContent();
   const homePage = content.homePage;
   const featuredProducts = content.products.filter((product) => product.featured);
+  const homepageTickerItems = homePage?.tickerItems ?? tickerItems;
+  const homepagePillars = homePage?.pillars ?? pillars;
+  const homepageSteps = homePage?.processSteps ?? howItWorks;
+  const homepageFaqs = homePage?.faqs ?? frequentlyAskedQuestions;
+  const heroPhone =
+    homePage?.heroPhoneDisplay?.replace(/[^\d+]/g, "") || company.phone;
+  const approachPoints = homePage?.approachPoints ?? [
+    "Crop type, spacing and field size",
+    "Water source — borehole, pond or mains",
+    "Budget and phasing of installation",
+    "Long-term maintenance support",
+  ];
 
   return (
     <div className="hp">
@@ -144,7 +175,7 @@ export default async function HomePage() {
           <div className="hp-hero__copy">
             <span className="hp-chip">
               <span className="hp-chip__dot" />
-              Irrigation solutions across Uganda
+              {homePage?.heroEyebrow || "Irrigation solutions across Uganda"}
             </span>
             <h1 className="hp-hero__h1">
               {homePage?.heroTitle || (
@@ -160,20 +191,20 @@ export default async function HomePage() {
             </p>
             <div className="hp-hero__ctas">
               <Link
-                href={whatsappLink("Hello Oasis, I'd like a free quote for my farm.")}
+                href={whatsappLink(homePage?.heroWhatsappMessage || "Hello Oasis, I'd like a free quote for my farm.")}
                 target="_blank" rel="noreferrer"
                 className="hp-cta-btn hp-cta-btn--primary"
               >
-                <MessageCircle size={18} /> Get a free quote
+                <MessageCircle size={18} /> {homePage?.heroPrimaryCta || "Get a free quote"}
               </Link>
               <Link href="/products/" className="hp-cta-btn hp-cta-btn--outline">
-                Explore products <ArrowRight size={17} />
+                {homePage?.heroSecondaryCta || "Explore products"} <ArrowRight size={17} />
               </Link>
             </div>
             <div className="hp-hero__meta">
-              <span><MapPin size={13} /> Kampala &amp; Gulu</span>
+              <span><MapPin size={13} /> {homePage?.heroLocations || "Kampala & Gulu"}</span>
               <span className="hp-hero__meta-sep" />
-              <a href={`tel:${company.phone}`}><Phone size={13} /> {company.phoneDisplay}</a>
+              <a href={`tel:${heroPhone}`}><Phone size={13} /> {homePage?.heroPhoneDisplay || company.phoneDisplay}</a>
             </div>
           </div>
 
@@ -195,8 +226,8 @@ export default async function HomePage() {
                 <Droplets size={18} aria-hidden="true" />
               </span>
               <span>
-                <strong>Watering crops in the field</strong>
-                <small>Practical irrigation support across Uganda</small>
+                <strong>{homePage?.heroImageCaption || "Watering crops in the field"}</strong>
+                <small>{homePage?.heroImageNote || "Practical irrigation support across Uganda"}</small>
               </span>
             </figcaption>
           </figure>
@@ -208,10 +239,7 @@ export default async function HomePage() {
       ══════════════════════════════════════════ */}
       <div className="hp-ticker">
         <div className="hp-ticker__track">
-          {["Drip Irrigation", "Solar Pumps", "Boreholes", "Water Storage",
-            "Pipe Fittings", "Valves & Fittings", "Installation", "Repairs",
-            "Drip Irrigation", "Solar Pumps", "Boreholes", "Water Storage",
-            "Pipe Fittings", "Valves & Fittings", "Installation", "Repairs"].map((t, i) => (
+          {[...homepageTickerItems, ...homepageTickerItems].map((t, i) => (
             <span key={i} className="hp-ticker__item">
               <Droplets size={12} />
               {t}
@@ -226,12 +254,12 @@ export default async function HomePage() {
       <section className="hp-section hp-pillars">
         <div className="page-width">
           <div className="hp-sec-head">
-            <p className="hp-label">What we cover</p>
-            <h2>Everything your farm needs.</h2>
+            <p className="hp-label">{homePage?.pillarsEyebrow || "What we cover"}</p>
+            <h2>{homePage?.pillarsHeading || "Everything your farm needs."}</h2>
           </div>
           <div className="hp-pillars__grid">
-            {pillars.map((p, i) => {
-              const Icon = p.icon;
+            {homepagePillars.map((p, i) => {
+              const Icon = pillars[i % pillars.length].icon;
               return (
                 <div
                   key={`pillar-${i}`}
@@ -248,11 +276,11 @@ export default async function HomePage() {
           <div className="hp-coverage-note">
             <MapPin size={21} aria-hidden="true" />
             <div>
-              <strong>Serving growers throughout Uganda</strong>
-              <span>Our offices are in Kampala and Gulu.</span>
+              <strong>{homePage?.coverageTitle || "Serving growers throughout Uganda"}</strong>
+              <span>{homePage?.coverageDescription || "Our offices are in Kampala and Gulu."}</span>
             </div>
             <Link href="/contact/">
-              Talk to our team <ArrowRight size={15} aria-hidden="true" />
+              {homePage?.coverageLinkLabel || "Talk to our team"} <ArrowRight size={15} aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -266,19 +294,19 @@ export default async function HomePage() {
           <div className="hp-how__layout">
             <div className="hp-how__process">
               <div className="hp-how__heading">
-                <p className="hp-label">Simple process</p>
-                <h2>From first message to working system.</h2>
+                <p className="hp-label">{homePage?.processEyebrow || "Simple process"}</p>
+                <h2>{homePage?.processHeading || "From first message to working system."}</h2>
               </div>
               <div className="hp-how__grid">
-                {howItWorks.map((step, i) => {
-                  const Icon = step.icon;
+                {homepageSteps.map((step, i) => {
+                  const Icon = howItWorks[i % howItWorks.length].icon;
                   return (
-                    <div key={step.step} className="hp-how__card" style={{ "--i": i } as React.CSSProperties}>
+                    <div key={`${step.step}-${i}`} className="hp-how__card" style={{ "--i": i } as React.CSSProperties}>
                       <span className="hp-how__num">{step.step}</span>
                       <span className="hp-how__icon"><Icon size={20} /></span>
                       <h3>{step.title}</h3>
                       <p>{step.body}</p>
-                      {i < howItWorks.length - 1 && (
+                      {i < homepageSteps.length - 1 && (
                         <span className="hp-how__arrow" aria-hidden="true" />
                       )}
                     </div>
@@ -287,22 +315,22 @@ export default async function HomePage() {
               </div>
               <div className="hp-how__cta">
                 <Link
-                  href={whatsappLink("Hello Oasis, I'd like to discuss an irrigation system for my farm.")}
+                  href={whatsappLink(homePage?.processWhatsappMessage || "Hello Oasis, I'd like to discuss an irrigation system for my farm.")}
                   target="_blank" rel="noreferrer"
                   className="hp-cta-btn hp-cta-btn--primary"
                 >
-                  <MessageCircle size={18} /> Start the conversation
+                  <MessageCircle size={18} /> {homePage?.processCtaLabel || "Start the conversation"}
                 </Link>
               </div>
             </div>
             <div className="hp-faq">
               <div className="hp-how__heading">
-                <p className="hp-label">Quick answers</p>
-                <h2>Frequently asked questions.</h2>
+                <p className="hp-label">{homePage?.faqEyebrow || "Quick answers"}</p>
+                <h2>{homePage?.faqHeading || "Frequently asked questions."}</h2>
               </div>
               <div className="hp-faq__list">
-                {frequentlyAskedQuestions.map((item) => (
-                  <details className="hp-faq__item" key={item.question}>
+                {homepageFaqs.map((item, index) => (
+                  <details className="hp-faq__item" key={`${item.question}-${index}`}>
                     <summary>
                       <span className="hp-faq__question">{item.question}</span>
                       <span className="hp-faq__toggle" aria-hidden="true" />
@@ -327,11 +355,11 @@ export default async function HomePage() {
         <div className="page-width">
           <div className="hp-sec-head hp-sec-head--row">
             <div>
-              <p className="hp-label">Products</p>
+              <p className="hp-label">{homePage?.productsEyebrow || "Products"}</p>
               <h2>{homePage?.productsHeading || "Quality equipment for every farm."}</h2>
             </div>
             <Link href="/products/" className="hp-text-link">
-              View all products <ArrowUpRight size={15} />
+              {homePage?.productsLinkLabel || "View all products"} <ArrowUpRight size={15} />
             </Link>
           </div>
           <div className="hp-products__grid">
@@ -357,7 +385,7 @@ export default async function HomePage() {
                     target="_blank" rel="noreferrer"
                     className="hp-text-link hp-text-link--sm"
                   >
-                    Ask about this <ArrowUpRight size={13} />
+                    {homePage?.productsCardLinkLabel || "Ask about this"} <ArrowUpRight size={13} />
                   </Link>
                 </div>
               </article>
@@ -384,28 +412,27 @@ export default async function HomePage() {
             className="hp-split__photo"
           />
           <div className="hp-split__photo-label">
-            <span>Solar water system · Uganda</span>
+            <span>{homePage?.approachImageCaption || "Solar water system · Uganda"}</span>
           </div>
         </div>
         <div className="hp-split__copy">
-          <p className="hp-label">The Oasis approach</p>
+          <p className="hp-label">{homePage?.approachEyebrow || "The Oasis approach"}</p>
           <h2>{homePage?.approachHeading || "Good irrigation starts with good questions."}</h2>
           <p>
             {homePage?.approachBody ||
               "Your crops, water source and field layout all shape the right system. We start every project by understanding your farm before recommending any equipment."}
           </p>
           <ul className="hp-split__list">
-            <li><span />Crop type, spacing and field size</li>
-            <li><span />Water source — borehole, pond or mains</li>
-            <li><span />Budget and phasing of installation</li>
-            <li><span />Long-term maintenance support</li>
+            {approachPoints.map((point, index) => (
+              <li key={`${point}-${index}`}><span />{point}</li>
+            ))}
           </ul>
           <div className="hp-split__ctas">
             <Link href="/contact/" className="hp-cta-btn hp-cta-btn--primary">
-              Start a conversation <ArrowUpRight size={17} />
+              {homePage?.approachPrimaryCta || "Start a conversation"} <ArrowUpRight size={17} />
             </Link>
             <Link href="/services/" className="hp-cta-btn hp-cta-btn--text">
-              Our services <ArrowRight size={17} />
+              {homePage?.approachSecondaryCta || "Our services"} <ArrowRight size={17} />
             </Link>
           </div>
         </div>
@@ -418,11 +445,11 @@ export default async function HomePage() {
         <div className="page-width">
           <div className="hp-sec-head hp-sec-head--row">
             <div>
-              <p className="hp-label">Services</p>
+              <p className="hp-label">{homePage?.servicesEyebrow || "Services"}</p>
               <h2>{homePage?.servicesHeading || "Complete irrigation support."}</h2>
             </div>
             <Link href="/services/" className="hp-text-link">
-              All services <ArrowUpRight size={15} />
+              {homePage?.servicesLinkLabel || "All services"} <ArrowUpRight size={15} />
             </Link>
           </div>
           <div className="hp-svc-grid">
@@ -458,11 +485,11 @@ export default async function HomePage() {
         <div className="page-width">
           <div className="hp-sec-head hp-sec-head--row">
             <div>
-              <p className="hp-label">Field work</p>
+              <p className="hp-label">{homePage?.galleryEyebrow || "Field work"}</p>
               <h2>{homePage?.galleryHeading || "Projects across Uganda."}</h2>
             </div>
             <Link href="/projects/" className="hp-text-link">
-              See all projects <ArrowUpRight size={15} />
+              {homePage?.galleryLinkLabel || "See all projects"} <ArrowUpRight size={15} />
             </Link>
           </div>
           <div className="hp-gallery__grid">
@@ -490,7 +517,7 @@ export default async function HomePage() {
       <section className="hp-final-cta">
         <div className="page-width hp-final-cta__inner">
           <div className="hp-final-cta__body">
-            <p className="hp-label">Let’s plan your next step</p>
+            <p className="hp-label">{homePage?.ctaEyebrow || "Let’s plan your next step"}</p>
             <h2>{homePage?.ctaHeading || "Ready to make every drop count?"}</h2>
             <p className="hp-final-cta__lead">
               {homePage?.ctaLead ||
@@ -498,19 +525,19 @@ export default async function HomePage() {
             </p>
             <div className="hp-final-cta__actions">
               <Link
-                href={whatsappLink("Hello Oasis, I'd like to discuss an irrigation project for my farm.")}
+                href={whatsappLink(homePage?.ctaWhatsappMessage || "Hello Oasis, I'd like to discuss an irrigation project for my farm.")}
                 target="_blank" rel="noreferrer"
                 className="hp-cta-btn hp-cta-btn--primary"
               >
-                <MessageCircle size={18} /> Chat on WhatsApp
+                <MessageCircle size={18} /> {homePage?.ctaPrimaryCta || "Chat on WhatsApp"}
               </Link>
               <Link href="/contact/" className="hp-cta-btn hp-cta-btn--outline">
-                Contact us <ArrowRight size={17} />
+                {homePage?.ctaSecondaryCta || "Contact us"} <ArrowRight size={17} />
               </Link>
             </div>
             <div className="hp-final-cta__locations">
               <MapPin size={15} aria-hidden="true" />
-              <span>Serving growers throughout Uganda · Offices in Kampala and Gulu</span>
+              <span>{homePage?.ctaLocationsLabel || "Serving growers throughout Uganda · Offices in Kampala and Gulu"}</span>
             </div>
           </div>
           <figure className="hp-final-cta__visual">
@@ -527,8 +554,8 @@ export default async function HomePage() {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
             <figcaption>
-              <span>From planning to installation</span>
-              <strong>Practical support, built around your farm.</strong>
+              <span>{homePage?.ctaImageCaption || "From planning to installation"}</span>
+              <strong>{homePage?.ctaImageNote || "Practical support, built around your farm."}</strong>
             </figcaption>
           </figure>
         </div>

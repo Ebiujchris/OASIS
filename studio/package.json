@@ -8,7 +8,8 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "seed": "sanity exec scripts/seed.ts --with-user-token",
-    "seed-pages": "sanity exec scripts/seed-pages.ts --with-user-token"
+    "seed-pages": "sanity exec scripts/seed-pages.ts --with-user-token",
+    "seed-homepage": "sanity exec scripts/seed-homepage.ts --with-user-token"
   },
   "dependencies": {
     "@sanity/vision": "^6.0.64",

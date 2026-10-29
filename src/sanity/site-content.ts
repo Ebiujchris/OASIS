@@ -34,18 +34,62 @@ type SanityPhoto = Omit<ProjectPhoto, "image" | "alt"> & {
 };
 
 export type HomePageContent = {
+  metaTitle?: string;
+  metaDescription?: string;
+  heroEyebrow?: string;
   heroTitle?: string;
   heroLead?: string;
   heroImage?: SanityImage;
+  heroImageCaption?: string;
+  heroImageNote?: string;
+  heroPrimaryCta?: string;
+  heroSecondaryCta?: string;
+  heroWhatsappMessage?: string;
+  heroLocations?: string;
+  heroPhoneDisplay?: string;
+  tickerItems?: string[];
+  pillarsEyebrow?: string;
+  pillarsHeading?: string;
+  pillars?: { label: string; text: string }[];
+  coverageTitle?: string;
+  coverageDescription?: string;
+  coverageLinkLabel?: string;
+  processEyebrow?: string;
+  processHeading?: string;
+  processSteps?: { step: string; title: string; body: string }[];
+  processCtaLabel?: string;
+  processWhatsappMessage?: string;
+  faqEyebrow?: string;
+  faqHeading?: string;
+  faqs?: { question: string; answer: string }[];
+  productsEyebrow?: string;
   productsHeading?: string;
+  productsLinkLabel?: string;
+  productsCardLinkLabel?: string;
+  approachEyebrow?: string;
   approachHeading?: string;
   approachBody?: string;
   approachImage?: SanityImage;
+  approachImageCaption?: string;
+  approachPoints?: string[];
+  approachPrimaryCta?: string;
+  approachSecondaryCta?: string;
+  servicesEyebrow?: string;
+  servicesLinkLabel?: string;
   servicesHeading?: string;
+  galleryEyebrow?: string;
   galleryHeading?: string;
+  galleryLinkLabel?: string;
+  ctaEyebrow?: string;
   ctaHeading?: string;
   ctaLead?: string;
   ctaImage?: SanityImage;
+  ctaImageCaption?: string;
+  ctaImageNote?: string;
+  ctaPrimaryCta?: string;
+  ctaSecondaryCta?: string;
+  ctaWhatsappMessage?: string;
+  ctaLocationsLabel?: string;
 };
 
 export type AboutPageContent = {
@@ -124,8 +168,21 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
 
 const siteContentQuery = `{
   "homePage": *[_type == "homePage" && _id == "homePage"][0]{
-    heroTitle, heroLead, productsHeading, approachHeading, approachBody,
-    servicesHeading, galleryHeading, ctaHeading, ctaLead,
+    metaTitle, metaDescription, heroEyebrow, heroTitle, heroLead,
+    heroImageCaption, heroImageNote, heroPrimaryCta, heroSecondaryCta,
+    heroWhatsappMessage, heroLocations, heroPhoneDisplay, tickerItems,
+    pillarsEyebrow, pillarsHeading, pillars[]{label, text},
+    coverageTitle, coverageDescription, coverageLinkLabel,
+    processEyebrow, processHeading, processSteps[]{step, title, body},
+    processCtaLabel, processWhatsappMessage, faqEyebrow, faqHeading,
+    faqs[]{question, answer}, productsEyebrow, productsHeading, productsLinkLabel,
+    productsCardLinkLabel,
+    approachEyebrow, approachHeading, approachBody, approachImageCaption,
+    approachPoints, approachPrimaryCta, approachSecondaryCta,
+    servicesEyebrow, servicesHeading, servicesLinkLabel,
+    galleryEyebrow, galleryHeading, galleryLinkLabel,
+    ctaEyebrow, ctaHeading, ctaLead, ctaImageCaption, ctaImageNote,
+    ctaPrimaryCta, ctaSecondaryCta, ctaWhatsappMessage, ctaLocationsLabel,
     "heroImage": {"url": heroImage.asset->url, "alt": heroImage.alt},
     "approachImage": {"url": approachImage.asset->url, "alt": approachImage.alt},
     "ctaImage": {"url": ctaImage.asset->url, "alt": ctaImage.alt}
