@@ -5279,8 +5279,8 @@ img {
   position:relative;z-index:2;
   display:grid;
   width:100%;
-  grid-template-columns:minmax(0, 0.94fr) minmax(0, 1.06fr);
-  gap:clamp(38px, 6vw, 86px);
+  grid-template-columns:minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap:clamp(38px, 5vw, 72px);
   align-items:center;
   padding-top:clamp(48px, 6vw, 78px);
   padding-bottom:clamp(54px, 7vw, 88px);
@@ -5328,7 +5328,7 @@ img {
 .hp-hero__visual {
   position:relative;
   min-width:0;
-  height:clamp(380px, 43vw, 570px);
+  height:clamp(420px, 48vw, 620px);
   margin:0;
   overflow:hidden;
   background:#dce5d7;
@@ -5436,10 +5436,11 @@ img {
 .hp-text-link:hover { gap:11px }
 .hp-text-link--sm { font-size:13px;margin-top:14px }
 .hp-badge {
-  display:inline-block;padding:3px 10px;
-  background:var(--sage);color:var(--bronze);
+  display:inline-block;padding:4px 11px;
+  background:var(--green-light);color:var(--green);
   font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
   border-radius:4px;margin-bottom:10px;
+  border:1px solid rgba(33,77,43,.12);
 }
 
 /* ── PILLARS ── */
@@ -5710,6 +5711,53 @@ img {
 }
 .hp-split__ctas { display:flex;flex-wrap:wrap;gap:14px }
 
+/* ── WHY OASIS ── */
+.hp-why { background:var(--cream) }
+.hp-why__grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
+.hp-why__card {
+  padding:34px 28px 32px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:12px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  animation:hp-up .6s calc(var(--i,0) * 80ms) ease both;
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+.hp-why__card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 16px 40px rgba(33,77,43,.09);
+  border-color:#b8cebc;
+}
+.hp-why__icon {
+  display:grid;
+  width:48px;height:48px;
+  place-items:center;
+  background:var(--green-light);
+  color:var(--green);
+  border-radius:10px;
+  flex-shrink:0;
+}
+.hp-why__card h3 {
+  font-size:17px;font-weight:750;color:var(--green-deep);
+  letter-spacing:-.02em;margin:0;
+}
+.hp-why__card p {
+  font-size:15px;color:var(--muted);line-height:1.7;margin:0;
+}
+@media (max-width:900px) {
+  .hp-why__grid { grid-template-columns:repeat(2,1fr) }
+}
+@media (max-width:480px) {
+  .hp-why__grid { grid-template-columns:1fr }
+}
+
+
 /* ── SERVICES ── */
 .hp-services { background:var(--sage) }
 .hp-svc-grid {
@@ -5876,7 +5924,7 @@ img {
 @media (max-width:1100px) {
   .hp-hero__body { grid-template-columns:minmax(0, 1fr) minmax(0, .9fr);gap:32px }
   .hp-hero__h1 { font-size:clamp(44px, 5.3vw, 66px) }
-  .hp-hero__visual { height:clamp(360px, 43vw, 500px) }
+  .hp-hero__visual { height:clamp(380px, 46vw, 540px) }
   .hp-pillars__grid { grid-template-columns:repeat(2,1fr) }
   .hp-products__grid { grid-template-columns:repeat(2,1fr) }
   .hp-split { grid-template-columns:1fr }

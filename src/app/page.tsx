@@ -9,8 +9,10 @@ import {
   MessageCircle,
   Phone,
   ShieldCheck,
+  Sprout,
   Sun,
   Truck,
+  Users,
   Wrench,
 } from "lucide-react";
 import Image from "next/image";
@@ -65,6 +67,11 @@ const frequentlyAskedQuestions = [
       "Yes. We start by understanding your crops, field layout and water source, then discuss suitable products, planning and installation support.",
   },
   {
+    question: "Which crops do you typically work with?",
+    answer:
+      "We work with a wide range of Ugandan crops including maize, vegetables, horticulture, coffee, and greenhouse operations. Drip irrigation suits most crop types — share what you grow and we will advise on the right approach.",
+  },
+  {
     question: "Do you support farms outside Kampala and Gulu?",
     answer:
       "Oasis serves growers throughout Uganda. Contact the team with your location and project details to discuss the support available for your farm.",
@@ -73,6 +80,29 @@ const frequentlyAskedQuestions = [
     question: "Can I ask about one product or service?",
     answer:
       "Absolutely. You can enquire about a specific product or service, or describe your project if you are still deciding what you need.",
+  },
+];
+
+const whyOasis = [
+  {
+    icon: Sprout,
+    title: "Farm-focused",
+    body: "Every system is designed around your crops, field layout and water source — not a generic catalogue recommendation.",
+  },
+  {
+    icon: Wrench,
+    title: "Practical expertise",
+    body: "We support you from the first question through planning, installation and long-term maintenance.",
+  },
+  {
+    icon: Droplets,
+    title: "Water-conscious",
+    body: "Drip systems and efficient equipment help your farm use the water you have — less waste, more reliable yield.",
+  },
+  {
+    icon: Users,
+    title: "Local support",
+    body: "Based in Kampala and Gulu, we work with growers across Uganda and understand local farm conditions.",
   },
 ];
 
@@ -131,10 +161,10 @@ export default async function HomePage() {
   const heroPhone =
     homePage?.heroPhoneDisplay?.replace(/[^\d+]/g, "") || company.phone;
   const approachPoints = homePage?.approachPoints ?? [
-    "Crop type, spacing and field size",
-    "Water source — borehole, pond or mains",
-    "Budget and phasing of installation",
-    "Long-term maintenance support",
+    "Crop type and spacing — maize, horticulture, coffee, greenhouse or other",
+    "Water source — borehole, pond, river or rainwater harvesting",
+    "Field size, terrain and pipe-route options",
+    "Budget, phasing and long-term maintenance support",
   ];
 
   return (
@@ -191,11 +221,11 @@ export default async function HomePage() {
             </p>
             <div className="hp-hero__ctas">
               <Link
-                href={whatsappLink(homePage?.heroWhatsappMessage || "Hello Oasis, I'd like a free quote for my farm.")}
+                href={whatsappLink(homePage?.heroWhatsappMessage || "Hello Oasis, I'd like an irrigation quote for my farm.")}
                 target="_blank" rel="noreferrer"
                 className="hp-cta-btn hp-cta-btn--primary"
               >
-                <MessageCircle size={18} /> {homePage?.heroPrimaryCta || "Get a free quote"}
+                <MessageCircle size={18} /> {homePage?.heroPrimaryCta || "Get an irrigation quote"}
               </Link>
               <Link href="/products/" className="hp-cta-btn hp-cta-btn--outline">
                 {homePage?.heroSecondaryCta || "Explore products"} <ArrowRight size={17} />
@@ -381,11 +411,11 @@ export default async function HomePage() {
                   <h3>{p.name}</h3>
                   <p>{p.description}</p>
                   <Link
-                    href={whatsappLink(`Hello Oasis, I'd like to ask about: ${p.name}`)}
+                    href={whatsappLink(`Hello Oasis, I'd like to request a quote for: ${p.name}`)}
                     target="_blank" rel="noreferrer"
                     className="hp-text-link hp-text-link--sm"
                   >
-                    {homePage?.productsCardLinkLabel || "Ask about this"} <ArrowUpRight size={13} />
+                    {homePage?.productsCardLinkLabel || "Request a quote"} <ArrowUpRight size={13} />
                   </Link>
                 </div>
               </article>
@@ -434,6 +464,34 @@ export default async function HomePage() {
             <Link href="/services/" className="hp-cta-btn hp-cta-btn--text">
               {homePage?.approachSecondaryCta || "Our services"} <ArrowRight size={17} />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          WHY OASIS
+      ══════════════════════════════════════════ */}
+      <section className="hp-section hp-why">
+        <div className="page-width">
+          <div className="hp-sec-head">
+            <p className="hp-label">Why Oasis</p>
+            <h2>Built for Ugandan farms.</h2>
+          </div>
+          <div className="hp-why__grid">
+            {whyOasis.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="hp-why__card"
+                  style={{ "--i": i } as React.CSSProperties}
+                >
+                  <span className="hp-why__icon"><Icon size={24} /></span>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
